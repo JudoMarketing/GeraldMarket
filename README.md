@@ -188,6 +188,34 @@ discourages self-serving review markup. The 4.8★ figure appears as normal page
 
 ---
 
+## Deploying to Vercel
+
+The repo is a plain static site — no build step — so Vercel needs no
+configuration beyond the `vercel.json` already committed (clean URLs and
+cache headers for the fonts).
+
+**From the browser, about two minutes:**
+
+1. Go to <https://vercel.com/new> and sign in with GitHub.
+2. Import `poweroso2000/pachos-auto-repair`.
+3. Framework preset: **Other**. Leave build command and output directory empty
+   — it is already static.
+4. Set the production branch to `claude/pachos-auto-repair-site-3bdls2` (or
+   merge that branch into `main` first and deploy `main`).
+5. Deploy. You get a `*.vercel.app` URL immediately; every later push to that
+   branch redeploys automatically.
+
+**From the terminal, if you prefer:**
+
+```sh
+npm i -g vercel
+vercel login
+vercel --prod
+```
+
+Once the real domain is ready, add it under Settings → Domains, then update
+the `canonical` tags, `og:url`, `sitemap.xml` and the JSON-LD `url` to match.
+
 ## Deploying
 
 Any static host works. Fastest options:
