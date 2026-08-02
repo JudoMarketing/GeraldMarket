@@ -23,6 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/img/bay-scene.svg">
 <link rel="stylesheet" href="assets/css/styles.css">
 
 <script type="application/ld+json">
@@ -188,68 +189,61 @@
 
 <main id="main">
 
-  <!-- ===== Hero ===== -->
-  <section class="hero">
-    <div class="wrap hero__grid">
-      <div class="reveal">
-        <span class="badge badge--amber" style="margin-bottom:1.1rem">
-          <svg><use href="#i-pin"/></svg><span data-i18n="hero.badge"></span>
-        </span>
-        <h1 class="display">
-          <span data-i18n="hero.h1a"></span><br>
-          <span class="grad-text" data-i18n="hero.h1b"></span>
-        </h1>
-        <p class="lede" data-i18n="hero.lede"></p>
+  <!-- ===== Hero: one big visual, dark scrim, phone + book always visible ===== -->
+  <section class="hero-art">
+    <div class="hero-art__media">
+      <img src="assets/img/bay-scene.svg" alt="" width="800" height="462" fetchpriority="high">
+    </div>
+    <div class="hero-art__scrim" aria-hidden="true"></div>
 
-        <div class="hero__ctas">
-          <a class="btn btn--primary btn--lg" href="appointment.html">
-            <svg><use href="#i-calendar"/></svg><span data-i18n="cta.book"></span>
-          </a>
-          <a class="btn btn--ghost btn--lg" data-tel href="tel:+13052389333">
-            <svg><use href="#i-phone"/></svg><span data-phone-text>(305) 238-9333</span>
-          </a>
-        </div>
+    <div class="wrap hero-art__inner">
+      <span class="badge badge--amber" style="margin-bottom:1rem">
+        <svg><use href="#i-pin"/></svg><span data-i18n="hero.badge"></span>
+      </span>
+      <h1 class="display">
+        <span data-i18n="hero.h1a"></span><br>
+        <span class="grad-text" data-i18n="hero.h1b"></span>
+      </h1>
+      <p class="lede" data-i18n="hero.lede"></p>
 
-        <div class="hero__trust">
-          <span class="badge badge--amber">
-            <span class="stars" aria-hidden="true">
-              <svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg>
-            </span>
-            <span data-i18n="hero.t1"></span>
-          </span>
-          <span class="badge"><svg><use href="#i-heart"/></svg><span data-i18n="hero.t2"></span></span>
-          <span class="badge"><svg><use href="#i-shield"/></svg><span data-i18n="hero.t3"></span></span>
-          <span class="badge badge--teal"><svg><use href="#i-globe"/></svg><span data-i18n="hero.t4"></span></span>
-        </div>
+      <div class="hero-art__ctas">
+        <a class="btn btn--primary btn--lg" href="appointment.html">
+          <svg><use href="#i-calendar"/></svg><span data-i18n="cta.book"></span>
+        </a>
+        <a class="btn btn--ghost btn--lg" data-tel href="tel:+13052389333">
+          <svg><use href="#i-phone"/></svg><span data-phone-text>(305) 238-9333</span>
+        </a>
       </div>
 
-      <!-- Live shop card -->
-      <aside class="glass shopcard reveal" data-d="2" aria-label="Shop hours and status">
-        <div class="shopcard__top">
-          <span class="shopcard__title" data-i18n="shop.title"></span>
-          <span class="status" data-status><span class="status__dot"></span><span data-status-text>Open now</span></span>
-        </div>
+      <div class="hero-art__chips">
+        <span class="badge badge--amber"><span class="stars" aria-hidden="true"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span><span data-i18n="hero.t1"></span></span>
+        <span class="status" data-status><span class="status__dot"></span><span data-status-text>Open now</span></span>
+        <span class="badge badge--teal"><svg><use href="#i-globe"/></svg><span data-i18n="hero.t4"></span></span>
+      </div>
+    </div>
+  </section>
 
-        <div class="hours">
-          <div class="hours__row" data-day="1"><span data-i18n="day.mon"></span><span data-i18n="hours.weekday"></span></div>
-          <div class="hours__row" data-day="2"><span data-i18n="day.tue"></span><span data-i18n="hours.weekday"></span></div>
-          <div class="hours__row" data-day="3"><span data-i18n="day.wed"></span><span data-i18n="hours.weekday"></span></div>
-          <div class="hours__row" data-day="4"><span data-i18n="day.thu"></span><span data-i18n="hours.weekday"></span></div>
-          <div class="hours__row" data-day="5"><span data-i18n="day.fri"></span><span data-i18n="hours.weekday"></span></div>
-          <div class="hours__row" data-day="6"><span data-i18n="day.sat"></span><span data-i18n="hours.sat"></span></div>
-          <div class="hours__row" data-day="0"><span data-i18n="day.sun"></span><span data-i18n="hours.closed"></span></div>
-        </div>
-
-        <div class="shopcard__stats">
-          <div class="stat"><div class="stat__n" data-i18n="shop.stat1n"></div><div class="stat__l" data-i18n="shop.stat1l"></div></div>
-          <div class="stat"><div class="stat__n" data-i18n="shop.stat2n"></div><div class="stat__l" data-i18n="shop.stat2l"></div></div>
-          <div class="stat"><div class="stat__n" data-i18n="shop.stat3n"></div><div class="stat__l" data-i18n="shop.stat3l"></div></div>
-        </div>
-
-        <a class="btn btn--ghost btn--block" data-maps href="#" target="_blank" rel="noopener" style="margin-top:1rem">
-          <svg><use href="#i-pin"/></svg><span data-i18n="cta.directions"></span>
-        </a>
-      </aside>
+  <!-- ===== Guarantee band: warranty + pricing answered before anything else ===== -->
+  <section class="trustband" aria-label="Our guarantees">
+    <div class="wrap">
+      <div class="trustband__grid">
+        <article class="glass tcard reveal">
+          <span class="tcard__ic"><svg><use href="#i-shield"/></svg></span>
+          <span><span class="tcard__t" data-i18n="trust.t1"></span><span class="tcard__d" data-i18n="trust.d1"></span></span>
+        </article>
+        <article class="glass tcard reveal" data-d="1">
+          <span class="tcard__ic"><svg><use href="#i-tag"/></svg></span>
+          <span><span class="tcard__t" data-i18n="trust.t2"></span><span class="tcard__d" data-i18n="trust.d2"></span></span>
+        </article>
+        <article class="glass tcard reveal" data-d="2">
+          <span class="tcard__ic"><svg><use href="#i-heart"/></svg></span>
+          <span><span class="tcard__t" data-i18n="trust.t3"></span><span class="tcard__d" data-i18n="trust.d3"></span></span>
+        </article>
+        <article class="glass tcard reveal" data-d="3">
+          <span class="tcard__ic"><svg><use href="#i-globe"/></svg></span>
+          <span><span class="tcard__t" data-i18n="trust.t4"></span><span class="tcard__d" data-i18n="trust.d4"></span></span>
+        </article>
+      </div>
     </div>
   </section>
 
@@ -274,84 +268,95 @@
         <p class="lede mt-2" data-i18n="svc.lede"></p>
       </div>
 
+      <div class="svc-featured">
+        <article class="glass glass--lift svcart reveal">
+          <div class="svcart__media">
+            <span class="svcart__tag" data-i18n="svc.tag1"></span>
+            <img src="assets/img/art-oil.svg" alt="" width="400" height="400" loading="lazy">
+          </div>
+          <div class="svcart__body">
+            <h3 data-i18n="svc.oil.t"></h3>
+            <p data-i18n="svc.oil.d"></p>
+            <div class="svc__meta"><span data-i18n="svc.oil.m"></span></div>
+          </div>
+        </article>
+
+        <article class="glass glass--lift svcart reveal" data-d="1">
+          <div class="svcart__media">
+            <span class="svcart__tag" data-i18n="svc.tag2"></span>
+            <img src="assets/img/art-tires.svg" alt="" width="400" height="400" loading="lazy">
+          </div>
+          <div class="svcart__body">
+            <h3 data-i18n="svc.tires.t"></h3>
+            <p data-i18n="svc.tires.d"></p>
+            <div class="svc__meta"><span data-i18n="svc.tires.m"></span></div>
+          </div>
+        </article>
+
+        <article class="glass glass--lift svcart reveal" data-d="2">
+          <div class="svcart__media">
+            <span class="svcart__tag" data-i18n="svc.tag3"></span>
+            <img src="assets/img/art-diag.svg" alt="" width="400" height="400" loading="lazy">
+          </div>
+          <div class="svcart__body">
+            <h3 data-i18n="svc.diag.t"></h3>
+            <p data-i18n="svc.diag.d"></p>
+            <div class="svc__meta"><span data-i18n="svc.diag.m"></span></div>
+          </div>
+        </article>
+      </div>
+
+      <p class="eyebrow reveal" style="margin:1.9rem 0 1rem" data-i18n="svc.all"></p>
+
       <div class="grid grid--auto">
         <article class="glass glass--lift svc reveal">
-          <div class="svc__icon"><svg><use href="#i-oil"/></svg></div>
-          <h3 data-i18n="svc.oil.t"></h3>
-          <p data-i18n="svc.oil.d"></p>
-          <div class="svc__meta"><span data-i18n="svc.oil.m"></span></div>
-        </article>
-
-        <article class="glass glass--lift svc reveal" data-d="1">
-          <div class="svc__icon"><svg><use href="#i-tire"/></svg></div>
-          <h3 data-i18n="svc.tires.t"></h3>
-          <p data-i18n="svc.tires.d"></p>
-          <div class="svc__meta"><span data-i18n="svc.tires.m"></span></div>
-        </article>
-
-        <article class="glass glass--lift svc reveal" data-d="2">
           <div class="svc__icon"><svg><use href="#i-gauge"/></svg></div>
           <h3 data-i18n="svc.align.t"></h3>
           <p data-i18n="svc.align.d"></p>
           <div class="svc__meta"><span data-i18n="svc.align.m"></span></div>
         </article>
-
-        <article class="glass glass--lift svc reveal">
+        <article class="glass glass--lift svc reveal" data-d="1">
           <div class="svc__icon"><svg><use href="#i-brake"/></svg></div>
           <h3 data-i18n="svc.brakes.t"></h3>
           <p data-i18n="svc.brakes.d"></p>
           <div class="svc__meta"><span data-i18n="svc.brakes.m"></span></div>
         </article>
-
-        <article class="glass glass--lift svc reveal" data-d="1">
-          <div class="svc__icon"><svg><use href="#i-scan"/></svg></div>
-          <h3 data-i18n="svc.diag.t"></h3>
-          <p data-i18n="svc.diag.d"></p>
-          <div class="svc__meta"><span data-i18n="svc.diag.m"></span></div>
-        </article>
-
         <article class="glass glass--lift svc reveal" data-d="2">
           <div class="svc__icon"><svg><use href="#i-snow"/></svg></div>
           <h3 data-i18n="svc.ac.t"></h3>
           <p data-i18n="svc.ac.d"></p>
           <div class="svc__meta"><span data-i18n="svc.ac.m"></span></div>
         </article>
-
         <article class="glass glass--lift svc reveal">
           <div class="svc__icon"><svg><use href="#i-spring"/></svg></div>
           <h3 data-i18n="svc.susp.t"></h3>
           <p data-i18n="svc.susp.d"></p>
           <div class="svc__meta"><span data-i18n="svc.susp.m"></span></div>
         </article>
-
         <article class="glass glass--lift svc reveal" data-d="1">
           <div class="svc__icon"><svg><use href="#i-engine"/></svg></div>
           <h3 data-i18n="svc.engine.t"></h3>
           <p data-i18n="svc.engine.d"></p>
           <div class="svc__meta"><span data-i18n="svc.engine.m"></span></div>
         </article>
-
         <article class="glass glass--lift svc reveal" data-d="2">
           <div class="svc__icon"><svg><use href="#i-battery"/></svg></div>
           <h3 data-i18n="svc.batt.t"></h3>
           <p data-i18n="svc.batt.d"></p>
           <div class="svc__meta"><span data-i18n="svc.batt.m"></span></div>
         </article>
-
         <article class="glass glass--lift svc reveal">
           <div class="svc__icon"><svg><use href="#i-wrench"/></svg></div>
           <h3 data-i18n="svc.maint.t"></h3>
           <p data-i18n="svc.maint.d"></p>
           <div class="svc__meta"><span data-i18n="svc.maint.m"></span></div>
         </article>
-
         <article class="glass glass--lift svc reveal" data-d="1">
           <div class="svc__icon"><svg><use href="#i-search"/></svg></div>
           <h3 data-i18n="svc.insp.t"></h3>
           <p data-i18n="svc.insp.d"></p>
           <div class="svc__meta"><span data-i18n="svc.insp.m"></span></div>
         </article>
-
         <article class="glass glass--lift svc reveal" data-d="2" style="background:linear-gradient(160deg,rgba(255,176,32,.12),rgba(255,255,255,.03));border-color:rgba(255,176,32,.24)">
           <div class="svc__icon"><svg><use href="#i-car"/></svg></div>
           <h3 data-i18n="svc.note"></h3>
@@ -552,9 +557,12 @@
     <div class="wrap">
       <div class="glass reveal" style="padding:clamp(1.5rem,5vw,2.8rem);border-radius:var(--r-xl)">
         <div class="grid" style="gap:clamp(1.4rem,4vw,2.4rem)">
-          <div>
-            <span class="eyebrow" data-i18n="about.eyebrow"></span>
-            <h2 class="display" data-i18n="about.h2"></h2>
+          <div class="about-lay">
+            <img class="emblem" src="assets/img/emblem.svg" alt="Pacho's Quality Auto Repair, established 2006, Miami Florida" width="136" height="136" loading="lazy">
+            <div>
+              <span class="eyebrow" data-i18n="about.eyebrow"></span>
+              <h2 class="display" data-i18n="about.h2"></h2>
+            </div>
           </div>
           <div class="grid grid--auto" style="gap:1.4rem">
             <p class="lede" data-i18n="about.p1"></p>
@@ -566,6 +574,18 @@
             <span class="badge"><svg><use href="#i-check"/></svg><span data-i18n="hero.t3"></span></span>
             <span class="badge badge--teal"><svg><use href="#i-check"/></svg><span data-i18n="hero.t4"></span></span>
           </div>
+          <div>
+            <p class="eyebrow" style="margin-bottom:.85rem" data-i18n="amen.title"></p>
+            <div class="amenities">
+              <span class="amenity"><svg><use href="#i-snow"/></svg><span data-i18n="amen.1"></span></span>
+              <span class="amenity"><svg><use href="#i-globe"/></svg><span data-i18n="amen.2"></span></span>
+              <span class="amenity"><svg><use href="#i-clock"/></svg><span data-i18n="amen.3"></span></span>
+              <span class="amenity"><svg><use href="#i-tag"/></svg><span data-i18n="amen.4"></span></span>
+              <span class="amenity"><svg><use href="#i-car"/></svg><span data-i18n="amen.5"></span></span>
+              <span class="amenity"><svg><use href="#i-whatsapp"/></svg><span data-i18n="amen.6"></span></span>
+            </div>
+          </div>
+
           <p class="footer__verse" data-i18n="about.verse"></p>
         </div>
       </div>

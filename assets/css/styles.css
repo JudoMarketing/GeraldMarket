@@ -1149,3 +1149,119 @@ body { padding-bottom: calc(var(--dock-h) + env(safe-area-inset-bottom)); }
   .header, .dock, .fab-stack, .ticker, .marquee { display: none !important; }
   body { background: #fff; color: #000; }
 }
+
+/* ============================================================
+   26. Full-bleed hero with shop artwork
+   Pattern borrowed from the best shop sites: one big visual,
+   a dark scrim, oversized headline, phone + book always visible.
+   ============================================================ */
+.hero-art {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-end;
+  min-height: clamp(520px, 78vh, 720px);
+  overflow: hidden;
+  border-bottom: 1px solid var(--line-soft);
+}
+.hero-art__media { position: absolute; inset: 0; z-index: -2; }
+.hero-art__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 46%;
+  filter: brightness(1.18) saturate(1.06);
+}
+@media (min-width: 900px) { .hero-art__media img { object-position: 62% 52%; } }
+/* scrim: dark at the bottom-left so the copy always reads */
+.hero-art__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(6, 9, 14, .74) 0%, rgba(6, 9, 14, .22) 30%, rgba(6, 9, 14, .5) 72%, var(--ink-900) 100%),
+    linear-gradient(90deg, rgba(6, 9, 14, .92) 0%, rgba(6, 9, 14, .74) 32%, rgba(6, 9, 14, .3) 62%, rgba(6, 9, 14, .05) 100%);
+}
+.hero-art__inner { padding-block: clamp(2rem, 6vw, 3.6rem); width: 100%; }
+.hero-art h1 { margin-bottom: 1rem; }
+.hero-art .lede { margin-bottom: 1.6rem; max-width: 52ch; }
+@media (min-width: 900px) {
+  .hero-art__inner > * { max-width: 56%; }
+  .hero-art__inner > h1 { max-width: 78%; }
+}
+
+.hero-art__ctas { display: flex; flex-wrap: wrap; gap: .7rem; margin-bottom: 1.3rem; }
+.hero-art__ctas .btn { flex: 1 1 auto; min-width: 172px; }
+@media (min-width: 560px) { .hero-art__ctas .btn { flex: 0 0 auto; } }
+
+.hero-art__chips { display: flex; flex-wrap: wrap; gap: .5rem; }
+
+/* ============================================================
+   27. Guarantee band — the two questions every customer asks
+   (what's covered, what will it cost) answered above the fold.
+   ============================================================ */
+.trustband { position: relative; z-index: 2; padding-block: 1.1rem clamp(1.6rem, 5vw, 2.8rem); }
+@media (min-width: 720px) { .trustband { margin-top: -48px; padding-top: 0; } }
+.trustband__grid { display: grid; gap: .7rem; }
+@media (min-width: 620px) { .trustband__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px) { .trustband__grid { grid-template-columns: repeat(4, 1fr); } }
+
+.tcard {
+  display: flex;
+  gap: .85rem;
+  align-items: flex-start;
+  padding: 1.15rem 1.1rem;
+  border-radius: var(--r-lg);
+}
+.tcard__ic {
+  width: 42px; height: 42px; flex: none; border-radius: 13px; display: grid; place-items: center;
+  background: var(--brand-grad-soft); border: 1px solid rgba(255, 176, 32, .22); color: var(--amber-300);
+}
+.tcard__ic svg { width: 21px; height: 21px; }
+.tcard__t { display: block; font-family: var(--font-display); font-weight: 700; font-size: .97rem; line-height: 1.25; }
+.tcard__d { display: block; font-size: .82rem; color: var(--muted); line-height: 1.5; margin-top: .25rem; }
+
+/* ============================================================
+   28. Service cards with artwork
+   ============================================================ */
+.svc-featured { display: grid; gap: .85rem; margin-bottom: .85rem; }
+@media (min-width: 780px) { .svc-featured { grid-template-columns: repeat(3, 1fr); } }
+
+.svcart { display: flex; flex-direction: column; border-radius: var(--r-lg); overflow: hidden; }
+.svcart__media {
+  position: relative;
+  aspect-ratio: 5 / 4;
+  background: linear-gradient(160deg, #141C27, #0C1119);
+  border-bottom: 1px solid var(--line-soft);
+  overflow: hidden;
+}
+.svcart__media img { width: 100%; height: 100%; object-fit: contain; transition: transform .6s var(--ease); }
+.svcart:hover .svcart__media img { transform: scale(1.05); }
+.svcart__tag {
+  position: absolute; left: .8rem; top: .8rem; z-index: 2;
+  font-size: .655rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase;
+  padding: .3rem .6rem; border-radius: var(--r-pill);
+  background: rgba(6, 9, 14, .72); border: 1px solid rgba(255, 176, 32, .3); color: var(--amber-300);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.svcart__body { padding: 1.1rem 1.1rem 1.2rem; display: flex; flex-direction: column; gap: .5rem; flex: 1; }
+.svcart__body p { color: var(--muted); font-size: .875rem; line-height: 1.55; }
+
+/* ============================================================
+   29. Amenities strip
+   ============================================================ */
+.amenities { display: flex; flex-wrap: wrap; gap: .5rem; }
+.amenity {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .58rem .9rem; border-radius: var(--r-pill);
+  background: var(--glass); border: 1px solid var(--line);
+  font-size: .84rem; font-weight: 600; color: var(--txt-2);
+}
+.amenity svg { width: 16px; height: 16px; color: var(--teal-400); flex: none; }
+
+/* ============================================================
+   30. Emblem placements
+   ============================================================ */
+.emblem { width: clamp(104px, 22vw, 136px); height: auto; flex: none; filter: drop-shadow(0 10px 26px rgba(255, 122, 24, .22)); }
+.about-lay { display: grid; gap: clamp(1.4rem, 4vw, 2.4rem); }
+@media (min-width: 860px) { .about-lay { grid-template-columns: auto 1fr; align-items: start; } }

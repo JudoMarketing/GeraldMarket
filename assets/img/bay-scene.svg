@@ -1,0 +1,211 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 462" role="img"
+     aria-label="Illustration of a car raised on a two-post lift inside the repair bay">
+  <title>A car up on the lift in the bay</title>
+  <defs>
+    <linearGradient id="bsSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0B111A"/>
+      <stop offset="1" stop-color="#121A26"/>
+    </linearGradient>
+    <linearGradient id="bsFloor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1A2230"/>
+      <stop offset="1" stop-color="#0A0E15"/>
+    </linearGradient>
+    <linearGradient id="bsAmber" x1="0" y1="0" x2="0.8" y2="1">
+      <stop offset="0" stop-color="#FFD870"/>
+      <stop offset="0.5" stop-color="#FFB020"/>
+      <stop offset="1" stop-color="#FF6A12"/>
+    </linearGradient>
+    <linearGradient id="bsCar" x1="0.1" y1="0" x2="0.45" y2="1">
+      <stop offset="0" stop-color="#46556D"/>
+      <stop offset="0.6" stop-color="#2B3646"/>
+      <stop offset="1" stop-color="#1A222E"/>
+    </linearGradient>
+    <linearGradient id="bsGlass" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0" stop-color="#8FB6D8" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#3D5A78" stop-opacity="0.3"/>
+    </linearGradient>
+    <radialGradient id="bsLamp" cx="0.5" cy="0" r="1">
+      <stop offset="0" stop-color="#FFC24D" stop-opacity="0.34"/>
+      <stop offset="0.55" stop-color="#FFB020" stop-opacity="0.09"/>
+      <stop offset="1" stop-color="#FFB020" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="bsGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FF8A1E" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#FF8A1E" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="bsClip"><rect width="800" height="462"/></clipPath>
+  </defs>
+
+  <g clip-path="url(#bsClip)">
+    <!-- back wall + floor -->
+    <rect width="800" height="462" fill="url(#bsSky)"/>
+    <rect y="392" width="800" height="70" fill="url(#bsFloor)"/>
+    <line x1="0" y1="392" x2="800" y2="392" stroke="#2C3849" stroke-width="2"/>
+
+    <!-- pegboard wall texture -->
+    <g fill="#FFFFFF" opacity="0.05">
+      <g id="bsDots">
+        <circle cx="40" cy="60" r="2"/><circle cx="80" cy="60" r="2"/><circle cx="120" cy="60" r="2"/>
+        <circle cx="160" cy="60" r="2"/><circle cx="200" cy="60" r="2"/><circle cx="240" cy="60" r="2"/>
+        <circle cx="280" cy="60" r="2"/><circle cx="320" cy="60" r="2"/><circle cx="360" cy="60" r="2"/>
+        <circle cx="400" cy="60" r="2"/><circle cx="440" cy="60" r="2"/><circle cx="480" cy="60" r="2"/>
+        <circle cx="520" cy="60" r="2"/><circle cx="560" cy="60" r="2"/><circle cx="600" cy="60" r="2"/>
+        <circle cx="640" cy="60" r="2"/><circle cx="680" cy="60" r="2"/><circle cx="720" cy="60" r="2"/>
+        <circle cx="760" cy="60" r="2"/>
+      </g>
+      <use href="#bsDots" y="40"/><use href="#bsDots" y="80"/><use href="#bsDots" y="120"/>
+      <use href="#bsDots" y="160"/><use href="#bsDots" y="200"/><use href="#bsDots" y="240"/>
+      <use href="#bsDots" y="280"/>
+    </g>
+
+    <!-- floor perspective lines -->
+    <g stroke="#FFFFFF" stroke-opacity="0.05" stroke-width="2">
+      <path d="M-40,462 L266,392"/><path d="M190,462 L364,392"/>
+      <path d="M430,462 L440,392"/><path d="M650,462 L540,392"/><path d="M880,462 L648,392"/>
+    </g>
+
+    <!-- hanging shop lamp -->
+    <line x1="400" y1="0" x2="400" y2="34" stroke="#3B475A" stroke-width="3"/>
+    <path d="M366,34 h68 l14,26 h-96 z" fill="#333F52"/>
+    <ellipse cx="400" cy="60" rx="48" ry="6" fill="#FFD870" opacity="0.85"/>
+    <path d="M352,62 L214,392 H586 L448,62 Z" fill="url(#bsLamp)"/>
+
+    <!-- warm glow behind the car -->
+    <ellipse cx="400" cy="250" rx="330" ry="180" fill="url(#bsGlow)"/>
+
+    <!-- ===== two-post lift ===== -->
+    <!-- base plates -->
+    <rect x="150" y="378" width="76" height="16" rx="4" fill="#28323F"/>
+    <rect x="574" y="378" width="76" height="16" rx="4" fill="#28323F"/>
+    <!-- posts -->
+    <rect x="174" y="96" width="28" height="286" rx="5" fill="#333F52"/>
+    <rect x="598" y="96" width="28" height="286" rx="5" fill="#333F52"/>
+    <rect x="174" y="96" width="9" height="286" fill="#FFFFFF" opacity="0.07"/>
+    <rect x="598" y="96" width="9" height="286" fill="#FFFFFF" opacity="0.07"/>
+    <!-- top beam -->
+    <rect x="166" y="84" width="468" height="20" rx="5" fill="#3B4859"/>
+    <rect x="166" y="84" width="468" height="6" rx="3" fill="#FFFFFF" opacity="0.08"/>
+    <!-- amber safety stripes on the posts -->
+    <g fill="url(#bsAmber)" opacity="0.9">
+      <rect x="174" y="336" width="28" height="7" rx="2"/>
+      <rect x="174" y="350" width="28" height="7" rx="2"/>
+      <rect x="598" y="336" width="28" height="7" rx="2"/>
+      <rect x="598" y="350" width="28" height="7" rx="2"/>
+    </g>
+    <!-- lift arms reaching in under the rocker panel -->
+    <g fill="#3B4859">
+      <rect x="202" y="250" width="166" height="14" rx="7"/>
+      <rect x="432" y="250" width="166" height="14" rx="7"/>
+    </g>
+    <g fill="#55647B">
+      <rect x="340" y="242" width="28" height="16" rx="4"/>
+      <rect x="432" y="242" width="28" height="16" rx="4"/>
+    </g>
+
+    <!-- ===== the car, raised ===== -->
+    <g transform="translate(200 96) scale(1.0)">
+      <!-- body -->
+      <path fill="url(#bsCar)" stroke="#5B6B84" stroke-width="1.5" stroke-linejoin="round"
+            d="M24,148
+               C24,132 28,122 42,118
+               L114,106
+               C126,104 134,100 142,92
+               L178,64
+               C184,59 192,56 202,56
+               L254,56
+               C266,56 274,59 280,64
+               L320,96
+               L354,104
+               C366,106 374,114 376,126
+               L378,150
+               C378,157 374,162 366,162
+               L334,162
+               A30,30 0 0 0 274,162
+               L138,162
+               A30,30 0 0 0 78,162
+               L34,162
+               C27,162 24,156 24,148 Z"/>
+      <!-- glass -->
+      <path fill="url(#bsGlass)"
+            d="M150,90 L180,66 C186,61 193,59 202,59 L250,59 C260,59 267,61 273,66 L305,92 Z"/>
+      <line x1="228" y1="59" x2="228" y2="92" stroke="#1B2331" stroke-width="4"/>
+      <!-- door shut line + handle -->
+      <path d="M228,96 L228,158" stroke="#1B2331" stroke-width="2.5" opacity="0.8"/>
+      <rect x="196" y="112" width="24" height="6" rx="3" fill="#7E8DA4"/>
+      <!-- side crease highlight -->
+      <path d="M46,126 L360,120" stroke="#8CA0BC" stroke-width="2" opacity="0.35"/>
+      <!-- lights -->
+      <path d="M26,124 h16 a5,5 0 0 1 0,10 h-16 z" fill="#FFE9B0" opacity="0.85"/>
+      <path d="M376,128 h-16 a5,5 0 0 0 0,10 h16 z" fill="#FF7A6B" opacity="0.85"/>
+      <!-- wheels (hanging free, it's on the lift) -->
+      <g>
+        <circle cx="108" cy="162" r="30" fill="#141A24" stroke="#39465A" stroke-width="3"/>
+        <circle cx="108" cy="162" r="16" fill="#2E3A4C"/>
+        <circle cx="108" cy="162" r="5" fill="#59697F"/>
+        <circle cx="304" cy="162" r="30" fill="#141A24" stroke="#39465A" stroke-width="3"/>
+        <circle cx="304" cy="162" r="16" fill="#2E3A4C"/>
+        <circle cx="304" cy="162" r="5" fill="#59697F"/>
+      </g>
+    </g>
+
+    <!-- ===== technician under the car ===== -->
+    <g fill="#0C131B">
+      <!-- legs + boots -->
+      <rect x="391" y="350" width="12" height="40" rx="3"/>
+      <rect x="409" y="350" width="12" height="40" rx="3"/>
+      <path d="M389,384 h14 v10 h-20 a6,6 0 0 1 6,-10 z"/>
+      <path d="M407,384 h14 v10 h-20 a6,6 0 0 1 6,-10 z"/>
+      <!-- torso with shoulders -->
+      <path d="M390,320 C390,313 396,309 406,309 C416,309 422,313 422,320 L426,356 H386 Z"/>
+      <!-- head + cap -->
+      <circle cx="406" cy="296" r="12"/>
+      <path d="M394,293 a12,12 0 0 1 24,0 z"/>
+      <path d="M417,289 h13 a2,2 0 0 1 0,5 h-13 z"/>
+      <!-- arm raised with the work light -->
+      <path d="M420,322 L443,296 l9,7 l-22,26 z"/>
+      <!-- arm down -->
+      <path d="M392,322 L379,352 l9,4 l12,-30 z"/>
+    </g>
+    <circle cx="452" cy="294" r="7" fill="#FFD870"/>
+    <circle cx="452" cy="294" r="17" fill="#FFD870" opacity="0.15"/>
+
+    <!-- ===== tool cart, left ===== -->
+    <g>
+      <rect x="44" y="278" width="106" height="104" rx="7" fill="#303C4D"/>
+      <rect x="44" y="278" width="106" height="11" rx="5" fill="url(#bsAmber)"/>
+      <g stroke="#1B2331" stroke-width="2.5">
+        <path d="M52,312 h90"/><path d="M52,338 h90"/><path d="M52,364 h90"/>
+      </g>
+      <g fill="#6E7E96">
+        <rect x="82" y="298" width="30" height="5" rx="2.5"/>
+        <rect x="82" y="324" width="30" height="5" rx="2.5"/>
+        <rect x="82" y="350" width="30" height="5" rx="2.5"/>
+      </g>
+      <circle cx="62" cy="388" r="9" fill="#171E29"/>
+      <circle cx="132" cy="388" r="9" fill="#171E29"/>
+    </g>
+
+    <!-- ===== tire stack, right ===== -->
+    <g>
+      <g fill="#161D28" stroke="#333F52" stroke-width="2.5">
+        <rect x="662" y="340" width="112" height="26" rx="13"/>
+        <rect x="668" y="312" width="112" height="26" rx="13"/>
+        <rect x="662" y="284" width="112" height="26" rx="13"/>
+      </g>
+      <g fill="#2E3A4C">
+        <ellipse cx="718" cy="353" rx="16" ry="9"/>
+        <ellipse cx="724" cy="325" rx="16" ry="9"/>
+        <ellipse cx="718" cy="297" rx="16" ry="9"/>
+      </g>
+    </g>
+
+    <!-- oil drain pan under the car -->
+    <g>
+      <rect x="500" y="366" width="72" height="16" rx="5" fill="#28323F"/>
+      <ellipse cx="536" cy="366" rx="36" ry="6" fill="#39465A"/>
+    </g>
+
+    <!-- floor shadow -->
+    <ellipse cx="400" cy="392" rx="250" ry="14" fill="#000000" opacity="0.4"/>
+  </g>
+</svg>

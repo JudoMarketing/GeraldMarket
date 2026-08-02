@@ -81,6 +81,32 @@
       "hours.sat": "8:30 AM – 3:00 PM",
       "hours.closed": "Closed",
 
+      /* ---------- guarantee band ---------- */
+      "trust.t1": "Parts & labor warranty",
+      "trust.d1": "Most repairs are covered. Ask us and we'll write the exact terms on your invoice.",
+      "trust.t2": "You see the price first",
+      "trust.d2": "We inspect, then quote. Nothing gets repaired until you approve the number.",
+      "trust.t3": "Same family since 2006",
+      "trust.d3": "Almost twenty years in the same Miami bay. Our name is on the door.",
+      "trust.t4": "English & Español",
+      "trust.d4": "Explained in your language, in words that actually make sense.",
+
+      /* ---------- featured service tags ---------- */
+      "svc.tag1": "Most requested",
+      "svc.tag2": "Free alignment offer",
+      "svc.tag3": "Free code scan",
+      "svc.all": "Everything else we handle",
+
+      /* ---------- amenities ---------- */
+      "amen.title": "While you're here",
+      "amen.1": "Waiting area with A/C",
+      "amen.2": "Free Wi-Fi",
+      "amen.3": "Wait or drop off",
+      "amen.4": "Cards & cash accepted",
+      "amen.5": "Free parking on site",
+      "amen.6": "Text or WhatsApp updates",
+      "amen.note": "Amenities to be confirmed by the shop before launch.",
+
       /* ---------- brands ---------- */
       "brands.title": "We service what Miami drives",
 
@@ -454,6 +480,32 @@
       "hours.weekday": "8:30 AM – 5:30 PM",
       "hours.sat": "8:30 AM – 3:00 PM",
       "hours.closed": "Cerrado",
+
+      /* ---------- garantías ---------- */
+      "trust.t1": "Garantía de piezas y mano de obra",
+      "trust.d1": "La mayoría de las reparaciones tienen cobertura. Pregúntenos y le ponemos los términos exactos en la factura.",
+      "trust.t2": "Usted ve el precio primero",
+      "trust.d2": "Revisamos y después cotizamos. Nada se repara hasta que usted apruebe el número.",
+      "trust.t3": "La misma familia desde 2006",
+      "trust.d3": "Casi veinte años en el mismo taller de Miami. Nuestro nombre está en la puerta.",
+      "trust.t4": "Español e inglés",
+      "trust.d4": "Se lo explicamos en su idioma, con palabras que de verdad se entienden.",
+
+      /* ---------- etiquetas de servicios ---------- */
+      "svc.tag1": "Lo más pedido",
+      "svc.tag2": "Alineamiento gratis",
+      "svc.tag3": "Escaneo gratis",
+      "svc.all": "Todo lo demás que hacemos",
+
+      /* ---------- comodidades ---------- */
+      "amen.title": "Mientras está aquí",
+      "amen.1": "Sala de espera con aire",
+      "amen.2": "Wi-Fi gratis",
+      "amen.3": "Espere o deje el carro",
+      "amen.4": "Aceptamos tarjetas y efectivo",
+      "amen.5": "Estacionamiento gratis",
+      "amen.6": "Avisos por texto o WhatsApp",
+      "amen.note": "Comodidades por confirmar con el taller antes de publicar.",
 
       /* ---------- brands ---------- */
       "brands.title": "Atendemos lo que Miami maneja",
