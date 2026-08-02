@@ -115,7 +115,7 @@
 <header class="header">
   <div class="wrap header__inner">
     <a class="brand" href="index.html" aria-label="Pacho's Quality Auto Repair — home">
-      <img class="brand__mark" src="assets/img/logo.svg" alt="" width="36" height="36">
+      <img class="brand__mark" src="assets/img/logo-mark.svg" alt="" width="52" height="26">
       <span class="brand__txt">
         <span class="brand__name">Pacho's</span>
         <span class="brand__sub">Quality Auto Repair</span>
@@ -127,7 +127,7 @@
       <a href="#deals" data-i18n="nav.deals"></a>
       <a href="#process" data-i18n="nav.why"></a>
       <a href="#reviews" data-i18n="nav.reviews"></a>
-      <a href="#faq" data-i18n="nav.faq"></a>
+      <a href="faq.html" data-i18n="nav.faq"></a>
       <a href="#location" data-i18n="nav.location"></a>
     </nav>
 
@@ -155,7 +155,7 @@
     <a class="drawer__link" href="#process"><span data-i18n="nav.why"></span><span>→</span></a>
     <a class="drawer__link" href="#reviews"><span data-i18n="nav.reviews"></span><span>→</span></a>
     <a class="drawer__link" href="#about"><span data-i18n="sec.shop"></span><span>→</span></a>
-    <a class="drawer__link" href="#faq"><span data-i18n="nav.faq"></span><span>→</span></a>
+    <a class="drawer__link" href="faq.html"><span data-i18n="nav.faq"></span><span>→</span></a>
     <a class="drawer__link" href="#location"><span data-i18n="nav.location"></span><span>→</span></a>
   </nav>
   <div class="drawer__actions">
@@ -434,41 +434,26 @@
         <span class="rating-hero__meta" data-i18n="rev.meta"></span>
       </div>
 
-      <!--
-        NOTE FOR THE CLIENT: these three quotes are paraphrased from public review
-        summaries. Before going live, replace them with real, verbatim Google
-        reviews (with the reviewer's first name) so the section is 100% accurate.
-      -->
-      <div class="reviews">
-        <article class="card review reveal">
-          <span class="stars" aria-hidden="true"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
-          <p class="review__q" data-i18n="rev.r1"></p>
-          <div class="review__who">
-            <span class="review__av" aria-hidden="true">M</span>
-            <span><span class="review__name" style="display:block" data-i18n="rev.r1n"></span><span class="review__src" data-i18n="rev.src"></span></span>
-          </div>
-        </article>
-        <article class="card review reveal" data-d="1">
-          <span class="stars" aria-hidden="true"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
-          <p class="review__q" data-i18n="rev.r2"></p>
-          <div class="review__who">
-            <span class="review__av" aria-hidden="true">L</span>
-            <span><span class="review__name" style="display:block" data-i18n="rev.r2n"></span><span class="review__src" data-i18n="rev.src"></span></span>
-          </div>
-        </article>
-        <article class="card review reveal" data-d="2">
-          <span class="stars" aria-hidden="true"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
-          <p class="review__q" data-i18n="rev.r3"></p>
-          <div class="review__who">
-            <span class="review__av" aria-hidden="true">A</span>
-            <span><span class="review__name" style="display:block" data-i18n="rev.r3n"></span><span class="review__src" data-i18n="rev.src"></span></span>
-          </div>
-        </article>
+      <!-- Cards render from assets/js/reviews.js. Empty until the shop pastes
+           in real Google reviews — nothing here is written by us. -->
+      <div class="reviews" data-reviews hidden></div>
+
+      <div class="center" data-reviews-empty>
+        <p class="eyebrow" data-i18n="rev.mentions"></p>
+        <div class="amenities" style="justify-content:center;max-width:640px;margin:0 auto 1.8rem">
+          <span class="pill pill--outline" data-i18n="rev.m1"></span>
+          <span class="pill pill--outline" data-i18n="rev.m2"></span>
+          <span class="pill pill--outline" data-i18n="rev.m3"></span>
+          <span class="pill pill--outline" data-i18n="rev.m4"></span>
+          <span class="pill pill--outline" data-i18n="rev.m5"></span>
+          <span class="pill pill--outline" data-i18n="rev.m6"></span>
+        </div>
+        <p class="small" style="max-width:52ch;margin:0 auto 1.6rem" data-i18n="rev.empty"></p>
       </div>
 
       <div class="center mt-3">
-        <a class="btn" href="https://www.google.com/search?q=Pacho%27s+Quality+Auto+Repair+Miami+reviews" target="_blank" rel="noopener">
-          <svg><use href="#i-star"/></svg><span data-i18n="rev.cta"></span>
+        <a class="btn btn--primary btn--lg" href="https://www.google.com/search?q=Pacho%27s+Quality+Auto+Repair+Miami+reviews" target="_blank" rel="noopener">
+          <svg><use href="#i-star"/></svg><span data-i18n="rev.googleCta"></span>
         </a>
       </div>
     </div>
@@ -503,27 +488,6 @@
           <img src="assets/img/art-diag.svg" alt="" width="400" height="400" loading="lazy" style="max-width:300px;margin-inline:auto">
           <p class="small center" style="margin-top:.9rem" data-i18n="svc.diag.d"></p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FAQ ===== -->
-  <section class="section section--panel" id="faq">
-    <div class="wrap">
-      <div class="sec-head sec-head--center">
-        <span class="eyebrow" data-i18n="sec.faq"></span>
-        <h2 class="display" data-i18n="faq.h2"></h2>
-      </div>
-
-      <div class="faq">
-        <details open><summary data-i18n="faq.q1"></summary><div data-i18n="faq.a1"></div></details>
-        <details><summary data-i18n="faq.q2"></summary><div data-i18n="faq.a2"></div></details>
-        <details><summary data-i18n="faq.q3"></summary><div data-i18n="faq.a3"></div></details>
-        <details><summary data-i18n="faq.q4"></summary><div data-i18n="faq.a4"></div></details>
-        <details><summary data-i18n="faq.q5"></summary><div data-i18n="faq.a5"></div></details>
-        <details><summary data-i18n="faq.q6"></summary><div data-i18n="faq.a6"></div></details>
-        <details><summary data-i18n="faq.q7"></summary><div data-i18n="faq.a7"></div></details>
-        <details><summary data-i18n="faq.q8"></summary><div data-i18n="faq.a8"></div></details>
       </div>
     </div>
   </section>
@@ -610,7 +574,7 @@
     <div class="footer__grid">
       <div>
         <a class="brand" href="index.html" style="margin-bottom:1rem">
-          <img class="brand__mark" src="assets/img/logo.svg" alt="" width="36" height="36">
+          <img class="brand__mark" src="assets/img/logo-mark.svg" alt="" width="52" height="26">
           <span class="brand__txt">
             <span class="brand__name">Pacho's</span>
             <span class="brand__sub">Quality Auto Repair</span>
@@ -626,7 +590,7 @@
           <li><a href="#services" data-i18n="nav.services"></a></li>
           <li><a href="#deals" data-i18n="nav.deals"></a></li>
           <li><a href="#reviews" data-i18n="nav.reviews"></a></li>
-          <li><a href="#faq" data-i18n="nav.faq"></a></li>
+          <li><a href="faq.html" data-i18n="nav.faq"></a></li>
           <li><a href="appointment.html" data-i18n="nav.book"></a></li>
         </ul>
       </div>
@@ -673,6 +637,7 @@
   <svg><use href="#i-phone"/></svg><span data-phone-text>(305) 238-9333</span>
 </a>
 
+<script src="assets/js/reviews.js"></script>
 <script src="assets/js/i18n.js"></script>
 <script src="assets/js/app.js"></script>
 </body>

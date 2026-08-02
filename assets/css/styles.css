@@ -244,7 +244,7 @@ h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.22rem; lin
 .header__inner { display: flex; align-items: center; gap: .6rem; height: var(--header-h); }
 
 .brand { display: flex; align-items: center; gap: .6rem; margin-right: auto; min-width: 0; overflow: hidden; }
-.brand__mark { width: 36px; height: 36px; flex: none; border-radius: 9px; }
+.brand__mark { width: 54px; height: auto; flex: none; }
 .brand__txt { display: flex; flex-direction: column; line-height: 1; min-width: 0; overflow: hidden; }
 .brand__name { font-family: var(--font-display); font-weight: 800; font-size: 1.12rem; letter-spacing: -.03em; color: var(--white); white-space: nowrap; }
 .brand__sub { font-size: .58rem; font-weight: 600; letter-spacing: .17em; text-transform: uppercase; color: var(--txt-3); margin-top: .24rem; white-space: nowrap; }

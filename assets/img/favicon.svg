@@ -1,8 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" rx="24" fill="#0B63F6"/>
-  <g transform="translate(50 50) scale(0.78) translate(-50 -50)">
-    <path fill="#FFFFFF" fill-rule="evenodd"
-          d="M22.5,16 H56.8 A21,21 0 0 1 56.8,58 H38.5 V84 H22.5 Z
-             M58.16,26.6 L67.16,31.8 L67.16,42.2 L58.16,47.4 L49.16,42.2 L49.16,31.8 Z"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="116" fill="#0B63F6"/>
+  <g transform="translate(18 138)">
+    <path d="M14,150 C14,132 22,118 40,112 L92,98 L108,58 C112,44 124,34 142,34 L358,34 C376,34 388,44 394,58 L418,104 C442,112 458,126 460,148 L462,172 C462,182 455,188 444,188 L404,188 A50,50 0 0 0 304,188 L172,188 A50,50 0 0 0 72,188 L30,188 C20,188 14,181 14,172 Z" fill="#FFFFFF"/>
+    <g fill="#0B63F6"><circle cx="122" cy="188" r="27"/><circle cx="354" cy="188" r="27"/></g>
   </g>
 </svg>

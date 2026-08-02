@@ -243,6 +243,15 @@
       "rev.r3": "Took the time to answer all my questions and explain my options, then gave me a fair estimate with no surprise charges. My A/C works like new.",
       "rev.r3n": "Kendall driver",
       "rev.src": "Public review",
+      "rev.mentions": "What customers mention most",
+      "rev.m1": "Honest diagnosis",
+      "rev.m2": "Fair, upfront pricing",
+      "rev.m3": "Explains everything",
+      "rev.m4": "Quick turnaround",
+      "rev.m5": "A/C work",
+      "rev.m6": "Se habla español",
+      "rev.googleCta": "Read every review on Google",
+      "rev.empty": "We show real reviews only. The shop's Google listing has the full set — every rating and every word, straight from the source.",
       "rev.cta": "Read all reviews",
 
       /* ---------- about ---------- */
@@ -253,6 +262,11 @@
       "about.verse": "\"Whatever you do, work at it with all your heart, as working for the Lord.\" — Colossians 3:23",
 
       /* ---------- faq ---------- */
+      "meta.titleFaq": "Questions & Answers | Pacho's Quality Auto Repair, Miami",
+      "meta.descFaq": "Common questions about appointments, estimates, warranty, VIN numbers, payment and languages at Pacho's Quality Auto Repair in Miami.",
+      "faq.lede": "Everything people ask before they bring the car in. If yours isn't here, call us — we'd rather answer it than have you guess.",
+      "faq.stillT": "Still not sure?",
+      "faq.stillD": "Call the shop and describe what the car is doing. We'll tell you what it probably needs before you spend anything.",
       "faq.eyebrow": "Good to know",
       "faq.h2": "Frequently asked questions",
       "faq.q1": "Do I need an appointment?",
@@ -669,6 +683,15 @@
       "rev.r3": "Se tomó el tiempo de contestar todas mis preguntas y explicarme las opciones, y me dio un presupuesto justo sin cobros sorpresa. Mi aire quedó como nuevo.",
       "rev.r3n": "Conductor de Kendall",
       "rev.src": "Reseña pública",
+      "rev.mentions": "Lo que más mencionan los clientes",
+      "rev.m1": "Diagnóstico honesto",
+      "rev.m2": "Precios justos y claros",
+      "rev.m3": "Explican todo",
+      "rev.m4": "Trabajo rápido",
+      "rev.m5": "Aire acondicionado",
+      "rev.m6": "We speak English",
+      "rev.googleCta": "Ver todas las reseñas en Google",
+      "rev.empty": "Solo mostramos reseñas reales. En el perfil de Google del taller están todas — cada calificación y cada palabra, directo de la fuente.",
       "rev.cta": "Ver todas las reseñas",
 
       /* ---------- about ---------- */
@@ -679,6 +702,11 @@
       "about.verse": "«Y todo lo que hagáis, hacedlo de corazón, como para el Señor.» — Colosenses 3:23",
 
       /* ---------- faq ---------- */
+      "meta.titleFaq": "Preguntas frecuentes | Pacho's Quality Auto Repair, Miami",
+      "meta.descFaq": "Preguntas comunes sobre citas, presupuestos, garantía, número de VIN, formas de pago e idiomas en Pacho's Quality Auto Repair en Miami.",
+      "faq.lede": "Todo lo que la gente pregunta antes de traer el carro. Si la suya no está aquí, llámenos — preferimos contestarle a que se quede adivinando.",
+      "faq.stillT": "¿Todavía con dudas?",
+      "faq.stillD": "Llame al taller y describa lo que hace el carro. Le decimos qué es lo más probable antes de que gaste un peso.",
       "faq.eyebrow": "Bueno saberlo",
       "faq.h2": "Preguntas frecuentes",
       "faq.q1": "¿Necesito cita?",

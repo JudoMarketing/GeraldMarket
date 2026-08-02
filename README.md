@@ -11,22 +11,23 @@ required — open `index.html` or drop the folder on any host.
 ## Structure
 
 ```
-index.html               Home: hero, guarantees, services, specials, process, reviews, shop, FAQ, location
+index.html               Home: hero, guarantees, services, specials, process, reviews, shop, location
+faq.html                 Questions & answers (own page, with FAQPage schema)
 appointment.html         Appointment form (VIN optional)
 assets/css/styles.css    Design system + all page styles
 assets/css/fonts.css     @font-face for the self-hosted typefaces
 assets/fonts/*.woff2     Poppins, DM Sans, IBM Plex Mono (latin + latin-ext)
 assets/js/i18n.js        EN/ES dictionary + translation engine
-assets/js/app.js         Business config, header, shop-open clock + next-opening, reveals, coupons
+assets/js/app.js         Business config, shop clock + next opening, reveals, coupons, reviews
+assets/js/reviews.js     REAL customer reviews - empty until the shop pastes theirs in
 assets/js/appointment.js Form validation, VIN helper, message composer
-assets/img/logo.svg      Blue plate with the hex-nut "P" knocked out
-assets/img/favicon.svg   Same mark, tuned for a browser tab
-assets/img/art-bay.svg   Hero visual — a car up on the two-post lift
-assets/img/art-oil.svg   Oil change vignette
-assets/img/art-tires.svg Wheel + torque wrench vignette
-assets/img/art-diag.svg  Scan tool vignette
-tools/generate-art.py    Regenerates the four line drawings
-robots.txt · sitemap.xml · site.webmanifest
+assets/img/logo.svg      Full lockup, rebuilt from the shop's painted sign
+assets/img/logo-mark.svg Compact truck, used in the header
+assets/img/favicon.svg   The truck on a blue plate
+assets/img/art-*.svg     Line drawings (hero + service cards)
+tools/generate-logo.py   Rebuilds the three logo files
+tools/generate-art.py    Rebuilds the four line drawings
+robots.txt | sitemap.xml | site.webmanifest
 ```
 
 ## Editing the important things
@@ -108,9 +109,26 @@ Still deliberately absent — these are the tells of a generated page: frosted
 glass / `backdrop-filter`, ambient gradient orbs floating behind the content,
 and gradient-filled text.
 
-### The mark
-No logo existed. It is a **bold "P" whose counter is a hex nut**, knocked out of
-a blue plate — legible at 16px in a browser tab and on any background.
+### The mark - rebuilt from the shop's own sign
+The shop has a painted metal sign: bold slanted blue letters spelling PACHO'S
+QUALITY, AUTO REPAIR beneath, the whole wordmark sitting on a truck body with
+two black wheels. **The lettering is the vehicle** - that is the identity, so
+that is what the logo reproduces, in the sign's own colours (blue lettering,
+silver body, black tyres).
+
+Letterforms are Archivo Black, the closest match to the hand-cut originals,
+converted to outlines and slanted, so the finished SVG carries no font
+dependency at all. Run `python3 tools/generate-logo.py` to rebuild.
+
+| File | Where |
+|---|---|
+| `logo.svg` | full horizontal lockup - footer, print, social |
+| `logo-mark.svg` | the truck alone - site header, small sizes |
+| `favicon.svg` | the truck on a blue plate - browser tab, phone home screen |
+
+If the shop ever wants the sign traced exactly rather than interpreted with a
+typeface, send the photo to a sign shop or a vector illustrator - a hand-trace
+of those hand-cut letters will beat any font substitution.
 
 ### The imagery — read this before launch
 **The reference site is carried almost entirely by real photographs.** This one
@@ -148,9 +166,13 @@ These came from public directory listings and should be verified by the owner:
 3. **Email address.** `SITE.email` is a placeholder — replace with the real one.
 4. **The six promotions.** Amounts, conditions and expiration are proposals. The
    owner should approve every number before publishing.
-5. **Testimonials.** The three quotes in the reviews section are paraphrased from
-   public review summaries and are marked with an HTML comment. Replace them with
-   real verbatim Google reviews (with first names) before launch.
+5. **Reviews.** There are no invented quotes on the site any more. The section
+   shows the public 4.8 rating, the themes customers mention most, and a button
+   through to the Google listing. To put real reviews on the page, open
+   `assets/js/reviews.js` and paste them in - copy each one word for word, in the
+   language the customer wrote it, and set `lang: "es"` or `lang: "en"` so a
+   Spanish review stays Spanish on the English site. Instructions are in the file.
+   Cards appear automatically as soon as there is at least one.
 5b. **Amenities.** The "While you're here" chips (waiting area, Wi-Fi, parking,
    text updates) are plausible defaults, not verified facts. Confirm each one or
    delete the chip — they live in the About section of `index.html` and under

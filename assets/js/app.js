@@ -270,6 +270,40 @@
     });
   }
 
+  /* ---------- Real reviews, rendered from assets/js/reviews.js ---------- */
+  function initReviews() {
+    const grid = $("[data-reviews]");
+    if (!grid) return;
+    const list = Array.isArray(window.PACHO_REVIEWS) ? window.PACHO_REVIEWS : [];
+    const empty = $("[data-reviews-empty]");
+
+    if (!list.length) {
+      grid.hidden = true;
+      if (empty) empty.hidden = false;
+      return;
+    }
+    grid.hidden = false;
+    if (empty) empty.hidden = true;
+
+    const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+    grid.innerHTML = list.map((r) => {
+      const stars = '<svg><use href="#i-star"/></svg>'.repeat(Math.max(1, Math.min(5, r.stars || 5)));
+      const initial = esc((r.name || "?").trim().charAt(0).toUpperCase());
+      // lang is stamped on the quote so a Spanish review keeps Spanish
+      // hyphenation and screen-reader pronunciation on the English site.
+      return (
+        '<article class="card review">' +
+        '<span class="stars" aria-hidden="true">' + stars + "</span>" +
+        '<p class="review__q" lang="' + esc(r.lang || "en") + '">' + esc(r.text) + "</p>" +
+        '<div class="review__who">' +
+        '<span class="review__av" aria-hidden="true">' + initial + "</span>" +
+        "<span><span class=\"review__name\" style=\"display:block\">" + esc(r.name || "") + "</span>" +
+        '<span class="review__src">Google' + (r.date ? " · " + esc(r.date) : "") + "</span></span>" +
+        "</div></article>"
+      );
+    }).join("");
+  }
+
   /* ---------- Year in footer ---------- */
   function initYear() {
     $$("[data-year]").forEach((el) => { el.textContent = String(new Date().getFullYear()); });
@@ -284,6 +318,7 @@
     initSpy();
     initTop();
     initCoupons();
+    initReviews();
     initYear();
     paintStatus();
     setInterval(paintStatus, 60000);
