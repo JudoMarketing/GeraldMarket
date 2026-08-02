@@ -244,7 +244,6 @@
     const vehicle = [year, make, model].filter(Boolean).join(" ");
     lines.push("• " + T("sum.vehicle") + ": " + v(vehicle));
     if ($("#mileage").value.trim()) lines.push("• " + T("sum.mileage") + ": " + $("#mileage").value.trim());
-    lines.push("• " + T("sum.trans") + ": " + selectLabel("transmission"));
     lines.push("• " + T("sum.vin") + ": " + v(vin.value));
     lines.push("");
 
@@ -264,7 +263,6 @@
       return s ? s.textContent.trim() : el.value;
     })());
     lines.push("• " + T("sum.lang") + ": " + selectLabel("lang"));
-    lines.push("• " + T("sum.customer") + ": " + radioLabel("customer"));
     if ($("#promo").value.trim()) lines.push("• " + T("sum.promo") + ": " + $("#promo").value.trim().toUpperCase());
 
     return lines.join("\n");

@@ -553,7 +553,10 @@
             <div class="defrow">
               <span class="defrow__ic"><svg><use href="#i-clock"/></svg></span>
               <div><dt data-i18n="wo.title"></dt>
-                <dd><span class="status" data-status><span class="dot"></span><span data-status-text>Open now</span></span></dd></div>
+                <dd>
+                  <span class="status" data-status><span class="dot"></span><span data-status-text>Open now</span></span>
+                  <span class="small" style="display:block;margin-top:.15rem" data-next-open hidden></span>
+                </dd></div>
             </div>
             <div class="defrow">
               <span class="defrow__ic"><svg><use href="#i-globe"/></svg></span>
@@ -577,7 +580,7 @@
           </div>
         </div>
 
-        <div class="loc__map reveal">
+        <div class="loc__map reveal" data-mapcard>
           <iframe
             src="https://www.google.com/maps?q=12430+SW+128th+St+Suite+2,+Miami,+FL+33186&output=embed"
             loading="lazy" referrerpolicy="no-referrer-when-downgrade"

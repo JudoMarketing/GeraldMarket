@@ -86,6 +86,42 @@
     return mins >= span[0] && mins < span[1];
   }
 
+  /* When the shop is closed, work out when it opens again. */
+  function nextOpening() {
+    const d = shopNow();
+    const nowMin = d.getHours() * 60 + d.getMinutes();
+    for (let i = 0; i < 8; i++) {
+      const day = (d.getDay() + i) % 7;
+      const span = SITE.hours[day];
+      if (!span) continue;
+      if (i === 0 && nowMin >= span[0]) continue; // today's opening already passed
+      return { offset: i, day: day, minutes: span[0] };
+    }
+    return null;
+  }
+
+  const DAY_KEYS = ["day.sun", "day.mon", "day.tue", "day.wed", "day.thu", "day.fri", "day.sat"];
+
+  function clockLabel(mins) {
+    const h24 = Math.floor(mins / 60);
+    const m = mins % 60;
+    const suffix = h24 < 12 ? "AM" : "PM";
+    const h = h24 % 12 === 0 ? 12 : h24 % 12;
+    return h + ":" + String(m).padStart(2, "0") + " " + suffix;
+  }
+
+  function nextOpeningText() {
+    const next = nextOpening();
+    if (!next) return "";
+    const t = (k) => (window.I18N ? I18N.t(k) : k);
+    const time = clockLabel(next.minutes);
+    if (next.offset === 0) return t("shop.opensToday") + " " + time;
+    if (next.offset === 1) return t("shop.opensTomorrow") + " " + time;
+    let day = t(DAY_KEYS[next.day]);
+    if (window.I18N && I18N.lang === "es") day = day.toLocaleLowerCase("es");
+    return t("shop.opens") + " " + day + " " + t("shop.opensAt") + " " + time;
+  }
+
   function paintStatus() {
     const open = isOpenNow();
     $$("[data-status]").forEach((el) => {
@@ -98,6 +134,13 @@
     $$("[data-day]").forEach((row) => {
       row.classList.toggle("is-today", Number(row.getAttribute("data-day")) === today);
     });
+    // Tell people when we open again rather than just "closed"
+    const nextText = open ? "" : nextOpeningText();
+    $$("[data-next-open]").forEach((el) => {
+      el.textContent = nextText;
+      el.hidden = !nextText;
+    });
+
     // "Today" line used on the appointment rail
     const t = $("[data-today-hours]");
     if (t) {

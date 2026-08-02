@@ -17,7 +17,7 @@ assets/css/styles.css    Design system + all page styles
 assets/css/fonts.css     @font-face for the self-hosted typefaces
 assets/fonts/*.woff2     Poppins, DM Sans, IBM Plex Mono (latin + latin-ext)
 assets/js/i18n.js        EN/ES dictionary + translation engine
-assets/js/app.js         Business config, header, shop-open clock, reveals, coupons
+assets/js/app.js         Business config, header, shop-open clock + next-opening, reveals, coupons
 assets/js/appointment.js Form validation, VIN helper, message composer
 assets/img/logo.svg      Blue plate with the hex-nut "P" knocked out
 assets/img/favicon.svg   Same mark, tuned for a browser tab
@@ -76,8 +76,8 @@ To send to a real inbox/CRM instead, point the form at a service like Formspree,
 Netlify Forms or Google Apps Script and call it from `appointment.js` inside the
 `sendWa` / `sendMail` handlers (or add a third button). The field `name`s are already
 sensible: `service[]`, `problem`, `urgency`, `year`, `make`, `model`, `mileage`,
-`transmission`, `vin`, `date`, `date2`, `time`, `wait`, `name`, `phone`, `email`,
-`contact`, `lang`, `promo`, `customer`, `consent`.
+`vin`, `date`, `date2`, `time`, `wait`, `name`, `phone`, `email`, `contact`,
+`lang`, `promo`, `consent`.
 
 **VIN handling:** optional by design. The field auto-uppercases, strips punctuation,
 counts to 17, rejects the letters I/O/Q (which never appear in a VIN), and explains
