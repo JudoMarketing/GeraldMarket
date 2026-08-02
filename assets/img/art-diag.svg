@@ -1,31 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="A diagnostic scan tool plugged into a car">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Line drawing of a diagnostic scan tool plugged into a car">
   <title>Computer diagnostics</title>
-  <defs>
-    <linearGradient id="dgA" x1="0" y1="0" x2="0.8" y2="1">
-      <stop offset="0" stop-color="#FFD870"/><stop offset="0.5" stop-color="#FFB020"/><stop offset="1" stop-color="#FF6A12"/>
-    </linearGradient>
-    <linearGradient id="dgS" x1="0.1" y1="0" x2="0.6" y2="1">
-      <stop offset="0" stop-color="#55647B"/><stop offset="1" stop-color="#28323F"/>
-    </linearGradient>
-    <radialGradient id="dgG" cx="0.5" cy="0.45" r="0.55">
-      <stop offset="0" stop-color="#FF8A1E" stop-opacity="0.22"/><stop offset="1" stop-color="#FF8A1E" stop-opacity="0"/>
-    </radialGradient>
-  </defs>
-  <rect width="400" height="400" fill="url(#dgG)"/>
-  <path d="M96,318 C96,250 150,246 168,214" fill="none" stroke="#2E3A4C" stroke-width="11" stroke-linecap="round"/>
-  <rect x="70" y="312" width="54" height="34" rx="8" fill="url(#dgS)"/>
-  <g fill="#0F1620"><rect x="80" y="322" width="6" height="14" rx="3"/><rect x="94" y="322" width="6" height="14" rx="3"/><rect x="108" y="322" width="6" height="14" rx="3"/></g>
-  <rect x="148" y="60" width="172" height="248" rx="26" fill="url(#dgS)"/>
-  <rect x="148" y="60" width="172" height="248" rx="26" fill="none" stroke="#7B8BA3" stroke-width="2.5"/>
-  <rect x="166" y="80" width="136" height="126" rx="12" fill="#080D14"/>
-  <rect x="166" y="80" width="136" height="126" rx="12" fill="none" stroke="#3B4859" stroke-width="1.5"/>
-  <g transform="translate(234 116) scale(1.5) translate(-12 -12)"><path d="M6,9h3l2-2h4v3h2l2,2v4h-2v2h-6l-2-2H6a2,2 0 0 1 -2,-2v-3a2,2 0 0 1 2,-2z" fill="none" stroke="url(#dgA)" stroke-width="1.6" stroke-linejoin="round"/></g>
-  <path d="M178,178 h18 l10,-22 l12,40 l10,-30 l9,18 h20 l8,-14 h22" fill="none" stroke="#14E0C0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
-  <rect x="176" y="224" width="34" height="26" rx="9" fill="#0F1620"/>
-  <rect x="222" y="224" width="34" height="26" rx="9" fill="#0F1620"/>
-  <rect x="268" y="224" width="34" height="26" rx="9" fill="#0F1620"/>
-  <rect x="176" y="262" width="34" height="26" rx="9" fill="#0F1620"/>
-  <rect x="222" y="262" width="34" height="26" rx="9" fill="#0F1620"/>
-  <rect x="268" y="262" width="34" height="26" rx="9" fill="#0F1620"/>
-  <rect x="176" y="224" width="34" height="26" rx="9" fill="url(#dgA)" opacity="0.85"/>
+  <g fill="none" stroke="#14161A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="140" y="52" width="180" height="256" rx="20"/>
+    <rect x="160" y="74" width="140" height="126" rx="5" stroke-width="1.6"/>
+    <g stroke="#E5502A" stroke-width="2.2" transform="translate(230 112) scale(2.1) translate(-12 -12)">
+      <path d="M6,9h3l2-2h4v3h2l2,2v4h-2v2h-6l-2-2H6a2,2 0 0 1 -2,-2v-3a2,2 0 0 1 2,-2z"/>
+    </g>
+    <path stroke-width="1.8" d="M170,178 h16 l10,-22 l12,40 l10,-30 l9,18 h20 l8,-14 h35"/>
+    <g stroke-width="1.6">
+      <rect x="168" y="220" width="38" height="28" rx="4" stroke="#E5502A"/>
+      <rect x="218" y="220" width="38" height="28" rx="4" stroke="#14161A"/>
+      <rect x="268" y="220" width="38" height="28" rx="4" stroke="#14161A"/>
+      <rect x="168" y="260" width="38" height="28" rx="4" stroke="#14161A"/>
+      <rect x="218" y="260" width="38" height="28" rx="4" stroke="#14161A"/>
+      <rect x="268" y="260" width="38" height="28" rx="4" stroke="#14161A"/>
+    </g>
+    <path d="M140,236 C96,244 78,268 78,306"/>
+    <path d="M52,306 h52 v34 h-52 Z"/>
+    <g stroke-width="1.4"><path d="M64,316 v14"/><path d="M78,316 v14"/><path d="M92,316 v14"/></g>
+  </g>
 </svg>

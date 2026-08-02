@@ -1,73 +1,53 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="A wheel with a torque wrench on the lug nuts">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Line drawing of a wheel with a torque wrench on a lug nut">
   <title>Wheel and tire service</title>
-  <defs>
-    <linearGradient id="twA" x1="0" y1="0" x2="0.8" y2="1">
-      <stop offset="0" stop-color="#FFD870"/><stop offset="0.5" stop-color="#FFB020"/><stop offset="1" stop-color="#FF6A12"/>
-    </linearGradient>
-    <linearGradient id="twS" x1="0.1" y1="0" x2="0.6" y2="1">
-      <stop offset="0" stop-color="#55647B"/><stop offset="1" stop-color="#28323F"/>
-    </linearGradient>
-    <radialGradient id="twG" cx="0.5" cy="0.45" r="0.55">
-      <stop offset="0" stop-color="#FF8A1E" stop-opacity="0.22"/><stop offset="1" stop-color="#FF8A1E" stop-opacity="0"/>
-    </radialGradient>
-  </defs>
-  <rect width="400" height="400" fill="url(#twG)"/>
-  <circle cx="198" cy="196" r="144" fill="#0E141D"/>
-  <rect x="191" y="48" width="14" height="24" rx="4" fill="#242E3C" transform="rotate(0.0 198 196)"/>
-  <rect x="191" y="48" width="14" height="24" rx="4" fill="#242E3C" transform="rotate(12.0 198 196)"/>
-  <rect x="191" y="48" width="14" height="24" rx="4" fill="#242E3C" transform="rotate(24.0 198 196)"/>
-  <rect x="191" y="48" width="14" height="24" rx="4" fill="#242E3C" transform="rotate(36.0 198 196)"/>
-  <rect x="191" y="48" width="14" height="24" rx="4" fill="#242E3C" transform="rotate(48.0 198 196)"/>
-  <rect x="191" y="48" width="14" height="24" rx="4" fill="#242E3C" transform="rotate(60.0 198 196)"/>
-  <rect x="191" y="48" width="14" height="24" rx="4" fill="#242E3C" transform="rotate(72.0 198 196)"/>
-  <rect x="191" y="48" width="14" height="24" rx="4" fill="#242E3C" transform="rotate(84.0 198 196)"/>
-  <rect x="191" y="48" width="14" height="24" rx="4" fill="#242E3C" transform="rotate(96.0 198 196)"/>
-  <rect x="191" y="48" width="14" height="24" rx="4" fill="#242E3C" transform="rotate(108.0 198 196)"/>
-  <rect x="191" y="48" width="14" height="24" rx="4" fill="#242E3C" transform="rotate(120.0 198 196)"/>
-  <rect x="191" y="48" width="14" height="24" rx="4" fill="#242E3C" transform="rotate(132.0 198 196)"/>
-  <rect x="191" y="48" width="14" height="24" rx="4" fill="#242E3C" transform="rotate(144.0 198 196)"/>
-  <rect x="191" y="48" width="14" height="24" rx="4" fill="#242E3C" transform="rotate(156.0 198 196)"/>
-  <rect x="191" y="48" width="14" height="24" rx="4" fill="#242E3C" transform="rotate(168.0 198 196)"/>
-  <rect x="191" y="48" width="14" height="24" rx="4" fill="#242E3C" transform="rotate(180.0 198 196)"/>
-  <rect x="191" y="48" width="14" height="24" rx="4" fill="#242E3C" transform="rotate(192.0 198 196)"/>
-  <rect x="191" y="48" width="14" height="24" rx="4" fill="#242E3C" transform="rotate(204.0 198 196)"/>
-  <rect x="191" y="48" width="14" height="24" rx="4" fill="#242E3C" transform="rotate(216.0 198 196)"/>
-  <rect x="191" y="48" width="14" height="24" rx="4" fill="#242E3C" transform="rotate(228.0 198 196)"/>
-  <rect x="191" y="48" width="14" height="24" rx="4" fill="#242E3C" transform="rotate(240.0 198 196)"/>
-  <rect x="191" y="48" width="14" height="24" rx="4" fill="#242E3C" transform="rotate(252.0 198 196)"/>
-  <rect x="191" y="48" width="14" height="24" rx="4" fill="#242E3C" transform="rotate(264.0 198 196)"/>
-  <rect x="191" y="48" width="14" height="24" rx="4" fill="#242E3C" transform="rotate(276.0 198 196)"/>
-  <rect x="191" y="48" width="14" height="24" rx="4" fill="#242E3C" transform="rotate(288.0 198 196)"/>
-  <rect x="191" y="48" width="14" height="24" rx="4" fill="#242E3C" transform="rotate(300.0 198 196)"/>
-  <rect x="191" y="48" width="14" height="24" rx="4" fill="#242E3C" transform="rotate(312.0 198 196)"/>
-  <rect x="191" y="48" width="14" height="24" rx="4" fill="#242E3C" transform="rotate(324.0 198 196)"/>
-  <rect x="191" y="48" width="14" height="24" rx="4" fill="#242E3C" transform="rotate(336.0 198 196)"/>
-  <rect x="191" y="48" width="14" height="24" rx="4" fill="#242E3C" transform="rotate(348.0 198 196)"/>
-  <circle cx="198" cy="196" r="126" fill="#151D27"/>
-  <circle cx="198" cy="196" r="126" fill="none" stroke="#2C3849" stroke-width="3"/>
-  <circle cx="198" cy="196" r="106" fill="none" stroke="#2C3849" stroke-width="2" stroke-dasharray="9 15" opacity="0.65"/>
-  <circle cx="198" cy="196" r="90" fill="#1A222E"/>
-  <circle cx="198" cy="196" r="90" fill="none" stroke="url(#twS)" stroke-width="11"/>
-  <circle cx="198" cy="196" r="84" fill="none" stroke="#8496AF" stroke-width="2" opacity="0.5"/>
-  <path d="M190.3,171.2 L205.7,171.2 L212.2,113.2 L183.8,113.2 Z" fill="url(#twS)"/>
-  <path d="M219.2,181.0 L224.0,195.6 L281.1,183.9 L272.3,156.9 Z" fill="url(#twS)"/>
-  <path d="M218.8,211.6 L206.4,220.6 L235.2,271.3 L258.2,254.6 Z" fill="url(#twS)"/>
-  <path d="M189.6,220.6 L177.2,211.6 L137.8,254.6 L160.8,271.3 Z" fill="url(#twS)"/>
-  <path d="M172.0,195.6 L176.8,181.0 L123.7,156.9 L114.9,183.9 Z" fill="url(#twS)"/>
-  <circle cx="198" cy="196" r="32" fill="#3F4C5E"/>
-  <circle cx="198" cy="196" r="32" fill="none" stroke="#8496AF" stroke-width="2"/>
-  <circle cx="209.8" cy="179.8" r="5.6" fill="#111823"/>
-  <circle cx="217.0" cy="202.2" r="5.6" fill="#111823"/>
-  <circle cx="198.0" cy="216.0" r="5.6" fill="#111823"/>
-  <circle cx="179.0" cy="202.2" r="5.6" fill="#111823"/>
-  <circle cx="186.2" cy="179.8" r="5.6" fill="#111823"/>
-  <circle cx="198" cy="196" r="10" fill="url(#twA)"/>
-  <g transform="rotate(34 209.8 179.8)">
-    <rect x="200.8" y="199.8" width="18" height="196" rx="9" fill="url(#twS)"/>
-    <rect x="200.8" y="199.8" width="7" height="196" rx="3.5" fill="#A5B4C9" opacity="0.35"/>
-    <rect x="195.8" y="329.8" width="28" height="66" rx="12" fill="#161E29"/>
-    <rect x="195.8" y="329.8" width="28" height="66" rx="12" fill="none" stroke="url(#twA)" stroke-width="2.5" opacity="0.8"/>
-    <circle cx="209.8" cy="179.8" r="22" fill="#28323F"/>
-    <circle cx="209.8" cy="179.8" r="22" fill="none" stroke="url(#twA)" stroke-width="9"/>
+  <g fill="none" stroke="#14161A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="200" cy="190" r="150"/>
+    <circle cx="200" cy="190" r="128" stroke-width="1.4"/>
+    <g stroke-width="1.4">
+      <path d="M200,40 V62" transform="rotate(0.0 200 190)"/>
+      <path d="M200,40 V62" transform="rotate(13.8 200 190)"/>
+      <path d="M200,40 V62" transform="rotate(27.7 200 190)"/>
+      <path d="M200,40 V62" transform="rotate(41.5 200 190)"/>
+      <path d="M200,40 V62" transform="rotate(55.4 200 190)"/>
+      <path d="M200,40 V62" transform="rotate(69.2 200 190)"/>
+      <path d="M200,40 V62" transform="rotate(83.1 200 190)"/>
+      <path d="M200,40 V62" transform="rotate(96.9 200 190)"/>
+      <path d="M200,40 V62" transform="rotate(110.8 200 190)"/>
+      <path d="M200,40 V62" transform="rotate(124.6 200 190)"/>
+      <path d="M200,40 V62" transform="rotate(138.5 200 190)"/>
+      <path d="M200,40 V62" transform="rotate(152.3 200 190)"/>
+      <path d="M200,40 V62" transform="rotate(166.2 200 190)"/>
+      <path d="M200,40 V62" transform="rotate(180.0 200 190)"/>
+      <path d="M200,40 V62" transform="rotate(193.8 200 190)"/>
+      <path d="M200,40 V62" transform="rotate(207.7 200 190)"/>
+      <path d="M200,40 V62" transform="rotate(221.5 200 190)"/>
+      <path d="M200,40 V62" transform="rotate(235.4 200 190)"/>
+      <path d="M200,40 V62" transform="rotate(249.2 200 190)"/>
+      <path d="M200,40 V62" transform="rotate(263.1 200 190)"/>
+      <path d="M200,40 V62" transform="rotate(276.9 200 190)"/>
+      <path d="M200,40 V62" transform="rotate(290.8 200 190)"/>
+      <path d="M200,40 V62" transform="rotate(304.6 200 190)"/>
+      <path d="M200,40 V62" transform="rotate(318.5 200 190)"/>
+      <path d="M200,40 V62" transform="rotate(332.3 200 190)"/>
+      <path d="M200,40 V62" transform="rotate(346.2 200 190)"/>
+    </g>
+    <circle cx="200" cy="190" r="92"/>
+    <circle cx="200" cy="190" r="84" stroke-width="1.2"/>
+    <path stroke-width="1.6" d="M192.3,161.0 L187.4,106.9 M207.7,161.0 L212.6,106.9"/>
+    <path stroke-width="1.6" d="M225.2,173.7 L275.1,152.4 M230.0,188.4 L282.9,176.3"/>
+    <path stroke-width="1.6" d="M223.3,208.9 L259.0,249.8 M210.8,218.0 L238.7,264.6"/>
+    <path stroke-width="1.6" d="M189.2,218.0 L161.3,264.6 M176.7,208.9 L141.0,249.8"/>
+    <path stroke-width="1.6" d="M170.0,188.4 L117.1,176.3 M174.8,173.7 L124.9,152.4"/>
+    <circle cx="200" cy="190" r="30"/>
+    <circle cx="211.2" cy="174.6" r="5" stroke="#E5502A" stroke-width="1.8"/>
+    <circle cx="218.1" cy="195.9" r="5" stroke="#14161A" stroke-width="1.8"/>
+    <circle cx="200.0" cy="209.0" r="5" stroke="#14161A" stroke-width="1.8"/>
+    <circle cx="181.9" cy="195.9" r="5" stroke="#14161A" stroke-width="1.8"/>
+    <circle cx="188.8" cy="174.6" r="5" stroke="#14161A" stroke-width="1.8"/>
+    <g stroke="#E5502A" transform="rotate(36 211.2 174.6)">
+      <circle cx="211.2" cy="174.6" r="17"/>
+      <path d="M203.2,191.6 V364.6 h16 V191.6"/>
+      <path stroke-width="1.6" d="M199.2,310.6 h24 v62 h-24 Z"/>
+    </g>
   </g>
 </svg>

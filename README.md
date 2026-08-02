@@ -11,20 +11,22 @@ required — open `index.html` or drop the folder on any host.
 ## Structure
 
 ```
-index.html            Home: hero, services, deals, process, reviews, about, FAQ, location
-appointment.html      Full appointment request form (VIN optional)
-assets/css/styles.css Design system + all page styles
-assets/js/i18n.js     EN/ES dictionary + translation engine
-assets/js/app.js      Business config, header, shop-open clock, reveals, coupons
-assets/js/appointment.js  Form validation, VIN helper, message composer
-assets/img/logo.svg   Primary mark — bold "P" whose counter is a hex nut
-assets/img/favicon.svg  App / tab icon — the P knocked out of an amber hexagon
-assets/img/emblem.svg   Round "EST. 2006 · MIAMI" stamp (About section)
-assets/img/bay-scene.svg  Hero artwork — a car up on the two-post lift
-assets/img/art-oil.svg    Oil change vignette (featured service card)
-assets/img/art-tires.svg  Wheel + torque wrench vignette
-assets/img/art-diag.svg   Diagnostic scan tool vignette
-tools/generate-art.py    Regenerates the three service vignettes
+index.html               Home: hero, services, specials, process, reviews, shop, FAQ, location
+appointment.html         Appointment work order (VIN optional)
+assets/css/styles.css    Design system + all page styles
+assets/css/fonts.css     @font-face for the self-hosted typefaces
+assets/fonts/*.woff2     Barlow, Barlow Condensed, IBM Plex Mono (latin + latin-ext)
+assets/js/i18n.js        EN/ES dictionary + translation engine
+assets/js/app.js         Business config, header, shop-open clock, reveals, coupons
+assets/js/appointment.js Form validation, VIN helper, message composer
+assets/img/logo.svg      Stamped plate — the "P" knocked out of signal orange
+assets/img/favicon.svg   Same mark, tuned for a browser tab
+assets/img/stamp.svg     Rubber approval stamp (the shop section)
+assets/img/art-bay.svg   Fig. 1 — a car up on the two-post lift
+assets/img/art-oil.svg   Oil change vignette
+assets/img/art-tires.svg Wheel + torque wrench vignette
+assets/img/art-diag.svg  Scan tool vignette
+tools/generate-art.py    Regenerates the four line drawings
 robots.txt · sitemap.xml · site.webmanifest
 ```
 
@@ -84,47 +86,77 @@ where to find it — but an empty or partial VIN never blocks a booking.
 
 ---
 
-## Artwork and the logo
+## The design: "the work order"
+
+The first draft of this site looked like every other AI-generated page in 2026 —
+dark mode, frosted glass, gradient orbs floating in the background, gradient text,
+Inter, four identical cards in a grid. That is a real and recognisable house style,
+and it is wrong for a family garage in Kendall.
+
+So the whole thing was rebuilt around one idea: **the printed vehicle inspection
+sheet a service advisor hands you.** Pacho's differentiator is "we tell you what's
+wrong before we charge you," and that is exactly what the paperwork of an honest
+shop looks like.
+
+What that means concretely:
+
+| | |
+|---|---|
+| **Ground** | warm paper `#F2EFE8` with a faint fibre texture — not white, not dark |
+| **Ink** | `#14161A`, hairline rules `#D3CDC0` |
+| **Signal** | one colour, `#E5502A`, used like safety paint — never decoratively |
+| **Marks** | inspection green / amber / red for pass, caution, fail |
+| **Display** | Barlow Condensed, uppercase — shop signage and racing numbers |
+| **Body** | Barlow |
+| **Data** | IBM Plex Mono for hours, codes, VINs, section numbers, labels |
+| **Shape** | 2px corners, 1.5px borders, hard offset shadows (`3px 3px 0`) |
+| **Divider** | a painted hazard stripe, the way it is on a shop floor |
+
+Components that came out of the concept rather than a component library: the
+**work-order panel** in the hero (dark title bar, dotted leader rows, today's row
+highlighted, live open/closed stamp), the services set as a **ruled list with
+numbers** instead of twelve identical cards, the specials as **actual perforated
+vouchers**, and the appointment page as a **numbered form with a black title bar
+on each section**.
+
+Explicitly not used anywhere: `backdrop-filter`, ambient gradient orbs, gradient
+text, blurred glow shadows, pill-shaped everything, and an icon chip on top of
+every card.
 
 ### The mark
-No logo existed, so the site ships with one. The idea is a **bold "P" whose
-counter is a hex nut** — it reads as the initial at 16px and as a piece of
-hardware up close. Three lockups, one shape:
+No logo existed. The idea is a **bold "P" whose counter is a hex nut** — it reads
+as the initial at 16px and as a piece of hardware up close. It is set as a solid
+plate so it works on paper and on the dark footer without a second file.
 
-| File | Where it's used | Notes |
-|---|---|---|
-| `logo.svg` | header, footer | gradient P on transparent |
-| `favicon.svg` | browser tab, phone home screen | P knocked out of a solid amber hexagon — survives 16px |
-| `emblem.svg` | About section | the P inside a brake-rotor ring with `EST. 2006 · MIAMI · FLORIDA` |
-
-All are plain SVG. To recolor the whole system, edit the gradient stops
-(`#FFD870 → #FFB020 → #FF6A12`) in each file, or the `--amber-*` tokens in the CSS.
+| File | Where |
+|---|---|
+| `logo.svg` | header, footer |
+| `favicon.svg` | browser tab, phone home screen |
+| `stamp.svg` | the shop section — a rubber approval stamp, rotated in CSS |
 
 ### The illustrations
-The four scene/vignette SVGs were drawn for this site — no stock licensing, no
-attribution needed, a few KB each, sharp on any screen. `art-tires.svg`,
-`art-oil.svg` and `art-diag.svg` are generated — run `python3 tools/generate-art.py`
-after editing that script to redraw them. `bay-scene.svg` and the logo files are
-hand-written SVG; edit them directly.
+Four **shop-manual line drawings**: ink strokes on the paper, two stroke weights,
+hatching for shade, and the signal orange used only to point at the part being
+serviced. Nothing is filled and nothing is gradient — it should look drawn with a
+pen, because that is what a service manual looks like. Regenerate with
+`python3 tools/generate-art.py`.
 
-### Swapping in real photos (recommended before launch)
-Every study of shop websites says the same thing: **real photos of your bay, your
-waiting room and your technicians beat any illustration or stock image.** The
-illustrations are here so the site looks finished today — plan to replace them.
+### Fonts are self-hosted
+`assets/fonts/` holds the woff2 files and `assets/css/fonts.css` declares them.
+The page makes **zero third-party requests** — nothing to Google, no tracking, and
+the condensed display face is guaranteed to render rather than silently falling
+back to a normal-width system font.
 
-Two swaps, no CSS changes needed:
+### Swapping in real photos (still recommended)
+Real photos of the bay, the waiting room and the technicians beat any illustration.
+The line drawings are here so the draft looks finished today.
 
-1. **Hero** — put a wide photo (roughly 1600×920, a car on the lift or the shop
-   front) at `assets/img/hero.jpg` and change one line in `index.html`:
-   `<img src="assets/img/bay-scene.svg" …>` → `<img src="assets/img/hero.jpg" …>`.
-   The scrim already guarantees the headline stays readable over any photo. If the
-   subject sits off-center, nudge `object-position` in `.hero-art__media img`.
-2. **Featured service cards** — drop three square-ish photos in and swap the
-   `src` on the three `<img>` tags inside `.svc-featured`. Then change
-   `.svcart__media img { object-fit: contain }` to `cover` so photos fill the frame.
+1. **Fig. 1** — replace `assets/img/art-bay.svg` in `index.html` with a wide photo.
+2. **The three featured services** — swap the `src` on the `<img>` tags inside
+   `.svc-feat`, then change `.svcf__media img { object-fit: contain }` to `cover`.
 
-Good shots to take, in priority order: the shop front with the sign, a car up on
-the lift, a technician working, the waiting area, and the team.
+Good shots, in priority order: the shop front with the sign, a car up on the lift,
+a technician working, the waiting area, the team.
 
 ## Before this goes live — please confirm with the shop
 
@@ -163,23 +195,8 @@ Any static host works. Fastest options:
 - **GitHub Pages** — Settings → Pages → deploy from the branch root.
 - **Netlify / Vercel / Cloudflare Pages** — drag the folder in, no build command.
 
-The only external requests are Google Fonts and the Google Maps embed; everything
-else is local, and the layout degrades gracefully if fonts don't load.
-
-## Design notes
-
-Four patterns were taken from the auto-repair sites that convert best and applied
-here:
-
-1. **One big visual hero** with a dark scrim, an oversized headline, and the phone
-   number and booking button visible without scrolling.
-2. **A guarantee band directly under the hero** — warranty and "you see the price
-   first" are the two questions customers ask most, so they are answered before
-   anything else on the page.
-3. **Imagery on the service cards**, not just icons, for the three services people
-   search for most (oil, tires, diagnostics).
-4. **Amenities and a real "our shop" story** — what humanises a family business
-   against a chain.
+The only external request is the Google Maps embed. Fonts, styles, scripts and
+artwork are all local.
 
 ## Accessibility & performance notes
 
@@ -189,4 +206,5 @@ here:
   form fields, `role="status"` live regions for validation.
 - `prefers-reduced-motion` disables every animation, marquee and smooth scroll.
 - Fallbacks for browsers without `backdrop-filter` or `:has()`.
-- No JS framework, no tracking, no cookies. Only `localStorage` for the language.
+- No JS framework, no tracking, no cookies, no third-party requests. Only
+  `localStorage`, and only for the language choice.

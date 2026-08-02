@@ -107,6 +107,27 @@
       "amen.6": "Text or WhatsApp updates",
       "amen.note": "Amenities to be confirmed by the shop before launch.",
 
+      /* ---------- work-order panel + section furniture ---------- */
+      "wo.title": "Shop status",
+      "wo.est": "Established",
+      "wo.rating": "Rating",
+      "wo.lang": "Languages",
+      "wo.addr": "Address",
+      "wo.langV": "English · Español",
+      "wo.ratingV": "4.8 / 5",
+      "art.caption": "Every car goes up on the lift and gets looked at before we quote you a price.",
+      "art.figno": "Fig. 1 — Inspection before estimate",
+      "svc.rest": "The rest of the shop",
+      "svc.ctaT": "Not sure what it needs?",
+      "svc.ctaD": "Describe the noise, the light or the leak. We'll figure it out before you spend anything.",
+      "sec.services": "Services",
+      "sec.specials": "Specials",
+      "sec.process": "How it works",
+      "sec.reviews": "Reviews",
+      "sec.shop": "The shop",
+      "sec.faq": "Questions",
+      "sec.find": "Find us",
+
       /* ---------- brands ---------- */
       "brands.title": "We service what Miami drives",
 
@@ -506,6 +527,27 @@
       "amen.5": "Estacionamiento gratis",
       "amen.6": "Avisos por texto o WhatsApp",
       "amen.note": "Comodidades por confirmar con el taller antes de publicar.",
+
+      /* ---------- panel de orden de trabajo + secciones ---------- */
+      "wo.title": "Estado del taller",
+      "wo.est": "Fundado",
+      "wo.rating": "Calificación",
+      "wo.lang": "Idiomas",
+      "wo.addr": "Dirección",
+      "wo.langV": "Español · English",
+      "wo.ratingV": "4.8 / 5",
+      "art.caption": "Cada carro sube al elevador y se revisa antes de darle un precio.",
+      "art.figno": "Fig. 1 — Revisión antes del presupuesto",
+      "svc.rest": "El resto del taller",
+      "svc.ctaT": "¿No sabe qué tiene?",
+      "svc.ctaD": "Descríbanos el ruido, la luz o la fuga. Lo averiguamos antes de que usted gaste un peso.",
+      "sec.services": "Servicios",
+      "sec.specials": "Ofertas",
+      "sec.process": "Cómo funciona",
+      "sec.reviews": "Reseñas",
+      "sec.shop": "El taller",
+      "sec.faq": "Preguntas",
+      "sec.find": "Ubicación",
 
       /* ---------- brands ---------- */
       "brands.title": "Atendemos lo que Miami maneja",

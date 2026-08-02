@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Book an Appointment | Pacho's Quality Auto Repair, Miami</title>
 <meta name="description" data-i18n-content="meta.descAppt" content="Schedule your service at Pacho's Quality Auto Repair in Miami. Tell us your vehicle, pick a day, add your VIN (optional) and we'll confirm.">
-<meta name="theme-color" content="#080B11">
+<meta name="theme-color" content="#F2EFE8">
 <meta name="format-detection" content="telephone=no">
 <link rel="canonical" href="https://pachosqualityautorepair.com/appointment.html">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
@@ -15,14 +15,13 @@
 <meta property="og:title" content="Book an appointment — Pacho's Quality Auto Repair">
 <meta property="og:description" content="Two minutes to book. VIN optional. We confirm by call or WhatsApp.">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/barlow-condensed-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/barlow-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/fonts.css">
 <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
 <body>
-<div class="bg-fx" aria-hidden="true"></div>
 <a class="skip" href="#main">Skip to content</a>
 
 <!-- ===== Icon sprite ===== -->
@@ -95,7 +94,7 @@
       </button>
     </div>
 
-    <a class="btn btn--ghost header__cta" data-tel href="tel:+13052389333">
+    <a class="btn header__cta" data-tel href="tel:+13052389333">
       <svg><use href="#i-phone"/></svg><span data-phone-text>(305) 238-9333</span>
     </a>
 
@@ -113,7 +112,7 @@
     <a class="drawer__link" href="index.html#location"><span data-i18n="nav.location"></span><span>→</span></a>
   </nav>
   <div class="drawer__actions">
-    <a class="btn btn--ghost btn--lg btn--block" data-tel href="tel:+13052389333"><svg><use href="#i-phone"/></svg><span data-phone-text>(305) 238-9333</span></a>
+    <a class="btn btn--lg btn--block" data-tel href="tel:+13052389333"><svg><use href="#i-phone"/></svg><span data-phone-text>(305) 238-9333</span></a>
     <a class="btn btn--wa btn--lg btn--block" data-wa="book" href="https://wa.me/13052389333" target="_blank" rel="noopener"><svg><use href="#i-whatsapp"/></svg><span data-i18n="cta.whatsapp"></span></a>
   </div>
 </div>
@@ -126,13 +125,13 @@
         <a href="index.html" data-i18n="nav.home"></a><span>›</span><span data-i18n="appt.crumb"></span>
       </div>
       <h1 class="display">
-        <span data-i18n="appt.h1a"></span> <span class="grad-text" data-i18n="appt.h1b"></span>
+        <span data-i18n="appt.h1a"></span> <span class="mark" data-i18n="appt.h1b"></span>
       </h1>
       <p class="lede mt-2" data-i18n="appt.lede"></p>
       <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.2rem">
-        <span class="badge badge--teal"><svg><use href="#i-check"/></svg><span data-i18n="appt.badge1"></span></span>
-        <span class="badge"><svg><use href="#i-check"/></svg><span data-i18n="appt.badge2"></span></span>
-        <span class="badge"><svg><use href="#i-globe"/></svg><span data-i18n="appt.badge3"></span></span>
+        <span class="tag tag--pass"><svg><use href="#i-check"/></svg><span data-i18n="appt.badge1"></span></span>
+        <span class="tag"><svg><use href="#i-check"/></svg><span data-i18n="appt.badge2"></span></span>
+        <span class="tag"><svg><use href="#i-globe"/></svg><span data-i18n="appt.badge3"></span></span>
       </div>
     </div>
   </section>
@@ -146,14 +145,12 @@
         <!-- 1. Services -->
         <fieldset class="fieldset reveal">
           <div class="fs-head">
-            <span class="fs-num">1</span>
-            <span>
-              <span class="fs-title" data-i18n="appt.s1t"></span>
-              <span class="fs-sub" style="display:block" data-i18n="appt.s1d"></span>
-            </span>
+            <span class="fs-num">01</span>
+            <span class="railcard__t" data-i18n="appt.s1t"></span>
           </div>
-
-          <div class="chips" id="serviceChips" role="group" aria-describedby="svcErr">
+          <div class="fs-body">
+            <p class="hint" style="margin-bottom:1.1rem" data-i18n="appt.s1d"></p>
+<div class="chips" id="serviceChips" role="group" aria-describedby="svcErr">
             <label class="chip"><input type="checkbox" name="service" value="oil"><svg><use href="#i-oil"/></svg><span data-i18n="svc.oil.t"></span></label>
             <label class="chip"><input type="checkbox" name="service" value="tires"><svg><use href="#i-tire"/></svg><span data-i18n="svc.tires.t"></span></label>
             <label class="chip"><input type="checkbox" name="service" value="alignment"><svg><use href="#i-gauge"/></svg><span data-i18n="svc.align.t"></span></label>
@@ -195,19 +192,18 @@
               </label>
             </div>
           </div>
+        </div>
         </fieldset>
 
         <!-- 2. Vehicle -->
         <fieldset class="fieldset reveal">
           <div class="fs-head">
-            <span class="fs-num">2</span>
-            <span>
-              <span class="fs-title" data-i18n="appt.s2t"></span>
-              <span class="fs-sub" style="display:block" data-i18n="appt.s2d"></span>
-            </span>
+            <span class="fs-num">02</span>
+            <span class="railcard__t" data-i18n="appt.s2t"></span>
           </div>
-
-          <div class="row row--3">
+          <div class="fs-body">
+            <p class="hint" style="margin-bottom:1.1rem" data-i18n="appt.s2d"></p>
+<div class="row row--3">
             <div class="field">
               <label for="year"><span data-i18n="appt.yearL"></span></label>
               <input class="input" id="year" name="year" type="text" inputmode="numeric" maxlength="4" autocomplete="off" data-i18n-placeholder="appt.yearPh">
@@ -252,19 +248,18 @@
             <span class="hint" id="vinMsg" role="status"></span>
             <div class="vin-note" id="vinNote" data-i18n-html="appt.vinNote"></div>
           </div>
+        </div>
         </fieldset>
 
         <!-- 3. When -->
         <fieldset class="fieldset reveal">
           <div class="fs-head">
-            <span class="fs-num">3</span>
-            <span>
-              <span class="fs-title" data-i18n="appt.s3t"></span>
-              <span class="fs-sub" style="display:block" data-i18n="appt.s3d"></span>
-            </span>
+            <span class="fs-num">03</span>
+            <span class="railcard__t" data-i18n="appt.s3t"></span>
           </div>
-
-          <div class="row row--2">
+          <div class="fs-body">
+            <p class="hint" style="margin-bottom:1.1rem" data-i18n="appt.s3d"></p>
+<div class="row row--2">
             <div class="field">
               <label for="date"><span data-i18n="appt.dateL"></span></label>
               <input class="input" id="date" name="date" type="date" aria-describedby="dateMsg">
@@ -306,19 +301,18 @@
               </label>
             </div>
           </div>
+        </div>
         </fieldset>
 
         <!-- 4. Contact -->
         <fieldset class="fieldset reveal">
           <div class="fs-head">
-            <span class="fs-num">4</span>
-            <span>
-              <span class="fs-title" data-i18n="appt.s4t"></span>
-              <span class="fs-sub" style="display:block" data-i18n="appt.s4d"></span>
-            </span>
+            <span class="fs-num">04</span>
+            <span class="railcard__t" data-i18n="appt.s4t"></span>
           </div>
-
-          <div class="row row--2">
+          <div class="fs-body">
+            <p class="hint" style="margin-bottom:1.1rem" data-i18n="appt.s4d"></p>
+<div class="row row--2">
             <div class="field">
               <label for="name"><span data-i18n="appt.nameL"></span><span class="req" aria-hidden="true">*</span></label>
               <input class="input" id="name" name="name" type="text" autocomplete="name" required data-i18n-placeholder="appt.namePh" aria-describedby="nameErr">
@@ -386,46 +380,47 @@
             </label>
             <p class="hint hint--warn" id="consentErr" hidden style="margin-top:.5rem"></p>
           </div>
+        </div>
         </fieldset>
 
         <!-- Send -->
-        <div class="glass submit-card reveal">
+        <div class="submit-card reveal">
           <div>
-            <span class="fs-title" data-i18n="appt.sendTitle"></span>
+            <span class="railcard__t" data-i18n="appt.sendTitle"></span>
             <p class="hint" style="margin-top:.35rem" data-i18n="appt.sendDesc"></p>
           </div>
           <button class="btn btn--wa btn--lg btn--block" type="button" id="sendWa">
             <svg><use href="#i-whatsapp"/></svg><span data-i18n="appt.sendWa"></span>
           </button>
           <div class="row row--2" style="gap:.6rem">
-            <button class="btn btn--ghost" type="button" id="sendMail"><svg><use href="#i-mail"/></svg><span data-i18n="appt.sendMail"></span></button>
-            <a class="btn btn--ghost" data-tel href="tel:+13052389333"><svg><use href="#i-phone"/></svg><span data-i18n="appt.sendCall"></span></a>
+            <button class="btn" type="button" id="sendMail"><svg><use href="#i-mail"/></svg><span data-i18n="appt.sendMail"></span></button>
+            <a class="btn" data-tel href="tel:+13052389333"><svg><use href="#i-phone"/></svg><span data-i18n="appt.sendCall"></span></a>
           </div>
           <p class="hint hint--warn center" id="formErr" hidden></p>
           <p class="submit-note" data-i18n="appt.sendNote"></p>
         </div>
 
         <!-- Confirmation / copyable summary -->
-        <div class="glass confirm" id="confirm" tabindex="-1" role="status" aria-live="polite">
+        <div class="confirm" id="confirm" tabindex="-1" role="status" aria-live="polite">
           <div class="confirm__ic"><svg><use href="#i-check"/></svg></div>
           <h3 class="display" style="font-size:1.5rem" data-i18n="appt.doneTitle"></h3>
           <p class="hint mt-1" data-i18n="appt.doneP"></p>
           <pre class="summary" id="summary"></pre>
           <div class="row row--2" style="gap:.6rem">
             <button class="btn btn--primary" type="button" id="copyBtn"><svg><use href="#i-copy"/></svg><span data-i18n="appt.copy"></span></button>
-            <button class="btn btn--ghost" type="button" id="editBtn"><span data-i18n="appt.edit"></span></button>
+            <button class="btn" type="button" id="editBtn"><span data-i18n="appt.edit"></span></button>
           </div>
         </div>
       </form>
 
       <!-- Sticky rail -->
       <aside class="appt-rail">
-        <div class="glass railcard reveal">
-          <div class="shopcard__top" style="margin-bottom:.9rem">
-            <span class="shopcard__title" data-i18n="appt.railHoursT"></span>
-            <span class="status" data-status><span class="status__dot"></span><span data-status-text>Open now</span></span>
+        <div class="railcard reveal">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:.6rem;margin-bottom:.7rem">
+            <span class="label" data-i18n="appt.railHoursT"></span>
+            <span class="status status--onpaper" data-status><span class="dot"></span><span data-status-text>Open now</span></span>
           </div>
-          <p style="font-size:1.15rem;font-weight:700;font-family:var(--font-display)" data-today-hours>8:30 AM – 5:30 PM</p>
+          <p style="font-family:var(--font-mono);font-size:1.02rem;font-weight:600" data-today-hours>8:30 AM – 5:30 PM</p>
           <p class="hint mt-1" data-i18n="appt.railP"></p>
           <a class="btn btn--primary btn--block" style="margin-top:1rem" data-tel href="tel:+13052389333">
             <svg><use href="#i-phone"/></svg><span data-phone-text>(305) 238-9333</span>
@@ -435,8 +430,8 @@
           </a>
         </div>
 
-        <div class="glass railcard reveal" data-d="1">
-          <span class="fs-title" data-i18n="appt.railWhy"></span>
+        <div class="railcard reveal" data-d="1">
+          <span class="railcard__t" data-i18n="appt.railWhy"></span>
           <ul style="margin-top:.9rem;display:grid;gap:.65rem">
             <li style="display:flex;gap:.6rem;align-items:flex-start;font-size:.875rem;color:var(--txt-2)">
               <svg width="16" height="16" style="color:var(--teal-400);flex:none;margin-top:3px"><use href="#i-check"/></svg><span data-i18n="appt.railW1"></span>
@@ -450,7 +445,7 @@
           </ul>
         </div>
 
-        <div class="glass railcard reveal" data-d="2">
+        <div class="railcard reveal" data-d="2">
           <span class="stars" aria-hidden="true">
             <svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg>
           </span>
@@ -458,14 +453,14 @@
           <p class="hint mt-1" data-i18n="rev.meta"></p>
         </div>
 
-        <div class="glass railcard reveal" data-d="3">
-          <div class="infoitem">
-            <span class="infoitem__ic"><svg><use href="#i-pin"/></svg></span>
-            <span>
-              <span class="infoitem__l" data-i18n="loc.addrL"></span>
-              <span class="infoitem__v" style="display:block;font-size:.9rem"><a data-maps href="#" target="_blank" rel="noopener" data-address-text>12430 SW 128th St, Ste 2, Miami, FL 33186</a></span>
-            </span>
-          </div>
+        <div class="railcard reveal" data-d="3">
+          <p class="label" style="margin-bottom:.35rem" data-i18n="loc.addrL"></p>
+          <p style="font-size:.92rem;font-weight:500;line-height:1.4">
+            <a data-maps href="#" target="_blank" rel="noopener" data-address-text>12430 SW 128th St, Ste 2, Miami, FL 33186</a>
+          </p>
+          <a class="btn btn--sm btn--block" style="margin-top:.7rem" data-maps href="#" target="_blank" rel="noopener">
+            <svg><use href="#i-pin"/></svg><span data-i18n="cta.directions"></span>
+          </a>
         </div>
       </aside>
     </div>

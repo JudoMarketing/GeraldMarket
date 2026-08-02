@@ -4,8 +4,8 @@
   "description": "Family-owned auto repair in Miami since 2006.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#080B11",
-  "theme_color": "#080B11",
+  "background_color": "#F2EFE8",
+  "theme_color": "#F2EFE8",
   "icons": [
     { "src": "assets/img/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
   ]

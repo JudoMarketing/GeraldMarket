@@ -1,36 +1,59 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="An oil filter, drain plug and drain pan">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Line drawing of an oil filter, drain plug and drain pan">
   <title>Oil change service</title>
-  <defs>
-    <linearGradient id="olA" x1="0" y1="0" x2="0.8" y2="1">
-      <stop offset="0" stop-color="#FFD870"/><stop offset="0.5" stop-color="#FFB020"/><stop offset="1" stop-color="#FF6A12"/>
-    </linearGradient>
-    <linearGradient id="olS" x1="0.1" y1="0" x2="0.6" y2="1">
-      <stop offset="0" stop-color="#55647B"/><stop offset="1" stop-color="#28323F"/>
-    </linearGradient>
-    <radialGradient id="olG" cx="0.5" cy="0.45" r="0.55">
-      <stop offset="0" stop-color="#FF8A1E" stop-opacity="0.22"/><stop offset="1" stop-color="#FF8A1E" stop-opacity="0"/>
-    </radialGradient>
-  </defs>
-  <rect width="400" height="400" fill="url(#olG)"/>
-  <g transform="rotate(-10 150 180)">
-    <rect x="96" y="92" width="108" height="150" rx="18" fill="url(#olS)"/>
-    <rect x="96" y="92" width="108" height="150" rx="18" fill="none" stroke="#7B8BA3" stroke-width="2.5"/>
-    <rect x="104" y="112" width="92" height="5" rx="2.5" fill="#0F1620" opacity="0.55"/>
-    <rect x="104" y="128" width="92" height="5" rx="2.5" fill="#0F1620" opacity="0.55"/>
-    <rect x="104" y="144" width="92" height="5" rx="2.5" fill="#0F1620" opacity="0.55"/>
-    <rect x="104" y="160" width="92" height="5" rx="2.5" fill="#0F1620" opacity="0.55"/>
-    <rect x="104" y="176" width="92" height="5" rx="2.5" fill="#0F1620" opacity="0.55"/>
-    <rect x="104" y="192" width="92" height="5" rx="2.5" fill="#0F1620" opacity="0.55"/>
-    <rect x="104" y="208" width="92" height="5" rx="2.5" fill="#0F1620" opacity="0.55"/>
-    <rect x="104" y="224" width="92" height="5" rx="2.5" fill="#0F1620" opacity="0.55"/>
-    <rect x="110" y="76" width="80" height="24" rx="8" fill="url(#olA)"/>
+  <g fill="none" stroke="#14161A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+    <g transform="rotate(-8 150 175)">
+      <rect x="88" y="80" width="112" height="158" rx="12"/>
+      <rect x="104" y="58" width="80" height="24" rx="5"/>
+      <g stroke-width="1.2">
+        <path d="M96,104 h96"/>
+        <path d="M96,119 h96"/>
+        <path d="M96,134 h96"/>
+        <path d="M96,149 h96"/>
+        <path d="M96,164 h96"/>
+        <path d="M96,179 h96"/>
+        <path d="M96,194 h96"/>
+        <path d="M96,209 h96"/>
+        <path d="M96,224 h96"/>
+      </g>
+    </g>
+    <path d="M232,124 h64 a14,14 0 0 1 0,28 h-64 Z"/>
+    <path d="M330,138 l-9,-15 h-18 l-9,15 l9,15 h18 Z" stroke="#E5502A"/>
+    <g stroke="#E5502A">
+      <path d="M262,176 c0,-10 10,-19 10,-19 s10,9 10,19 a10,10 0 0 1 -20,0 Z"/>
+      <path d="M280,228 c0,-7 7,-13 7,-13 s7,6 7,13 a7,7 0 0 1 -14,0 Z" stroke-width="1.8"/>
+      <circle cx="296" cy="264" r="4.5" stroke-width="1.6"/>
+    </g>
+    <path d="M78,300 h244 v20 a34,34 0 0 1 -34,34 H112 a34,34 0 0 1 -34,-34 Z"/>
+    <path d="M78,318 h244" stroke-width="1.3"/>
+    <g stroke-width="1" opacity="0.32">
+      <path d="M41.2,348.0 L86.0,320.0"/>
+      <path d="M51.2,348.0 L96.0,320.0"/>
+      <path d="M61.2,348.0 L106.0,320.0"/>
+      <path d="M71.2,348.0 L116.0,320.0"/>
+      <path d="M81.2,348.0 L126.0,320.0"/>
+      <path d="M91.2,348.0 L136.0,320.0"/>
+      <path d="M101.2,348.0 L146.0,320.0"/>
+      <path d="M111.2,348.0 L156.0,320.0"/>
+      <path d="M121.2,348.0 L166.0,320.0"/>
+      <path d="M131.2,348.0 L176.0,320.0"/>
+      <path d="M141.2,348.0 L186.0,320.0"/>
+      <path d="M151.2,348.0 L196.0,320.0"/>
+      <path d="M161.2,348.0 L206.0,320.0"/>
+      <path d="M171.2,348.0 L216.0,320.0"/>
+      <path d="M181.2,348.0 L226.0,320.0"/>
+      <path d="M191.2,348.0 L236.0,320.0"/>
+      <path d="M201.2,348.0 L246.0,320.0"/>
+      <path d="M211.2,348.0 L256.0,320.0"/>
+      <path d="M221.2,348.0 L266.0,320.0"/>
+      <path d="M231.2,348.0 L276.0,320.0"/>
+      <path d="M241.2,348.0 L286.0,320.0"/>
+      <path d="M251.2,348.0 L296.0,320.0"/>
+      <path d="M261.2,348.0 L306.0,320.0"/>
+      <path d="M271.2,348.0 L316.0,320.0"/>
+      <path d="M281.2,348.0 L326.0,320.0"/>
+      <path d="M291.2,348.0 L336.0,320.0"/>
+      <path d="M301.2,348.0 L346.0,320.0"/>
+      <path d="M311.2,348.0 L356.0,320.0"/>
+    </g>
   </g>
-  <rect x="228" y="128" width="78" height="26" rx="13" fill="url(#olS)"/>
-  <polygon points="316,141 308,127 292,127 284,141 292,155 308,155" fill="url(#olA)"/>
-  <path d="M258,178 c0,-9 9,-17 9,-17 s9,8 9,17 a9,9 0 0 1 -18,0 z" fill="url(#olA)" opacity="0.95"/>
-  <path d="M276,224 c0,-7 7,-13 7,-13 s7,6 7,13 a7,7 0 0 1 -14,0 z" fill="url(#olA)" opacity="0.65"/>
-  <circle cx="292" cy="256" r="5" fill="url(#olA)" opacity="0.4"/>
-  <path d="M92,300 h216 a10,10 0 0 1 10,10 v22 a26,26 0 0 1 -26,26 H108 a26,26 0 0 1 -26,-26 v-22 a10,10 0 0 1 10,-10 z" fill="#1B2331"/>
-  <path d="M92,300 h216 a10,10 0 0 1 10,10 v6 H82 v-6 a10,10 0 0 1 10,-10 z" fill="#2E3A4C"/>
-  <ellipse cx="200" cy="326" rx="104" ry="9" fill="url(#olA)" opacity="0.55"/>
 </svg>
