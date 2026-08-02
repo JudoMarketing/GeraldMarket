@@ -1,19 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Line drawing of a diagnostic scan tool plugged into a car">
   <title>Computer diagnostics</title>
-  <g fill="none" stroke="#14161A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+  <g fill="none" stroke="#E8ECF4" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
     <rect x="140" y="52" width="180" height="256" rx="20"/>
     <rect x="160" y="74" width="140" height="126" rx="5" stroke-width="1.6"/>
-    <g stroke="#E5502A" stroke-width="2.2" transform="translate(230 112) scale(2.1) translate(-12 -12)">
+    <g stroke="#3B87FF" stroke-width="2.2" transform="translate(230 112) scale(2.1) translate(-12 -12)">
       <path d="M6,9h3l2-2h4v3h2l2,2v4h-2v2h-6l-2-2H6a2,2 0 0 1 -2,-2v-3a2,2 0 0 1 2,-2z"/>
     </g>
     <path stroke-width="1.8" d="M170,178 h16 l10,-22 l12,40 l10,-30 l9,18 h20 l8,-14 h35"/>
     <g stroke-width="1.6">
-      <rect x="168" y="220" width="38" height="28" rx="4" stroke="#E5502A"/>
-      <rect x="218" y="220" width="38" height="28" rx="4" stroke="#14161A"/>
-      <rect x="268" y="220" width="38" height="28" rx="4" stroke="#14161A"/>
-      <rect x="168" y="260" width="38" height="28" rx="4" stroke="#14161A"/>
-      <rect x="218" y="260" width="38" height="28" rx="4" stroke="#14161A"/>
-      <rect x="268" y="260" width="38" height="28" rx="4" stroke="#14161A"/>
+      <rect x="168" y="220" width="38" height="28" rx="4" stroke="#3B87FF"/>
+      <rect x="218" y="220" width="38" height="28" rx="4" stroke="#E8ECF4"/>
+      <rect x="268" y="220" width="38" height="28" rx="4" stroke="#E8ECF4"/>
+      <rect x="168" y="260" width="38" height="28" rx="4" stroke="#E8ECF4"/>
+      <rect x="218" y="260" width="38" height="28" rx="4" stroke="#E8ECF4"/>
+      <rect x="268" y="260" width="38" height="28" rx="4" stroke="#E8ECF4"/>
     </g>
     <path d="M140,236 C96,244 78,268 78,306"/>
     <path d="M52,306 h52 v34 h-52 Z"/>

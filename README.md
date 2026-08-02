@@ -11,18 +11,17 @@ required — open `index.html` or drop the folder on any host.
 ## Structure
 
 ```
-index.html               Home: hero, services, specials, process, reviews, shop, FAQ, location
-appointment.html         Appointment work order (VIN optional)
+index.html               Home: hero, guarantees, services, specials, process, reviews, shop, FAQ, location
+appointment.html         Appointment form (VIN optional)
 assets/css/styles.css    Design system + all page styles
 assets/css/fonts.css     @font-face for the self-hosted typefaces
-assets/fonts/*.woff2     Barlow, Barlow Condensed, IBM Plex Mono (latin + latin-ext)
+assets/fonts/*.woff2     Poppins, DM Sans, IBM Plex Mono (latin + latin-ext)
 assets/js/i18n.js        EN/ES dictionary + translation engine
 assets/js/app.js         Business config, header, shop-open clock, reveals, coupons
 assets/js/appointment.js Form validation, VIN helper, message composer
-assets/img/logo.svg      Stamped plate — the "P" knocked out of signal orange
+assets/img/logo.svg      Blue plate with the hex-nut "P" knocked out
 assets/img/favicon.svg   Same mark, tuned for a browser tab
-assets/img/stamp.svg     Rubber approval stamp (the shop section)
-assets/img/art-bay.svg   Fig. 1 — a car up on the two-post lift
+assets/img/art-bay.svg   Hero visual — a car up on the two-post lift
 assets/img/art-oil.svg   Oil change vignette
 assets/img/art-tires.svg Wheel + torque wrench vignette
 assets/img/art-diag.svg  Scan tool vignette
@@ -86,77 +85,56 @@ where to find it — but an empty or partial VIN never blocks a booking.
 
 ---
 
-## The design: "the work order"
+## The design
 
-The first draft of this site looked like every other AI-generated page in 2026 —
-dark mode, frosted glass, gradient orbs floating in the background, gradient text,
-Inter, four identical cards in a grid. That is a real and recognisable house style,
-and it is wrong for a family garage in Kendall.
-
-So the whole thing was rebuilt around one idea: **the printed vehicle inspection
-sheet a service advisor hands you.** Pacho's differentiator is "we tell you what's
-wrong before we charge you," and that is exactly what the paperwork of an honest
-shop looks like.
-
-What that means concretely:
+Built to the reference the client picked (a dark auto-shop showcase site),
+recoloured to **black, white and several blues** at their request.
 
 | | |
 |---|---|
-| **Ground** | warm paper `#F2EFE8` with a faint fibre texture — not white, not dark |
-| **Ink** | `#14161A`, hairline rules `#D3CDC0` |
-| **Signal** | one colour, `#E5502A`, used like safety paint — never decoratively |
-| **Marks** | inspection green / amber / red for pass, caution, fail |
-| **Display** | Barlow Condensed, uppercase — shop signage and racing numbers |
-| **Body** | Barlow |
-| **Data** | IBM Plex Mono for hours, codes, VINs, section numbers, labels |
-| **Shape** | 2px corners, 1.5px borders, hard offset shadows (`3px 3px 0`) |
-| **Divider** | a painted hazard stripe, the way it is on a shop floor |
+| **Ground** | near-black `#07090D`, panels `#0C1016`, cards `#12171F` |
+| **Navy blocks** | reviews and the closing CTA sit on a `#071634 → #050B1C` gradient |
+| **Accent** | `#0B63F6`, with `#3B87FF` for headline accents and `#7FB4FF` for soft detail |
+| **Type** | Poppins 700/800 for headings, DM Sans for body, IBM Plex Mono only for VINs and promo codes |
+| **Shape** | fully-rounded pill buttons, 24–32px card radii |
 
-Components that came out of the concept rather than a component library: the
-**work-order panel** in the hero (dark title bar, dotted leader rows, today's row
-highlighted, live open/closed stamp), the services set as a **ruled list with
-numbers** instead of twelve identical cards, the specials as **actual perforated
-vouchers**, and the appointment page as a **numbered form with a black title bar
-on each section**.
+Patterns carried over from the reference: a pill badge above the headline, the
+accent word coloured inside an otherwise white headline, grey body copy, service
+cards with tags overlaid on the image, centred section headings under a small
+accent eyebrow, review cards with a circular avatar, and a phone bar pinned to
+the bottom of the screen on mobile.
 
-Explicitly not used anywhere: `backdrop-filter`, ambient gradient orbs, gradient
-text, blurred glow shadows, pill-shaped everything, and an icon chip on top of
-every card.
+Still deliberately absent — these are the tells of a generated page: frosted
+glass / `backdrop-filter`, ambient gradient orbs floating behind the content,
+and gradient-filled text.
 
 ### The mark
-No logo existed. The idea is a **bold "P" whose counter is a hex nut** — it reads
-as the initial at 16px and as a piece of hardware up close. It is set as a solid
-plate so it works on paper and on the dark footer without a second file.
+No logo existed. It is a **bold "P" whose counter is a hex nut**, knocked out of
+a blue plate — legible at 16px in a browser tab and on any background.
 
-| File | Where |
-|---|---|
-| `logo.svg` | header, footer |
-| `favicon.svg` | browser tab, phone home screen |
-| `stamp.svg` | the shop section — a rubber approval stamp, rotated in CSS |
+### The imagery — read this before launch
+**The reference site is carried almost entirely by real photographs.** This one
+cannot be: stock photo hosts are unreachable from the build environment, and the
+shop has not supplied photos yet. In their place are four **line drawings** in the
+shop-manual style — light strokes on the dark ground, blue used only to point at
+the part being serviced (`python3 tools/generate-art.py` regenerates them).
 
-### The illustrations
-Four **shop-manual line drawings**: ink strokes on the paper, two stroke weights,
-hatching for shade, and the signal orange used only to point at the part being
-serviced. Nothing is filled and nothing is gradient — it should look drawn with a
-pen, because that is what a service manual looks like. Regenerate with
-`python3 tools/generate-art.py`.
+They hold the layout together and look deliberate, but they are a stand-in. The
+design will not match the reference until real photos go in. Two swaps, no CSS
+changes:
+
+1. **Hero** — replace the `<img>` inside `.hero__art` in `index.html`.
+2. **The three service cards** — swap the `src` on the `<img>` tags inside
+   `.svc-grid`, then change `.svc__media img { object-fit: contain }` to `cover`
+   and drop the `padding` on that rule so photos fill the frame edge to edge.
+
+Shots to take, in priority order: the shop front with the sign, a car up on the
+lift, a technician working, the waiting area, and the team. Phone photos are fine
+if they are well lit — they will still beat any illustration.
 
 ### Fonts are self-hosted
 `assets/fonts/` holds the woff2 files and `assets/css/fonts.css` declares them.
-The page makes **zero third-party requests** — nothing to Google, no tracking, and
-the condensed display face is guaranteed to render rather than silently falling
-back to a normal-width system font.
-
-### Swapping in real photos (still recommended)
-Real photos of the bay, the waiting room and the technicians beat any illustration.
-The line drawings are here so the draft looks finished today.
-
-1. **Fig. 1** — replace `assets/img/art-bay.svg` in `index.html` with a wide photo.
-2. **The three featured services** — swap the `src` on the `<img>` tags inside
-   `.svc-feat`, then change `.svcf__media img { object-fit: contain }` to `cover`.
-
-Good shots, in priority order: the shop front with the sign, a car up on the lift,
-a technician working, the waiting area, the team.
+The page makes **zero third-party requests** — nothing to Google, no tracking.
 
 ## Before this goes live — please confirm with the shop
 

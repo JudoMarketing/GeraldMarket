@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Book an Appointment | Pacho's Quality Auto Repair, Miami</title>
 <meta name="description" data-i18n-content="meta.descAppt" content="Schedule your service at Pacho's Quality Auto Repair in Miami. Tell us your vehicle, pick a day, add your VIN (optional) and we'll confirm.">
-<meta name="theme-color" content="#F2EFE8">
+<meta name="theme-color" content="#07090D">
 <meta name="format-detection" content="telephone=no">
 <link rel="canonical" href="https://pachosqualityautorepair.com/appointment.html">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
@@ -15,8 +15,8 @@
 <meta property="og:title" content="Book an appointment — Pacho's Quality Auto Repair">
 <meta property="og:description" content="Two minutes to book. VIN optional. We confirm by call or WhatsApp.">
 
-<link rel="preload" href="assets/fonts/barlow-condensed-700-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/barlow-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/poppins-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/dmsans-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/fonts.css">
 <link rel="stylesheet" href="assets/css/styles.css">
 </head>
@@ -129,9 +129,9 @@
       </h1>
       <p class="lede mt-2" data-i18n="appt.lede"></p>
       <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.2rem">
-        <span class="tag tag--pass"><svg><use href="#i-check"/></svg><span data-i18n="appt.badge1"></span></span>
-        <span class="tag"><svg><use href="#i-check"/></svg><span data-i18n="appt.badge2"></span></span>
-        <span class="tag"><svg><use href="#i-globe"/></svg><span data-i18n="appt.badge3"></span></span>
+        <span class="pill pill--pass"><svg><use href="#i-check"/></svg><span data-i18n="appt.badge1"></span></span>
+        <span class="pill pill--outline"><svg><use href="#i-check"/></svg><span data-i18n="appt.badge2"></span></span>
+        <span class="pill pill--outline"><svg><use href="#i-globe"/></svg><span data-i18n="appt.badge3"></span></span>
       </div>
     </div>
   </section>
@@ -145,7 +145,7 @@
         <!-- 1. Services -->
         <fieldset class="fieldset reveal">
           <div class="fs-head">
-            <span class="fs-num">01</span>
+            <span class="fs-num">1</span>
             <span class="railcard__t" data-i18n="appt.s1t"></span>
           </div>
           <div class="fs-body">
@@ -198,7 +198,7 @@
         <!-- 2. Vehicle -->
         <fieldset class="fieldset reveal">
           <div class="fs-head">
-            <span class="fs-num">02</span>
+            <span class="fs-num">2</span>
             <span class="railcard__t" data-i18n="appt.s2t"></span>
           </div>
           <div class="fs-body">
@@ -254,7 +254,7 @@
         <!-- 3. When -->
         <fieldset class="fieldset reveal">
           <div class="fs-head">
-            <span class="fs-num">03</span>
+            <span class="fs-num">3</span>
             <span class="railcard__t" data-i18n="appt.s3t"></span>
           </div>
           <div class="fs-body">
@@ -307,7 +307,7 @@
         <!-- 4. Contact -->
         <fieldset class="fieldset reveal">
           <div class="fs-head">
-            <span class="fs-num">04</span>
+            <span class="fs-num">4</span>
             <span class="railcard__t" data-i18n="appt.s4t"></span>
           </div>
           <div class="fs-body">
@@ -417,8 +417,8 @@
       <aside class="appt-rail">
         <div class="railcard reveal">
           <div style="display:flex;align-items:center;justify-content:space-between;gap:.6rem;margin-bottom:.7rem">
-            <span class="label" data-i18n="appt.railHoursT"></span>
-            <span class="status status--onpaper" data-status><span class="dot"></span><span data-status-text>Open now</span></span>
+            <span class="eyebrow" data-i18n="appt.railHoursT"></span>
+            <span class="status" data-status><span class="dot"></span><span data-status-text>Open now</span></span>
           </div>
           <p style="font-family:var(--font-mono);font-size:1.02rem;font-weight:600" data-today-hours>8:30 AM – 5:30 PM</p>
           <p class="hint mt-1" data-i18n="appt.railP"></p>
@@ -454,7 +454,7 @@
         </div>
 
         <div class="railcard reveal" data-d="3">
-          <p class="label" style="margin-bottom:.35rem" data-i18n="loc.addrL"></p>
+          <p class="eyebrow" style="margin-bottom:.35rem" data-i18n="loc.addrL"></p>
           <p style="font-size:.92rem;font-weight:500;line-height:1.4">
             <a data-maps href="#" target="_blank" rel="noopener" data-address-text>12430 SW 128th St, Ste 2, Miami, FL 33186</a>
           </p>
@@ -483,11 +483,9 @@
   </a>
 </div>
 
-<nav class="dock" aria-label="Quick actions">
-  <a data-tel href="tel:+13052389333"><svg><use href="#i-phone"/></svg><span data-i18n="cta.call"></span></a>
-  <a class="is-primary" href="#apptForm"><svg><use href="#i-calendar"/></svg><span data-i18n="cta.bookShort"></span></a>
-  <a data-maps href="#" target="_blank" rel="noopener"><svg><use href="#i-pin"/></svg><span data-i18n="nav.location"></span></a>
-</nav>
+<a class="callbar" data-tel href="tel:+13052389333">
+  <svg><use href="#i-phone"/></svg><span data-phone-text>(305) 238-9333</span>
+</a>
 
 <script src="assets/js/i18n.js"></script>
 <script src="assets/js/app.js"></script>

@@ -51,6 +51,7 @@
 
       /* ---------- hero ---------- */
       "hero.badge": "Miami · Kendall · West Kendall",
+      "hero.badge2": "Family-owned in Miami since 2006",
       "hero.h1a": "The mechanic your",
       "hero.h1b": "neighbors trust.",
       "hero.lede": "A family-owned shop in Miami since 2006. We tell you what your car actually needs, quote it before we touch it, and get you back on the road — oil changes, tires, brakes, A/C and full mechanical repair.",
@@ -472,6 +473,7 @@
 
       /* ---------- hero ---------- */
       "hero.badge": "Miami · Kendall · West Kendall",
+      "hero.badge2": "Family-owned in Miami since 2006",
       "hero.h1a": "El mecánico en",
       "hero.h1b": "quien confían.",
       "hero.lede": "Un taller familiar en Miami desde 2006. Le decimos lo que su carro realmente necesita, le damos el precio antes de tocarlo y lo devolvemos a la carretera — cambios de aceite, cauchos, frenos, aire acondicionado y mecánica en general.",

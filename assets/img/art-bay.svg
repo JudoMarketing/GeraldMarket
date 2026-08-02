@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" role="img" aria-label="Line drawing of a car raised on a two-post lift">
   <title>A car up on the lift</title>
-  <g fill="none" stroke="#14161A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+  <g fill="none" stroke="#E8ECF4" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
     <path d="M20,372 H780"/>
     <g stroke-width="1" opacity="0.25">
       <path d="M-8.2,387.0 L20.0,372.0"/>
@@ -64,11 +64,11 @@
     <path d="M150,372 V96"/>
     <path d="M176,372 V96"/>
     <path d="M130,372 h66"/>
-    <g stroke="#E5502A" stroke-width="7"><path d="M163,320 v24"/></g>
+    <g stroke="#3B87FF" stroke-width="7"><path d="M163,320 v24"/></g>
     <path d="M610,372 V96"/>
     <path d="M636,372 V96"/>
     <path d="M590,372 h66"/>
-    <g stroke="#E5502A" stroke-width="7"><path d="M623,320 v24"/></g>
+    <g stroke="#3B87FF" stroke-width="7"><path d="M623,320 v24"/></g>
     <path d="M144,96 H642 V78 H144 Z"/>
     <path d="M176,252 H344"/>
     <path d="M616,252 H448"/>
@@ -109,7 +109,7 @@
       <path d="M413,327 L437,300"/>
       <path d="M383,327 L372,354"/>
     </g>
-    <g stroke="#E5502A"><circle cx="443" cy="294" r="9"/>
+    <g stroke="#3B87FF"><circle cx="443" cy="294" r="9"/>
     <path d="M443,278 v-8"/><path d="M456,286 l8,-5"/><path d="M456,302 l8,5"/></g>
     <path d="M34,286 h96 v88 h-96 Z"/>
     <g stroke-width="1.3"><path d="M34,314 h96"/><path d="M34,342 h96"/>

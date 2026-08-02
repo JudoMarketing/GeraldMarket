@@ -2,10 +2,12 @@
 
     python3 tools/generate-art.py
 
-Style: shop-manual line drawing. Ink strokes on a transparent ground, two
-stroke weights, hatching for shade, and the signal orange used only to point
-at the part being serviced. No fills, no gradients — it has to look like it
-was drawn with a pen, because that is what a service manual looks like.
+Style: shop-manual line drawing, light strokes on a transparent ground so it
+sits on the near-black page. Two stroke weights, hatching for shade, and the
+signal blue used only to point at the part being serviced. No fills, no
+gradients — it should look drawn with a pen, like a service manual.
+
+These are placeholders for real photographs of the shop. See the README.
 
 Writes assets/img/art-bay.svg, art-tires.svg, art-oil.svg, art-diag.svg.
 """
@@ -14,8 +16,9 @@ import os
 
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "img")
 
-INK = "#14161A"
-SIGNAL = "#E5502A"
+# Drawn light-on-dark: the site background is near-black.
+INK = "#E8ECF4"
+SIGNAL = "#3B87FF"
 A = "    "
 
 

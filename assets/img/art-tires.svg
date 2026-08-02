@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Line drawing of a wheel with a torque wrench on a lug nut">
   <title>Wheel and tire service</title>
-  <g fill="none" stroke="#14161A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+  <g fill="none" stroke="#E8ECF4" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
     <circle cx="200" cy="190" r="150"/>
     <circle cx="200" cy="190" r="128" stroke-width="1.4"/>
     <g stroke-width="1.4">
@@ -39,12 +39,12 @@
     <path stroke-width="1.6" d="M189.2,218.0 L161.3,264.6 M176.7,208.9 L141.0,249.8"/>
     <path stroke-width="1.6" d="M170.0,188.4 L117.1,176.3 M174.8,173.7 L124.9,152.4"/>
     <circle cx="200" cy="190" r="30"/>
-    <circle cx="211.2" cy="174.6" r="5" stroke="#E5502A" stroke-width="1.8"/>
-    <circle cx="218.1" cy="195.9" r="5" stroke="#14161A" stroke-width="1.8"/>
-    <circle cx="200.0" cy="209.0" r="5" stroke="#14161A" stroke-width="1.8"/>
-    <circle cx="181.9" cy="195.9" r="5" stroke="#14161A" stroke-width="1.8"/>
-    <circle cx="188.8" cy="174.6" r="5" stroke="#14161A" stroke-width="1.8"/>
-    <g stroke="#E5502A" transform="rotate(36 211.2 174.6)">
+    <circle cx="211.2" cy="174.6" r="5" stroke="#3B87FF" stroke-width="1.8"/>
+    <circle cx="218.1" cy="195.9" r="5" stroke="#E8ECF4" stroke-width="1.8"/>
+    <circle cx="200.0" cy="209.0" r="5" stroke="#E8ECF4" stroke-width="1.8"/>
+    <circle cx="181.9" cy="195.9" r="5" stroke="#E8ECF4" stroke-width="1.8"/>
+    <circle cx="188.8" cy="174.6" r="5" stroke="#E8ECF4" stroke-width="1.8"/>
+    <g stroke="#3B87FF" transform="rotate(36 211.2 174.6)">
       <circle cx="211.2" cy="174.6" r="17"/>
       <path d="M203.2,191.6 V364.6 h16 V191.6"/>
       <path stroke-width="1.6" d="M199.2,310.6 h24 v62 h-24 Z"/>

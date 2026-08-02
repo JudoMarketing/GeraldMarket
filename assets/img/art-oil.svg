@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Line drawing of an oil filter, drain plug and drain pan">
   <title>Oil change service</title>
-  <g fill="none" stroke="#14161A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+  <g fill="none" stroke="#E8ECF4" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
     <g transform="rotate(-8 150 175)">
       <rect x="88" y="80" width="112" height="158" rx="12"/>
       <rect x="104" y="58" width="80" height="24" rx="5"/>
@@ -17,8 +17,8 @@
       </g>
     </g>
     <path d="M232,124 h64 a14,14 0 0 1 0,28 h-64 Z"/>
-    <path d="M330,138 l-9,-15 h-18 l-9,15 l9,15 h18 Z" stroke="#E5502A"/>
-    <g stroke="#E5502A">
+    <path d="M330,138 l-9,-15 h-18 l-9,15 l9,15 h18 Z" stroke="#3B87FF"/>
+    <g stroke="#3B87FF">
       <path d="M262,176 c0,-10 10,-19 10,-19 s10,9 10,19 a10,10 0 0 1 -20,0 Z"/>
       <path d="M280,228 c0,-7 7,-13 7,-13 s7,6 7,13 a7,7 0 0 1 -14,0 Z" stroke-width="1.8"/>
       <circle cx="296" cy="264" r="4.5" stroke-width="1.6"/>
