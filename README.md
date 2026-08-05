@@ -9,7 +9,7 @@ servidor: se abre `index.html` o se sube la carpeta a cualquier hosting.
 > relleno. La lista completa de lo que hay que reemplazar está al final, en
 > **[Antes de publicar](#antes-de-publicar)**.
 
-**En línea:** <https://poweroso2000.github.io/GeraldMarket/>
+**En línea:** <https://judomarketing.github.io/GeraldMarket/>
 
 ---
 
@@ -245,12 +245,20 @@ desde una subruta.
 **Ya está activo.** El sitio se sirve desde:
 
 ```
-https://poweroso2000.github.io/GeraldMarket/
+https://judomarketing.github.io/GeraldMarket/
 ```
 
 Configuración actual: *Settings → Pages* → **Deploy from a branch**, rama
 `gerald-market-site`, carpeta `/ (root)`. Cada vez que se sube un cambio a esa
 rama, GitHub reconstruye y republica solo — no hay que tocar nada más.
+
+> **Si se vuelve a cambiar el nombre de la cuenta, la dirección cambia con él.**
+> La cuenta pasó de `Poweroso2000` a `JudoMarketing`, así que la web pasó de
+> `poweroso2000.github.io/GeraldMarket/` a `judomarketing.github.io/GeraldMarket/`.
+> GitHub **no** redirige las direcciones de Pages cuando cambia el nombre de
+> usuario (sí lo hace al renombrar un repositorio, pero no al renombrar la
+> cuenta), de modo que cualquier enlace repartido con el nombre anterior queda
+> muerto. Con un dominio propio esto deja de ser un problema.
 
 > **El repositorio es público**, que es lo que exige Pages en las cuentas
 > gratuitas. En el código no hay claves ni datos reales (el teléfono y el
