@@ -1,4 +1,4 @@
-# Gerald Market — sitio web (borrador)
+# Gerald Market · sitio web (borrador)
 
 Portal de formación en trading, **íntegramente en español**, para Gerald Market.
 
@@ -10,6 +10,19 @@ servidor: se abre `index.html` o se sube la carpeta a cualquier hosting.
 > **[Antes de publicar](#antes-de-publicar)**.
 
 **En línea:** <https://judomarketing.github.io/GeraldMarket/>
+
+> **Estilo de redacción.** En este proyecto **no se usan guiones largos** en
+> ningún texto: ni en la web, ni en el README, ni en los comentarios del
+> código. Son los caracteres Unicode `U+2014` (raya) y `U+2013` (semirraya),
+> los que se cuelan al escribir con ayuda de una IA. Donde haría falta una
+> pausa fuerte se pone coma, dos puntos o punto y seguido; como separador,
+> el punto medio (·). Es una preferencia del cliente y se respeta en todo lo
+> que se escriba.
+>
+> Para comprobarlo antes de publicar (no debe imprimir nada):
+> ```sh
+> LC_ALL=C.UTF-8 grep -rnP '[\x{2014}\x{2013}]' --exclude-dir=.git .
+> ```
 
 ---
 
@@ -35,7 +48,7 @@ assets/img/logo.svg          Marca completa sobre fondo oscuro
 assets/img/logo-light.svg    Marca completa sobre fondo claro (papel, prensa)
 assets/img/logo-mark.svg     El monograma G (cabecera y pie)
 assets/img/favicon.svg       Icono de pestaña y de pantalla de inicio
-assets/img/mentor-placeholder.svg   Marco de «foto pendiente» — a reemplazar
+assets/img/mentor-placeholder.svg   Marco de «foto pendiente», a reemplazar
 tools/generate-logo.py       Regenera los cuatro archivos de marca
 robots.txt · sitemap.xml · site.webmanifest · vercel.json
 ```
@@ -44,7 +57,7 @@ robots.txt · sitemap.xml · site.webmanifest · vercel.json
 
 ## Lo que hay que tocar para editar
 
-### Teléfono, WhatsApp y correo — un solo sitio
+### Teléfono, WhatsApp y correo: un solo sitio
 Todo está en el objeto `SITE`, al principio de **`assets/js/app.js`**. Se cambia
 ahí y se actualizan todos los botones y enlaces del sitio de una vez.
 
@@ -103,14 +116,14 @@ de mercado.** De ahí sale todo lo demás.
 | | |
 |---|---|
 | **Fondo** | negro `#04070A`; las cajas van de `#161E28` arriba a `#0B1119` abajo |
-| **Oro** | `#E9C46A` — la marca, los acentos y los botones principales |
-| **Verde** | `#00D68F` — sube, incluido, largo |
-| **Rojo** | `#FF3D57` — baja, riesgo, corto |
-| **Marca** | Playfair Display Italic — un serif de alto contraste, en cursiva |
+| **Oro** | `#E9C46A`, la marca, los acentos y los botones principales |
+| **Verde** | `#00D68F`, sube, incluido, largo |
+| **Rojo** | `#FF3D57`, baja, riesgo, corto |
+| **Marca** | Playfair Display Italic, un serif de alto contraste, en cursiva |
 | **Titulares** | Archivo Black, muy apretado |
 | **Texto** | Archivo (variable) |
-| **Números** | JetBrains Mono — precios, tickers, etiquetas de eje |
-| **Esquinas** | 8–14 px |
+| **Números** | JetBrains Mono, para precios, tickers y etiquetas de eje |
+| **Esquinas** | de 8 a 14 px |
 
 ### El relieve
 Las cajas no son rectángulos planos: llevan un degradado de claro arriba a
@@ -130,8 +143,8 @@ crece y encoge sola con el cuerpo de letra en vez de romperse en el móvil.
 
 Dos variantes en el titular de la portada:
 
-- **`.gold-cut`** — el mismo tallado, fundido en oro. Se usa en «lectura».
-- **`.hollow`** — sin relleno: solo el filo, hecho con `-webkit-text-stroke`.
+- **`.gold-cut`**: el mismo tallado, fundido en oro. Se usa en «lectura».
+- **`.hollow`**: sin relleno, solo el filo, hecho con `-webkit-text-stroke`.
   Detrás se ve el gráfico moverse **a través de las letras**, así que la palabra
   «suerte» queda literalmente vacía. No es un adorno: dice lo mismo que la
   frase.
@@ -173,7 +186,7 @@ empuja el gráfico a la izquierda y redibuja la retícula, el eje y la etiqueta
 del precio actual.
 
 - Usa un generador con semilla fija, así el gráfico se ve **igual en cada
-  carga** — la marca queda consistente.
+  carga**, así la marca queda consistente.
 - Se **detiene solo** cuando la pestaña se oculta o cuando el hero sale de la
   pantalla, para no gastar batería en el móvil.
 - Con `prefers-reduced-motion` activado dibuja un solo fotograma y no anima
@@ -235,7 +248,7 @@ cobrar el primer pago.
 Es un sitio estático puro: no hay compilación, no hay servidor, no hay variables
 de entorno. Cualquier hosting sirve.
 
-### GitHub Pages — la vía directa desde este repositorio
+### GitHub Pages: la vía directa desde este repositorio
 
 El repositorio ya está preparado: hay un `.nojekyll` y **todas las rutas son
 relativas**, así que el sitio funciona igual en la raíz de un dominio que en una
@@ -250,7 +263,7 @@ https://judomarketing.github.io/GeraldMarket/
 
 Configuración actual: *Settings → Pages* → **Deploy from a branch**, rama
 `gerald-market-site`, carpeta `/ (root)`. Cada vez que se sube un cambio a esa
-rama, GitHub reconstruye y republica solo — no hay que tocar nada más.
+rama, GitHub reconstruye y republica solo. No hay que tocar nada más.
 
 > **Si se vuelve a cambiar el nombre de la cuenta, la dirección cambia con él.**
 > La cuenta pasó de `Poweroso2000` a `JudoMarketing`, así que la web pasó de
@@ -269,10 +282,10 @@ rama, GitHub reconstruye y republica solo — no hay que tocar nada más.
 
 ### Otras opciones
 
-- **Netlify / Vercel / Cloudflare Pages** — se arrastra la carpeta o se importa
+- **Netlify / Vercel / Cloudflare Pages**: se arrastra la carpeta o se importa
   el repositorio. Sin comando de compilación y sin carpeta de salida.
   `vercel.json` ya trae las URL limpias y el caché de las tipografías.
-- **Cualquier hosting clásico por FTP** — se suben los archivos tal cual.
+- **Cualquier hosting clásico por FTP**: se suben los archivos tal cual.
 
 ### Cuando haya dominio propio
 

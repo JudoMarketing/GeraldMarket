@@ -1,5 +1,5 @@
 /* =============================================================================
-   GERALD MARKET — comportamiento del sitio
+   GERALD MARKET · comportamiento del sitio
    -----------------------------------------------------------------------------
    Un solo lugar para los datos de contacto (SITE). Cambia ahí el teléfono, el
    WhatsApp o el correo y se actualizan todos los botones y enlaces del sitio.
@@ -9,7 +9,7 @@
 
   /* ------------------------------------------------------------------ SITE */
   /* BORRADOR: estos datos son de relleno. Reemplazar por los reales antes de
-     publicar — están todos marcados en el README. */
+     publicar. Están todos marcados en el README. */
   var SITE = {
     marca:      "Gerald Market",
     mentor:     "Gerald",

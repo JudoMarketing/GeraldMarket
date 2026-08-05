@@ -1,5 +1,5 @@
 /* =============================================================================
-   GERALD MARKET — motor de velas
+   GERALD MARKET · motor de velas
    -----------------------------------------------------------------------------
    1. Chart()  : el gráfico de velas vivo que corre detrás del hero. Camina el
                  precio, forma la vela actual, la cierra, empuja el gráfico a la

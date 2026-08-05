@@ -1,5 +1,5 @@
 /* =============================================================================
-   GERALD MARKET — formulario de contacto
+   GERALD MARKET · formulario de contacto
    -----------------------------------------------------------------------------
    No hay servidor. El formulario valida, arma un mensaje ordenado y lo entrega
    por WhatsApp, por correo o al portapapeles. Para recibirlo en un CRM o en una
@@ -96,7 +96,7 @@
   if (mail) mail.addEventListener("click", function () {
     if (!validar()) return;
     location.href = "mailto:" + SITE.email +
-      "?subject=" + encodeURIComponent("Consulta desde la web — " + campo("nombre").value.trim()) +
+      "?subject=" + encodeURIComponent("Consulta desde la web: " + campo("nombre").value.trim()) +
       "&body=" + encodeURIComponent(mensaje());
     confirmar("Se abrió tu programa de correo con el mensaje escrito.");
   });

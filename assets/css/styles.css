@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /* =============================================================================
-   GERALD MARKET — sistema de diseño
+   GERALD MARKET · sistema de diseño
    -----------------------------------------------------------------------------
    Fondo negro, superficies con volumen y una marca en cursiva dorada.
 
@@ -177,7 +177,7 @@ h1, h2, h3, h4 {
 }
 
 /* La palabra hueca: sin relleno, solo el filo. Detrás se ve el gráfico moviéndose
-   a través de las letras — la palabra «suerte» queda literalmente vacía. */
+   a través de las letras: la palabra «suerte» queda literalmente vacía. */
 .hollow {
   color: rgba(255, 61, 87, .10);
   -webkit-text-stroke: .026em var(--down);
