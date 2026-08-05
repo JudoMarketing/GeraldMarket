@@ -230,13 +230,54 @@ cobrar el primer pago.
 
 ## Publicar
 
-Es un sitio estático: sirve cualquier hosting.
+Es un sitio estático puro: no hay compilación, no hay servidor, no hay variables
+de entorno. Cualquier hosting sirve.
 
-- **Vercel** — importar el repositorio, preset «Other», sin comando de
-  compilación ni carpeta de salida. `vercel.json` ya trae las URL limpias y el
-  caché de las tipografías.
-- **Netlify / Cloudflare Pages** — arrastrar la carpeta, sin comando de build.
-- **GitHub Pages** — Settings → Pages → desplegar desde la raíz de la rama.
+### GitHub Pages — la vía directa desde este repositorio
+
+El repositorio ya está preparado: hay un `.nojekyll` y **todas las rutas son
+relativas**, así que el sitio funciona igual en la raíz de un dominio que en una
+subcarpeta tipo `usuario.github.io/GeraldMarket/`. Está comprobado sirviéndolo
+desde una subruta.
+
+**Dos clics:**
+
+1. Ve a **Settings → Pages** del repositorio.
+2. En *Build and deployment* → *Source*, elige **Deploy from a branch**.
+   Branch: **`gerald-market-site`**, carpeta: **`/ (root)`**. Guarda.
+
+En un par de minutos el sitio queda en:
+
+```
+https://poweroso2000.github.io/GeraldMarket/
+```
+
+A partir de ahí, cada vez que se suba un cambio a esa rama, la web se
+republica sola.
+
+> **Ojo — el repositorio es privado.** GitHub Pages en repositorios privados
+> solo está disponible en los planes de pago (Pro, Team, Enterprise). Con una
+> cuenta gratuita hay que **hacer el repositorio público** para que Pages
+> funcione: *Settings → General → abajo del todo → Change repository
+> visibility → Public*.
+>
+> Hacerlo público no expone nada delicado: en el código no hay claves, ni
+> contraseñas, ni datos reales — el teléfono y el correo siguen siendo
+> marcadores con ceros. Aun así es una decisión del cliente, porque el
+> borrador queda visible para cualquiera que dé con la dirección.
+
+### Otras opciones
+
+- **Netlify / Vercel / Cloudflare Pages** — se arrastra la carpeta o se importa
+  el repositorio. Sin comando de compilación y sin carpeta de salida.
+  `vercel.json` ya trae las URL limpias y el caché de las tipografías.
+- **Cualquier hosting clásico por FTP** — se suben los archivos tal cual.
+
+### Cuando haya dominio propio
+
+Añadir el dominio en *Settings → Pages → Custom domain* y actualizar a la vez
+las etiquetas `canonical`, `og:url`, el `sitemap.xml` y el `robots.txt`, que
+ahora apuntan a `https://geraldmarket.com/`.
 
 ## Accesibilidad y rendimiento
 

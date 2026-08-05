@@ -3,7 +3,7 @@
   "short_name": "Gerald Market",
   "description": "Formación en trading en español: clases uno a uno, Aprende desde cero, Nivel 1 y Nivel 2.",
   "lang": "es",
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#04070A",
   "theme_color": "#04070A",
