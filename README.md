@@ -5,9 +5,9 @@ Portal de formación en trading, **íntegramente en español**, para Gerald Mark
 HTML, CSS y JavaScript sin dependencias. No hay compilación, ni framework, ni
 servidor: se abre `index.html` o se sube la carpeta a cualquier hosting.
 
-> **Esto es un borrador.** Los textos, los datos de contacto, la foto y varios
-> precios son de relleno. La lista completa de lo que hay que reemplazar está
-> al final, en **[Antes de publicar](#antes-de-publicar)**.
+> **Esto es un borrador.** Los textos, los datos de contacto y la foto son de
+> relleno. La lista completa de lo que hay que reemplazar está al final, en
+> **[Antes de publicar](#antes-de-publicar)**.
 
 ---
 
@@ -16,7 +16,7 @@ servidor: se abre `index.html` o se sube la carpeta a cualquier hosting.
 | Archivo | Página | Qué lleva |
 |---|---|---|
 | `index.html` | **Inicio** | Portada a pantalla completa con el gráfico de velas en movimiento, la comparación «sin método / con método», los cuatro pasos, el resumen de programas, quién enseña y las preguntas frecuentes. |
-| `educate.html` | **Educate!** | El portal educativo: el 1 a 1 en detalle, los 9 módulos de *Aprende desde cero*, los Niveles 1 y 2, la tabla comparativa y las preguntas. |
+| `educate.html` | **Educate!** | La tienda: los cuatro programas en fichas de producto con precio y botón de compra, qué incluye el 1 a 1, el temario plegado y tres preguntas. |
 | `contacto.html` | **Contacto** | Foto y historia de Gerald, botones de llamar y WhatsApp, y el formulario. |
 
 ## Estructura de archivos
@@ -24,14 +24,17 @@ servidor: se abre `index.html` o se sube la carpeta a cualquier hosting.
 ```
 index.html · educate.html · contacto.html
 assets/css/styles.css        Sistema de diseño y estilos de todas las páginas
-assets/css/fonts.css         @font-face de las tres tipografías
-assets/fonts/*.woff2         Archivo Black, Archivo, JetBrains Mono (latin + latin-ext)
-assets/js/market.js          Gráfico de velas animado + velas decorativas + cinta
+assets/css/fonts.css         @font-face de las cuatro tipografías
+assets/fonts/*.woff2         Playfair Display Italic, Archivo Black, Archivo, JetBrains Mono
+assets/js/market.js          Gráfico de velas animado + cinta de cotizaciones
 assets/js/app.js             Datos de contacto (SITE), cabecera, menú, revelados
 assets/js/contacto.js        Validación del formulario y armado del mensaje
-assets/img/logo-mark.svg     El isotipo (cabecera y pie)
+assets/img/logo.svg          Marca completa sobre fondo oscuro
+assets/img/logo-light.svg    Marca completa sobre fondo claro (papel, prensa)
+assets/img/logo-mark.svg     El monograma G (cabecera y pie)
 assets/img/favicon.svg       Icono de pestaña y de pantalla de inicio
 assets/img/mentor-placeholder.svg   Marco de «foto pendiente» — a reemplazar
+tools/generate-logo.py       Regenera los cuatro archivos de marca
 robots.txt · sitemap.xml · site.webmanifest · vercel.json
 ```
 
@@ -61,18 +64,21 @@ publique por error un número inventado.
 ### Precios y contenidos de los programas
 Están escritos directamente en el HTML, sin diccionarios de por medio:
 
-- El bloque del **1 a 1** aparece dos veces: en `index.html` (sección
-  `#programas`) y completo en `educate.html` (sección `#uno-a-uno`).
-- Los **9 módulos** están en `educate.html`, en el bloque `.mods`.
-- La **tabla comparativa** está en `educate.html`, sección `#comparar`.
-- El precio se muestra siempre dentro de `.plan__px`.
+- Las cuatro fichas de producto están en `educate.html` (`#tienda`) y
+  repetidas, más cortas, en `index.html` (`#programas`).
+- Lo que incluye el **1 a 1** está en `educate.html`, sección `#uno-a-uno`.
+- Los **9 módulos** están en `educate.html`, dentro del `<details>` de
+  `#temario`.
+- El precio se muestra siempre dentro de `.pcard__px`.
+- Precios actuales: 1 a 1 **$50/mes**, Aprende desde cero **$200**, Nivel 1
+  **$100**, Nivel 2 **$150**.
 
 ### Botones «quiero este plan»
 Cualquier enlace con `data-plan="…"` se convierte solo en un mensaje de
 WhatsApp con ese texto ya escrito. Para añadir uno nuevo basta con:
 
 ```html
-<a class="btn btn--sig" data-plan="Nivel 1 ($100)" href="#">Quiero el Nivel 1</a>
+<a class="btn btn--gold" data-plan="Nivel 1 ($100)" href="#">Quiero el Nivel 1</a>
 ```
 
 ### El formulario de contacto
@@ -94,14 +100,25 @@ de mercado.** De ahí sale todo lo demás.
 
 | | |
 |---|---|
-| **Fondo** | negro `#04070A`, paneles `#070B10`, tarjetas `#0E141B` |
+| **Fondo** | negro `#04070A`; las cajas van de `#161E28` arriba a `#0B1119` abajo |
+| **Oro** | `#E9C46A` — la marca, los acentos y los botones principales |
 | **Verde** | `#00D68F` — sube, incluido, largo |
 | **Rojo** | `#FF3D57` — baja, riesgo, corto |
-| **Amarillo** | `#FFD400` — el marcador con el que un trader raya el gráfico. Por eso es el color de los botones de acción. |
+| **Marca** | Playfair Display Italic — un serif de alto contraste, en cursiva |
 | **Titulares** | Archivo Black, muy apretado |
 | **Texto** | Archivo (variable) |
-| **Números** | JetBrains Mono — precios, tickers, índices de módulo, etiquetas de eje |
-| **Esquinas** | 4–8 px. Los terminales son cuadrados, no redondeados. |
+| **Números** | JetBrains Mono — precios, tickers, etiquetas de eje |
+| **Esquinas** | 8–14 px |
+
+### El relieve
+Las cajas no son rectángulos planos: llevan un degradado de claro arriba a
+oscuro abajo, un filo brillante en el borde superior (`--bevel`) y sombra
+propia debajo (`--sh-1`, `--sh-2`, `--sh-3`). La luz cae siempre desde arriba.
+
+Y el contraste es deliberado: **lo que se pulsa sobresale, lo que se rellena
+está hundido**. Los botones tienen degradado y sombra proyectada; los campos
+del formulario tienen sombra interior (`--sunken`) y fondo casi negro. Se nota
+al instante qué es un control y qué es un hueco donde escribir.
 
 **El verde y el rojo nunca son decoración.** Si algo está en verde es porque
 sube o está incluido; si está en rojo es porque baja o advierte de un riesgo.
@@ -109,13 +126,26 @@ Esa regla es la que hace que la paleta se lea como un mercado y no como un
 sitio genérico en modo oscuro.
 
 Recursos que se repiten para dar identidad: la retícula de gráfico detrás de
-las secciones, los encabezados numerados como leyendas de indicador
-(`01 / MÉTODO`), el eje de precios a la derecha del gráfico del hero y las
-viñetas con forma de vela en todas las listas.
+las secciones, el eje de precios a la derecha del gráfico del hero, los
+numerales en cursiva dorada que hacen de portada a cada producto, y las
+etiquetas en monoespaciada con mucho espaciado.
 
 Deliberadamente **fuera**: cristal esmerilado (`backdrop-filter`), esferas de
 degradado flotando de fondo, texto relleno con degradado y emojis como
 iconos de sección. Son las marcas de una página generada, y se notan.
+
+### La marca
+`tools/generate-logo.py` construye los cuatro archivos a partir de la propia
+Playfair Display: extrae los contornos de las letras y los escribe como
+trazados SVG, así que **ningún SVG depende de una fuente instalada**. Para
+rehacerlos después de cambiar algo:
+
+```sh
+python3 tools/generate-logo.py
+```
+
+«Gerald» va en crema y «Market» en oro. El monograma de la cabecera es la G en
+cursiva dentro de una placa con filete dorado.
 
 ### El gráfico de velas en movimiento
 `assets/js/market.js` dibuja un gráfico de velas real sobre un `<canvas>`:
@@ -130,9 +160,11 @@ del precio actual.
 - Con `prefers-reduced-motion` activado dibuja un solo fotograma y no anima
   nada.
 
-Las velas decorativas del resto del sitio salen del mismo archivo: cualquier
-elemento con `data-candles="24"` se rellena solo, y `data-bias="-1"` o `"1"` le
-da pendiente bajista o alcista.
+Las velas se usan **con cuentagotas**: el gráfico del hero, la cinta de
+cotizaciones y una sola tira al pie de la portada. En Educate! y en Contacto no
+hay ninguna. Si hiciera falta añadir otra, cualquier elemento con
+`data-candles="24"` se rellena solo, y `data-bias="-1"` o `"1"` le da pendiente
+bajista o alcista.
 
 **Ninguno de esos datos es real** y el sitio lo dice: hay una nota bajo el
 gráfico del hero y otra en el aviso de riesgo del pie.
@@ -150,25 +182,23 @@ Todo esto es de relleno y hay que confirmarlo o reemplazarlo:
 
 1. **Teléfono, WhatsApp y correo.** Los de `SITE` en `assets/js/app.js` son
    marcadores (`+1 (305) 000-0000`). Sin esto, ningún botón funciona.
-2. **El precio del Nivel 2.** No se indicó. En toda la web aparece como
-   «Consultar / precio por confirmar». En cuanto haya cifra, se cambia en
-   `index.html` (`#programas`), en `educate.html` (`#nivel-2`) y en la fila
-   «Precio» de la tabla comparativa.
-3. **La foto de Gerald.** Ahora hay un marco que dice «FOTO PENDIENTE». Se
+2. **La foto de Gerald.** Ahora hay un marco que dice «FOTO PENDIENTE». Se
    reemplaza el `src` de los dos `<img>` que apuntan a
    `assets/img/mentor-placeholder.svg` (uno en `index.html`, otro en
    `contacto.html`). Un retrato vertical, buena luz, fondo oscuro si es posible.
-4. **La historia de Gerald.** El texto de `contacto.html` (`#historia`) y el del
+3. **La historia de Gerald.** El texto de `contacto.html` (`#historia`) y el del
    bloque «Quién enseña» de `index.html` son de ejemplo. Hay que sustituirlos por
    su biografía real. También la frase entrecomillada.
-5. **Los títulos de los 9 módulos** son una propuesta. Ajustar al temario real.
-6. **Los temas de los Niveles 1 y 2** son una propuesta. Confirmar.
-7. **Métodos de pago.** Una de las preguntas de `educate.html` lo deja abierto.
-8. **El dominio.** `canonical`, las etiquetas `og:`, `sitemap.xml` y `robots.txt`
+4. **Los títulos de los 9 módulos** son una propuesta. Ajustar al temario real.
+5. **Las descripciones de cada programa** (una línea por ficha) son una
+   propuesta. Confirmar que dicen lo que el cliente quiere vender.
+6. **Métodos de pago.** No se mencionan en ninguna parte. Falta decidir cómo se
+   cobra y si conviene decirlo en la ficha o dejarlo para el WhatsApp.
+7. **El dominio.** `canonical`, las etiquetas `og:`, `sitemap.xml` y `robots.txt`
    usan `https://geraldmarket.com/`. Cambiar al dominio real.
-9. **Imagen para redes (`og:image`).** No hay. Conviene generar una de
+8. **Imagen para redes (`og:image`).** No hay. Conviene generar una de
    1200 × 630 px con el logo sobre el gráfico y añadirla a las tres páginas.
-10. **Instagram / redes.** `SITE.ig` apunta a la raíz de Instagram; poner el
+9. **Instagram / redes.** `SITE.ig` apunta a la raíz de Instagram; poner el
     perfil real y, si se quiere, añadir los enlaces al pie.
 
 ### Sobre el aviso de riesgo
