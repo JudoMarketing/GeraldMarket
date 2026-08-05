@@ -120,6 +120,23 @@ está hundido**. Los botones tienen degradado y sombra proyectada; los campos
 del formulario tienen sombra interior (`--sunken`) y fondo casi negro. Se nota
 al instante qué es un control y qué es un hueco donde escribir.
 
+### Los titulares están tallados
+`.d1` y `.d2` no son texto plano: la cara va en crema y por debajo baja una
+escalera de grises que se apaga hasta el negro, así que las letras salen de la
+pantalla. La profundidad se mide en `em` (`--ext`), no en píxeles, de modo que
+crece y encoge sola con el cuerpo de letra en vez de romperse en el móvil.
+
+Dos variantes en el titular de la portada:
+
+- **`.gold-cut`** — el mismo tallado, fundido en oro. Se usa en «lectura».
+- **`.hollow`** — sin relleno: solo el filo, hecho con `-webkit-text-stroke`.
+  Detrás se ve el gráfico moverse **a través de las letras**, así que la palabra
+  «suerte» queda literalmente vacía. No es un adorno: dice lo mismo que la
+  frase.
+
+Como las letras ya tienen sombra propia, se pudo **aclarar el velo** que tapaba
+el gráfico del hero. Ahora se ven más velas y el titular sigue leyéndose.
+
 **El verde y el rojo nunca son decoración.** Si algo está en verde es porque
 sube o está incluido; si está en rojo es porque baja o advierte de un riesgo.
 Esa regla es la que hace que la paleta se lea como un mercado y no como un

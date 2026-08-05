@@ -127,6 +127,65 @@ h1, h2, h3, h4 {
 
 .d1 { font-size: clamp(2.7rem, 12.5vw, 5.7rem); line-height: .92; letter-spacing: -.035em; }
 .d2 { font-size: clamp(2rem, 7.4vw, 3.3rem);    line-height: .96; letter-spacing: -.03em; }
+
+/* ------------------------------------------------------- titulares en relieve
+   Las letras están extruidas: la cara va en crema y por debajo baja una escalera
+   de grises que se va apagando, como si el texto estuviera tallado sobre la
+   pantalla. La profundidad se mide en `em`, así que crece y encoge sola con el
+   cuerpo de letra en vez de romperse en el móvil. */
+.d1, .d2 {
+  --ext: .013em;
+  color: var(--cream);
+}
+.d1 {
+  text-shadow:
+    0 calc(var(--ext) * 1) 0 #B4BDC9,
+    0 calc(var(--ext) * 2) 0 #949DA9,
+    0 calc(var(--ext) * 3) 0 #767F8B,
+    0 calc(var(--ext) * 4) 0 #5A626E,
+    0 calc(var(--ext) * 5) 0 #424954,
+    0 calc(var(--ext) * 6) 0 #2D333C,
+    0 calc(var(--ext) * 7) 0 #1C2128,
+    0 calc(var(--ext) * 8)  calc(var(--ext) * 5)  rgba(0, 0, 0, .8),
+    0 calc(var(--ext) * 15) calc(var(--ext) * 15) rgba(0, 0, 0, .9);
+}
+.d2 {
+  --ext: .011em;
+  text-shadow:
+    0 calc(var(--ext) * 1) 0 #A9B2BE,
+    0 calc(var(--ext) * 2) 0 #838C98,
+    0 calc(var(--ext) * 3) 0 #5D6672,
+    0 calc(var(--ext) * 4) 0 #3C434D,
+    0 calc(var(--ext) * 5) 0 #232830,
+    0 calc(var(--ext) * 6)  calc(var(--ext) * 4)  rgba(0, 0, 0, .75),
+    0 calc(var(--ext) * 12) calc(var(--ext) * 12) rgba(0, 0, 0, .85);
+}
+
+/* La palabra dorada: mismo tallado, pero fundido en oro. */
+.gold-cut {
+  color: #FBEBC0;
+  text-shadow:
+    0 calc(var(--ext) * 1) 0 #E9C46A,
+    0 calc(var(--ext) * 2) 0 #D0A951,
+    0 calc(var(--ext) * 3) 0 #B28E3F,
+    0 calc(var(--ext) * 4) 0 #8E7130,
+    0 calc(var(--ext) * 5) 0 #6B5424,
+    0 calc(var(--ext) * 6) 0 #4A3A18,
+    0 calc(var(--ext) * 7) 0 #2E240F,
+    0 calc(var(--ext) * 8)  calc(var(--ext) * 5)  rgba(0, 0, 0, .8),
+    0 calc(var(--ext) * 15) calc(var(--ext) * 15) rgba(0, 0, 0, .9);
+}
+
+/* La palabra hueca: sin relleno, solo el filo. Detrás se ve el gráfico moviéndose
+   a través de las letras — la palabra «suerte» queda literalmente vacía. */
+.hollow {
+  color: rgba(255, 61, 87, .10);
+  -webkit-text-stroke: .026em var(--down);
+  text-stroke: .026em var(--down);
+  text-shadow: none;
+  paint-order: stroke fill;
+  filter: drop-shadow(0 .04em .06em rgba(0, 0, 0, .9));
+}
 .d3 { font-size: clamp(1.3rem, 4.2vw, 1.72rem); line-height: 1.07; letter-spacing: -.02em; }
 .d4 { font-family: var(--sans); font-weight: 700; font-size: 1.05rem; line-height: 1.35; letter-spacing: -.01em; }
 
@@ -404,21 +463,26 @@ p { text-wrap: pretty; }
   overflow: hidden; background: var(--black);
 }
 .hero__screen { position: absolute; inset: 0; z-index: 0; }
-.hero__screen canvas { width: 100%; height: 100%; opacity: .78; }
+.hero__screen canvas { width: 100%; height: 100%; opacity: .86; }
+/* El velo se aclaró al tallar el titular: ahora las letras tienen sombra propia
+   y se leen sin tener que apagar el gráfico. Así se ve moverse por dentro de la
+   palabra hueca. */
 .hero__screen::after {
   content: ""; position: absolute; inset: 0; pointer-events: none;
   background:
-    linear-gradient(to top, var(--black) 2%, rgba(4,7,10,.94) 32%, rgba(4,7,10,.62) 64%, rgba(4,7,10,.7) 100%),
-    linear-gradient(to right, rgba(4,7,10,.6), rgba(4,7,10,.34) 55%, rgba(4,7,10,.55));
+    linear-gradient(to top, var(--black) 2%, rgba(4,7,10,.9) 30%, rgba(4,7,10,.5) 62%, rgba(4,7,10,.62) 100%),
+    linear-gradient(to right, rgba(4,7,10,.5), rgba(4,7,10,.22) 55%, rgba(4,7,10,.45));
 }
 
 .hero__in { position: relative; z-index: 1; width: 100%; }
 .hero__eyebrow { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-bottom: 1.15rem; }
-.hero h1 { margin-bottom: 1.1rem; }
-/* un solo oro en toda la página: el amarillo ácido competía con la marca */
-.hero h1 em { font-style: normal; color: var(--gold); }
-.hero h1 .down { color: var(--down); }
-.hero__lead { max-width: 45ch; margin-bottom: 1.7rem; }
+.hero h1 { margin-bottom: 1.15rem; }
+.hero h1 em { font-style: normal; }
+.hero__lead {
+  max-width: 45ch; margin-bottom: 1.7rem;
+  color: #AFBCC9;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, .9);   /* se lee limpio sobre el gráfico */
+}
 .hero .btn-row { margin-bottom: 2.2rem; }
 .hero__foot { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .9rem; margin-top: .9rem; }
 
@@ -773,8 +837,8 @@ p { text-wrap: pretty; }
   .hero__screen canvas { opacity: 1; }
   .hero__screen::after {
     background:
-      linear-gradient(to right, rgba(4,7,10,.93) 0%, rgba(4,7,10,.74) 32%, rgba(4,7,10,.14) 66%, transparent 100%),
-      linear-gradient(to top, var(--black) 2%, rgba(4,7,10,.82) 22%, rgba(4,7,10,.24) 56%, rgba(4,7,10,.5) 100%);
+      linear-gradient(to right, rgba(4,7,10,.88) 0%, rgba(4,7,10,.64) 32%, rgba(4,7,10,.08) 66%, transparent 100%),
+      linear-gradient(to top, var(--black) 2%, rgba(4,7,10,.74) 22%, rgba(4,7,10,.16) 56%, rgba(4,7,10,.42) 100%);
   }
   .duo { grid-template-columns: 340px 1fr; gap: 70px; align-items: start; }
   .duo__aside { position: sticky; top: calc(var(--hdr) + 30px); }
