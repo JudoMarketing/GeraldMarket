@@ -1,333 +1,147 @@
-/* ============================================================
-   Pacho's Quality Auto Repair — site behavior
-   Single source of truth for contact details lives in SITE below.
-   ============================================================ */
+/* =============================================================================
+   GERALD MARKET — comportamiento del sitio
+   -----------------------------------------------------------------------------
+   Un solo lugar para los datos de contacto (SITE). Cambia ahí el teléfono, el
+   WhatsApp o el correo y se actualizan todos los botones y enlaces del sitio.
+   ========================================================================== */
 (function () {
   "use strict";
 
-  /* ---------- Business config (edit here, it propagates) ---------- */
-  const SITE = {
-    name: "Pacho's Quality Auto Repair",
-    phoneDisplay: "(305) 238-9333",
-    phoneTel: "+13052389333",
-    whatsapp: "13052389333", // digits only, country code first
-    email: "pachosqualityautorepair@gmail.com",
-    address: "12430 SW 128th St, Ste 2, Miami, FL 33186",
-    mapsUrl: "https://www.google.com/maps/dir/?api=1&destination=Pacho%27s+Quality+Auto+Repair%2C+12430+SW+128th+St%2C+Miami%2C+FL+33186",
-    // 0 = Sunday … 6 = Saturday. [openMinutes, closeMinutes] or null when closed.
-    hours: {
-      0: null,
-      1: [510, 1050], 2: [510, 1050], 3: [510, 1050], 4: [510, 1050], 5: [510, 1050],
-      6: [510, 900]
-    },
-    tz: "America/New_York"
+  /* ------------------------------------------------------------------ SITE */
+  /* BORRADOR: estos datos son de relleno. Reemplazar por los reales antes de
+     publicar — están todos marcados en el README. */
+  var SITE = {
+    marca:      "Gerald Market",
+    mentor:     "Gerald",
+    telDisplay: "+1 (305) 000-0000",
+    tel:        "+13050000000",
+    whatsapp:   "13050000000",            // solo dígitos, código de país primero
+    email:      "hola@geraldmarket.com",
+    ig:         "https://instagram.com/",
+    waSaludo:   "Hola Gerald, vengo de la web de Gerald Market y quiero información sobre las clases."
   };
-  window.SITE = SITE;
 
-  const $ = (sel, root) => (root || document).querySelector(sel);
-  const $$ = (sel, root) => Array.from((root || document).querySelectorAll(sel));
+  window.GM_SITE = SITE;
 
-  /* ---------- Wire contact links from config ---------- */
-  function wireContacts() {
-    $$("[data-tel]").forEach((el) => { el.setAttribute("href", "tel:" + SITE.phoneTel); });
-    $$("[data-phone-text]").forEach((el) => { el.textContent = SITE.phoneDisplay; });
-    $$("[data-address-text]").forEach((el) => { el.textContent = SITE.address; });
-    $$("[data-maps]").forEach((el) => { el.setAttribute("href", SITE.mapsUrl); });
-    $$("[data-mail]").forEach((el) => { el.setAttribute("href", "mailto:" + SITE.email); });
-    $$("[data-mail-text]").forEach((el) => { el.textContent = SITE.email; });
-    $$("[data-wa]").forEach((el) => {
-      const key = el.getAttribute("data-wa");
-      const msg = key ? waMessage(key) : "";
-      el.setAttribute("href", waLink(msg));
+  var wa = function (texto) {
+    return "https://wa.me/" + SITE.whatsapp + "?text=" + encodeURIComponent(texto || SITE.waSaludo);
+  };
+
+  function fillLinks() {
+    document.querySelectorAll("[data-tel]").forEach(function (a) { a.href = "tel:" + SITE.tel; });
+    document.querySelectorAll("[data-tel-text]").forEach(function (n) { n.textContent = SITE.telDisplay; });
+    document.querySelectorAll("[data-wa]").forEach(function (a) {
+      a.href = wa(a.getAttribute("data-wa") || "");
+      a.target = "_blank";
+      a.rel = "noopener";
     });
+    document.querySelectorAll("[data-mail]").forEach(function (a) { a.href = "mailto:" + SITE.email; });
+    document.querySelectorAll("[data-mail-text]").forEach(function (n) { n.textContent = SITE.email; });
+    document.querySelectorAll("[data-year]").forEach(function (n) { n.textContent = new Date().getFullYear(); });
   }
 
-  function waLink(text) {
-    const base = "https://wa.me/" + SITE.whatsapp;
-    return text ? base + "?text=" + encodeURIComponent(text) : base;
-  }
-
-  function waMessage(kind) {
-    const es = (window.I18N && I18N.lang === "es");
-    if (kind === "deal") {
-      return es
-        ? "Hola Pacho's, vi una oferta en su página web y quisiera aprovecharla. ¿Me pueden dar más información?"
-        : "Hi Pacho's, I saw a deal on your website and I'd like to use it. Can you give me more info?";
+  /* --------------------------------------------------------------- cabecera */
+  function header() {
+    var hdr = document.querySelector(".hdr");
+    if (!hdr) return;
+    var stuck = false;
+    function onScroll() {
+      var s = scrollY > 12;
+      if (s !== stuck) { stuck = s; hdr.classList.toggle("hdr--stuck", s); }
     }
-    if (kind === "quote") {
-      return es
-        ? "Hola Pacho's, quisiera un presupuesto para mi carro. Les cuento lo que está pasando:"
-        : "Hi Pacho's, I'd like a quote for my car. Here's what's going on:";
-    }
-    return es
-      ? "Hola Pacho's, vengo de su página web y quisiera pautar una cita."
-      : "Hi Pacho's, I'm coming from your website and I'd like to book an appointment.";
-  }
-  window.waLink = waLink;
-
-  /* ---------- Shop clock (always in Miami time) ---------- */
-  function shopNow() {
-    const now = new Date();
-    let local;
-    try {
-      local = new Date(now.toLocaleString("en-US", { timeZone: SITE.tz }));
-      if (isNaN(local.getTime())) local = now;
-    } catch (e) {
-      local = now;
-    }
-    return local;
-  }
-
-  function isOpenNow() {
-    const d = shopNow();
-    const span = SITE.hours[d.getDay()];
-    if (!span) return false;
-    const mins = d.getHours() * 60 + d.getMinutes();
-    return mins >= span[0] && mins < span[1];
-  }
-
-  /* When the shop is closed, work out when it opens again. */
-  function nextOpening() {
-    const d = shopNow();
-    const nowMin = d.getHours() * 60 + d.getMinutes();
-    for (let i = 0; i < 8; i++) {
-      const day = (d.getDay() + i) % 7;
-      const span = SITE.hours[day];
-      if (!span) continue;
-      if (i === 0 && nowMin >= span[0]) continue; // today's opening already passed
-      return { offset: i, day: day, minutes: span[0] };
-    }
-    return null;
-  }
-
-  const DAY_KEYS = ["day.sun", "day.mon", "day.tue", "day.wed", "day.thu", "day.fri", "day.sat"];
-
-  function clockLabel(mins) {
-    const h24 = Math.floor(mins / 60);
-    const m = mins % 60;
-    const suffix = h24 < 12 ? "AM" : "PM";
-    const h = h24 % 12 === 0 ? 12 : h24 % 12;
-    return h + ":" + String(m).padStart(2, "0") + " " + suffix;
-  }
-
-  function nextOpeningText() {
-    const next = nextOpening();
-    if (!next) return "";
-    const t = (k) => (window.I18N ? I18N.t(k) : k);
-    const time = clockLabel(next.minutes);
-    if (next.offset === 0) return t("shop.opensToday") + " " + time;
-    if (next.offset === 1) return t("shop.opensTomorrow") + " " + time;
-    let day = t(DAY_KEYS[next.day]);
-    if (window.I18N && I18N.lang === "es") day = day.toLocaleLowerCase("es");
-    return t("shop.opens") + " " + day + " " + t("shop.opensAt") + " " + time;
-  }
-
-  function paintStatus() {
-    const open = isOpenNow();
-    $$("[data-status]").forEach((el) => {
-      el.classList.toggle("is-open", open);
-      el.classList.toggle("is-closed", !open);
-      const label = el.querySelector("[data-status-text]");
-      if (label) label.textContent = window.I18N ? I18N.t(open ? "shop.open" : "shop.closed") : (open ? "Open now" : "Closed now");
-    });
-    const today = shopNow().getDay();
-    $$("[data-day]").forEach((row) => {
-      row.classList.toggle("is-today", Number(row.getAttribute("data-day")) === today);
-    });
-    // Tell people when we open again rather than just "closed"
-    const nextText = open ? "" : nextOpeningText();
-    $$("[data-next-open]").forEach((el) => {
-      el.textContent = nextText;
-      el.hidden = !nextText;
-    });
-
-    // "Today" line used on the appointment rail
-    const t = $("[data-today-hours]");
-    if (t) {
-      const span = SITE.hours[today];
-      t.textContent = span
-        ? (window.I18N ? I18N.t(today === 6 ? "hours.sat" : "hours.weekday") : "8:30 AM – 5:30 PM")
-        : (window.I18N ? I18N.t("hours.closed") : "Closed");
-    }
-  }
-
-  /* ---------- Header / drawer ---------- */
-  function initHeader() {
-    const header = $(".header");
-    const burger = $(".burger");
-    const drawer = $(".drawer");
-
-    if (header) {
-      const onScroll = () => header.classList.toggle("is-stuck", window.scrollY > 8);
-      onScroll();
-      window.addEventListener("scroll", onScroll, { passive: true });
-    }
-
-    if (burger && drawer) {
-      const close = () => {
-        burger.setAttribute("aria-expanded", "false");
-        drawer.classList.remove("is-open");
-        document.body.style.overflow = "";
-      };
-      burger.addEventListener("click", () => {
-        const open = burger.getAttribute("aria-expanded") === "true";
-        if (open) { close(); return; }
-        burger.setAttribute("aria-expanded", "true");
-        drawer.classList.add("is-open");
-        document.body.style.overflow = "hidden";
-      });
-      drawer.addEventListener("click", (e) => { if (e.target.closest("a")) close(); });
-      document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
-      window.addEventListener("resize", () => { if (window.innerWidth >= 1000) close(); });
-    }
-  }
-
-  /* ---------- Scroll reveal ---------- */
-  function initReveal() {
-    const items = $$(".reveal");
-    if (!items.length) return;
-    if (!("IntersectionObserver" in window) || matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      items.forEach((el) => el.classList.add("is-in"));
-      return;
-    }
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-in");
-          io.unobserve(entry.target);
-        }
-      });
-    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.06 });
-    items.forEach((el) => io.observe(el));
-  }
-
-  /* ---------- Scroll spy for desktop nav ---------- */
-  function initSpy() {
-    const links = $$(".nav a[href^='#']");
-    if (!links.length || !("IntersectionObserver" in window)) return;
-    const map = new Map();
-    links.forEach((a) => {
-      const sec = document.getElementById(a.getAttribute("href").slice(1));
-      if (sec) map.set(sec, a);
-    });
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          links.forEach((a) => a.classList.remove("is-active"));
-          const active = map.get(entry.target);
-          if (active) active.classList.add("is-active");
-        }
-      });
-    }, { rootMargin: "-45% 0px -50% 0px" });
-    map.forEach((_, sec) => io.observe(sec));
-  }
-
-  /* ---------- Back to top ---------- */
-  function initTop() {
-    const btn = $(".fab--top");
-    if (!btn) return;
-    const onScroll = () => btn.classList.toggle("is-visible", window.scrollY > 700);
+    addEventListener("scroll", onScroll, { passive: true });
     onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    btn.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+  }
+
+  function drawer() {
+    var btn = document.querySelector(".burger");
+    var box = document.querySelector(".drawer");
+    if (!btn || !box) return;
+
+    function set(open) {
+      btn.setAttribute("aria-expanded", String(open));
+      box.setAttribute("data-open", String(open));
+    }
+    btn.addEventListener("click", function () {
+      set(btn.getAttribute("aria-expanded") !== "true");
+    });
+    box.addEventListener("click", function (e) {
+      if (e.target.closest("a")) set(false);
+    });
+    addEventListener("keydown", function (e) { if (e.key === "Escape") set(false); });
+    matchMedia("(min-width: 960px)").addEventListener("change", function () { set(false); });
+  }
+
+  /* ------------------------------------------------- barra fija en el móvil */
+  function dock() {
+    var el = document.querySelector(".dock");
+    if (!el) return;
+    var last = 0;
+    function onScroll() {
+      var y = scrollY;
+      var show = y > 420 && (y < last || y > document.body.scrollHeight - innerHeight - 600);
+      el.setAttribute("data-on", String(show));
+      last = y;
+    }
+    addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  }
+
+  /* -------------------------------------------------------------- revelado */
+  function reveal() {
+    var els = document.querySelectorAll(".rv");
+    if (!els.length) return;
+    if (!("IntersectionObserver" in window) || matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      els.forEach(function (e) { e.setAttribute("data-in", "true"); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        en.target.setAttribute("data-in", "true");
+        io.unobserve(en.target);
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: .06 });
+    els.forEach(function (e, i) {
+      e.style.transitionDelay = (Math.min(i % 4, 3) * 60) + "ms";
+      io.observe(e);
     });
   }
 
-  /* ---------- Coupon codes: click to copy, and carry into the form ---------- */
-  function initCoupons() {
-    $$(".coupon__code").forEach((el) => {
-      el.setAttribute("role", "button");
-      el.setAttribute("tabindex", "0");
-      const fire = () => {
-        const code = el.getAttribute("data-code") || el.textContent.trim();
-        const restore = el.textContent;
-        const done = () => {
-          el.classList.add("is-copied");
-          el.textContent = window.I18N ? I18N.t("deals.copied") : "Copied!";
-          setTimeout(() => { el.classList.remove("is-copied"); el.textContent = restore; }, 1600);
-        };
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(code).then(done).catch(done);
-        } else {
-          done();
-        }
-      };
-      el.addEventListener("click", fire);
-      el.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fire(); }
+  /* --------------------------------------------- acordeón: uno abierto a la vez */
+  function accordions() {
+    document.querySelectorAll(".acc").forEach(function (group) {
+      var items = group.querySelectorAll("details");
+      items.forEach(function (d) {
+        d.addEventListener("toggle", function () {
+          if (!d.open) return;
+          items.forEach(function (o) { if (o !== d) o.open = false; });
+        });
       });
     });
   }
 
-  /* ---------- Duplicate ticker/marquee content for a seamless loop ---------- */
-  function initLoops() {
-    $$("[data-loop]").forEach((track) => {
-      const clone = track.cloneNode(true);
-      clone.setAttribute("aria-hidden", "true");
-      clone.removeAttribute("data-loop");
-      Array.from(clone.children).forEach((c) => track.appendChild(c));
+  /* ------------------------------------- enlaces "quiero este plan" a WhatsApp */
+  function planLinks() {
+    document.querySelectorAll("[data-plan]").forEach(function (a) {
+      var p = a.getAttribute("data-plan");
+      a.href = wa("Hola " + SITE.mentor + ", quiero información sobre: " + p + ".");
+      a.target = "_blank";
+      a.rel = "noopener";
     });
   }
 
-  /* ---------- Real reviews, rendered from assets/js/reviews.js ---------- */
-  function initReviews() {
-    const grid = $("[data-reviews]");
-    if (!grid) return;
-    const list = Array.isArray(window.PACHO_REVIEWS) ? window.PACHO_REVIEWS : [];
-    const empty = $("[data-reviews-empty]");
-
-    if (!list.length) {
-      grid.hidden = true;
-      if (empty) empty.hidden = false;
-      return;
-    }
-    grid.hidden = false;
-    if (empty) empty.hidden = true;
-
-    const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-    grid.innerHTML = list.map((r) => {
-      const stars = '<svg><use href="#i-star"/></svg>'.repeat(Math.max(1, Math.min(5, r.stars || 5)));
-      const initial = esc((r.name || "?").trim().charAt(0).toUpperCase());
-      // lang is stamped on the quote so a Spanish review keeps Spanish
-      // hyphenation and screen-reader pronunciation on the English site.
-      return (
-        '<article class="card review">' +
-        '<span class="stars" aria-hidden="true">' + stars + "</span>" +
-        '<p class="review__q" lang="' + esc(r.lang || "en") + '">' + esc(r.text) + "</p>" +
-        '<div class="review__who">' +
-        '<span class="review__av" aria-hidden="true">' + initial + "</span>" +
-        "<span><span class=\"review__name\" style=\"display:block\">" + esc(r.name || "") + "</span>" +
-        '<span class="review__src">Google' + (r.date ? " · " + esc(r.date) : "") + "</span></span>" +
-        "</div></article>"
-      );
-    }).join("");
-  }
-
-  /* ---------- Year in footer ---------- */
-  function initYear() {
-    $$("[data-year]").forEach((el) => { el.textContent = String(new Date().getFullYear()); });
-  }
-
-  /* ---------- Boot ---------- */
   function boot() {
-    initLoops();
-    wireContacts();
-    initHeader();
-    initReveal();
-    initSpy();
-    initTop();
-    initCoupons();
-    initReviews();
-    initYear();
-    paintStatus();
-    setInterval(paintStatus, 60000);
-    document.addEventListener("langchange", () => { paintStatus(); wireContacts(); });
+    fillLinks();
+    planLinks();
+    header();
+    drawer();
+    dock();
+    reveal();
+    accordions();
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", boot);
-  } else {
-    boot();
-  }
+  document.readyState === "loading"
+    ? document.addEventListener("DOMContentLoaded", boot)
+    : boot();
 })();

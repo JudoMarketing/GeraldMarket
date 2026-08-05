@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pachosqualityautorepair.com/sitemap.xml
+Sitemap: https://geraldmarket.com/sitemap.xml

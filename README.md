@@ -1,238 +1,202 @@
-# Pacho's Quality Auto Repair — Website
+# Gerald Market — sitio web (borrador)
 
-Bilingual (English / Español) marketing site and appointment request form for
-**Pacho's Quality Auto Repair LLC**, Miami, FL.
+Portal de formación en trading, **íntegramente en español**, para Gerald Market.
 
-Static HTML, CSS and vanilla JavaScript. No build step, no dependencies, no server
-required — open `index.html` or drop the folder on any host.
+HTML, CSS y JavaScript sin dependencias. No hay compilación, ni framework, ni
+servidor: se abre `index.html` o se sube la carpeta a cualquier hosting.
+
+> **Esto es un borrador.** Los textos, los datos de contacto, la foto y varios
+> precios son de relleno. La lista completa de lo que hay que reemplazar está
+> al final, en **[Antes de publicar](#antes-de-publicar)**.
 
 ---
 
-## Structure
+## Las tres páginas
+
+| Archivo | Página | Qué lleva |
+|---|---|---|
+| `index.html` | **Inicio** | Portada a pantalla completa con el gráfico de velas en movimiento, la comparación «sin método / con método», los cuatro pasos, el resumen de programas, quién enseña y las preguntas frecuentes. |
+| `educate.html` | **Educate!** | El portal educativo: el 1 a 1 en detalle, los 9 módulos de *Aprende desde cero*, los Niveles 1 y 2, la tabla comparativa y las preguntas. |
+| `contacto.html` | **Contacto** | Foto y historia de Gerald, botones de llamar y WhatsApp, y el formulario. |
+
+## Estructura de archivos
 
 ```
-index.html               Home: hero, guarantees, services, specials, process, reviews, shop, location
-faq.html                 Questions & answers (own page, with FAQPage schema)
-appointment.html         Appointment form (VIN optional)
-assets/css/styles.css    Design system + all page styles
-assets/css/fonts.css     @font-face for the self-hosted typefaces
-assets/fonts/*.woff2     Poppins, DM Sans, IBM Plex Mono (latin + latin-ext)
-assets/js/i18n.js        EN/ES dictionary + translation engine
-assets/js/app.js         Business config, shop clock + next opening, reveals, coupons, reviews
-assets/js/reviews.js     REAL customer reviews - empty until the shop pastes theirs in
-assets/js/appointment.js Form validation, VIN helper, message composer
-assets/img/logo.svg      Full lockup, rebuilt from the shop's painted sign
-assets/img/logo-mark.svg Compact truck, used in the header
-assets/img/favicon.svg   The truck on a blue plate
-assets/img/art-*.svg     Line drawings (hero + service cards)
-tools/generate-logo.py   Rebuilds the three logo files
-tools/generate-art.py    Rebuilds the four line drawings
-robots.txt | sitemap.xml | site.webmanifest
+index.html · educate.html · contacto.html
+assets/css/styles.css        Sistema de diseño y estilos de todas las páginas
+assets/css/fonts.css         @font-face de las tres tipografías
+assets/fonts/*.woff2         Archivo Black, Archivo, JetBrains Mono (latin + latin-ext)
+assets/js/market.js          Gráfico de velas animado + velas decorativas + cinta
+assets/js/app.js             Datos de contacto (SITE), cabecera, menú, revelados
+assets/js/contacto.js        Validación del formulario y armado del mensaje
+assets/img/logo-mark.svg     El isotipo (cabecera y pie)
+assets/img/favicon.svg       Icono de pestaña y de pantalla de inicio
+assets/img/mentor-placeholder.svg   Marco de «foto pendiente» — a reemplazar
+robots.txt · sitemap.xml · site.webmanifest · vercel.json
 ```
 
-## Editing the important things
+---
 
-### Phone, WhatsApp, email, address, hours
-All in one place — the `SITE` object at the top of **`assets/js/app.js`**.
-Change it there and every button, link and schema on the site follows.
+## Lo que hay que tocar para editar
+
+### Teléfono, WhatsApp y correo — un solo sitio
+Todo está en el objeto `SITE`, al principio de **`assets/js/app.js`**. Se cambia
+ahí y se actualizan todos los botones y enlaces del sitio de una vez.
 
 ```js
-const SITE = {
-  phoneDisplay: "(305) 238-9333",
-  phoneTel: "+13052389333",
-  whatsapp: "13052389333",   // digits only, country code first
-  email: "...",
-  address: "12430 SW 128th St, Ste 2, Miami, FL 33186",
-  hours: { 0: null, 1: [510, 1050], /* … minutes from midnight */ 6: [510, 900] }
+var SITE = {
+  marca:      "Gerald Market",
+  mentor:     "Gerald",
+  telDisplay: "+1 (305) 000-0000",   // como se lee en pantalla
+  tel:        "+13050000000",        // como se marca
+  whatsapp:   "13050000000",         // solo dígitos, código de país primero
+  email:      "hola@geraldmarket.com",
+  waSaludo:   "Hola Gerald, vengo de la web…"
 };
 ```
 
-The hours also appear as plain text in `index.html` (the hours card and footer) and in
-the JSON-LD block in `<head>` — update those three places together if the schedule changes.
+Los ceros son un marcador de posición evidente **a propósito**, para que no se
+publique por error un número inventado.
 
-### Text and translations
-Every visible string lives in **`assets/js/i18n.js`** as an `en` / `es` pair.
-Find the key, edit both languages, done. Elements pull their text with
-`data-i18n="key"` (or `data-i18n-html`, `-placeholder`, `-aria`, `-content`).
+### Precios y contenidos de los programas
+Están escritos directamente en el HTML, sin diccionarios de por medio:
 
-The visitor's language is auto-detected from their browser, remembered in
-`localStorage`, and can be forced with `?lang=es` in the URL.
+- El bloque del **1 a 1** aparece dos veces: en `index.html` (sección
+  `#programas`) y completo en `educate.html` (sección `#uno-a-uno`).
+- Los **9 módulos** están en `educate.html`, en el bloque `.mods`.
+- La **tabla comparativa** está en `educate.html`, sección `#comparar`.
+- El precio se muestra siempre dentro de `.plan__px`.
 
-### Deals / coupons
-The six coupon cards are in `index.html` under `<section id="deals">`. Each card's
-text comes from `deals.d1.*` … `deals.d6.*` in the dictionary; the code (`OIL20`,
-`TIRE4`, …) is the `data-code` attribute and the `?promo=` link. Clicking a code
-copies it; the "Use this deal" link pre-fills the appointment form.
+### Botones «quiero este plan»
+Cualquier enlace con `data-plan="…"` se convierte solo en un mensaje de
+WhatsApp con ese texto ya escrito. Para añadir uno nuevo basta con:
 
-The scrolling ticker at the very top uses `ticker.1` … `ticker.6`.
+```html
+<a class="btn btn--sig" data-plan="Nivel 1 ($100)" href="#">Quiero el Nivel 1</a>
+```
 
-### Appointment form
-No backend. On submit the form validates, builds a clean formatted request and:
+### El formulario de contacto
+No manda nada por su cuenta: valida, arma un mensaje ordenado y lo abre en
+WhatsApp o en el correo para que lo envíe la persona. Así no hay servidor de por
+medio ni datos guardados en ningún lado.
 
-- **Send by WhatsApp** → opens `wa.me` with the whole request pre-typed
-- **Send by email** → opens the mail client with subject + body filled
-- **Copy request** → clipboard, for pasting anywhere
-
-To send to a real inbox/CRM instead, point the form at a service like Formspree,
-Netlify Forms or Google Apps Script and call it from `appointment.js` inside the
-`sendWa` / `sendMail` handlers (or add a third button). The field `name`s are already
-sensible: `service[]`, `problem`, `urgency`, `year`, `make`, `model`, `mileage`,
-`vin`, `date`, `date2`, `time`, `wait`, `name`, `phone`, `email`, `contact`,
-`lang`, `promo`, `consent`.
-
-**VIN handling:** optional by design. The field auto-uppercases, strips punctuation,
-counts to 17, rejects the letters I/O/Q (which never appear in a VIN), and explains
-where to find it — but an empty or partial VIN never blocks a booking.
+Si más adelante se quiere recibir en una bandeja o en un CRM, se conecta un
+servicio tipo Formspree, Netlify Forms o Google Apps Script desde
+`assets/js/contacto.js`. Los `name` de los campos ya son sensatos: `nombre`,
+`telefono`, `email`, `interes`, `nivel`, `mensaje`, `acepto`.
 
 ---
 
-## The design
+## El diseño
 
-Built to the reference the client picked (a dark auto-shop showcase site),
-recoloured to **black, white and several blues** at their request.
+La idea de partida: **la página no habla del mercado, la página es una pantalla
+de mercado.** De ahí sale todo lo demás.
 
 | | |
 |---|---|
-| **Ground** | near-black `#07090D`, panels `#0C1016`, cards `#12171F` |
-| **Navy blocks** | reviews and the closing CTA sit on a `#071634 → #050B1C` gradient |
-| **Accent** | `#0B63F6`, with `#3B87FF` for headline accents and `#7FB4FF` for soft detail |
-| **Type** | Poppins 700/800 for headings, DM Sans for body, IBM Plex Mono only for VINs and promo codes |
-| **Shape** | fully-rounded pill buttons, 24–32px card radii |
+| **Fondo** | negro `#04070A`, paneles `#070B10`, tarjetas `#0E141B` |
+| **Verde** | `#00D68F` — sube, incluido, largo |
+| **Rojo** | `#FF3D57` — baja, riesgo, corto |
+| **Amarillo** | `#FFD400` — el marcador con el que un trader raya el gráfico. Por eso es el color de los botones de acción. |
+| **Titulares** | Archivo Black, muy apretado |
+| **Texto** | Archivo (variable) |
+| **Números** | JetBrains Mono — precios, tickers, índices de módulo, etiquetas de eje |
+| **Esquinas** | 4–8 px. Los terminales son cuadrados, no redondeados. |
 
-Patterns carried over from the reference: a pill badge above the headline, the
-accent word coloured inside an otherwise white headline, grey body copy, service
-cards with tags overlaid on the image, centred section headings under a small
-accent eyebrow, review cards with a circular avatar, and a phone bar pinned to
-the bottom of the screen on mobile.
+**El verde y el rojo nunca son decoración.** Si algo está en verde es porque
+sube o está incluido; si está en rojo es porque baja o advierte de un riesgo.
+Esa regla es la que hace que la paleta se lea como un mercado y no como un
+sitio genérico en modo oscuro.
 
-Still deliberately absent — these are the tells of a generated page: frosted
-glass / `backdrop-filter`, ambient gradient orbs floating behind the content,
-and gradient-filled text.
+Recursos que se repiten para dar identidad: la retícula de gráfico detrás de
+las secciones, los encabezados numerados como leyendas de indicador
+(`01 / MÉTODO`), el eje de precios a la derecha del gráfico del hero y las
+viñetas con forma de vela en todas las listas.
 
-### The mark - rebuilt from the shop's own sign
-The shop has a painted metal sign: bold slanted blue letters spelling PACHO'S
-QUALITY, AUTO REPAIR beneath, the whole wordmark sitting on a truck body with
-two black wheels. **The lettering is the vehicle** - that is the identity, so
-that is what the logo reproduces, in the sign's own colours (blue lettering,
-silver body, black tyres).
+Deliberadamente **fuera**: cristal esmerilado (`backdrop-filter`), esferas de
+degradado flotando de fondo, texto relleno con degradado y emojis como
+iconos de sección. Son las marcas de una página generada, y se notan.
 
-Letterforms are Archivo Black, the closest match to the hand-cut originals,
-converted to outlines and slanted, so the finished SVG carries no font
-dependency at all. Run `python3 tools/generate-logo.py` to rebuild.
+### El gráfico de velas en movimiento
+`assets/js/market.js` dibuja un gráfico de velas real sobre un `<canvas>`:
+camina el precio cada 70 ms, forma la vela en curso, la cierra cada 1,5 s,
+empuja el gráfico a la izquierda y redibuja la retícula, el eje y la etiqueta
+del precio actual.
 
-| File | Where |
-|---|---|
-| `logo.svg` | full horizontal lockup - footer, print, social |
-| `logo-mark.svg` | the truck alone - site header, small sizes |
-| `favicon.svg` | the truck on a blue plate - browser tab, phone home screen |
+- Usa un generador con semilla fija, así el gráfico se ve **igual en cada
+  carga** — la marca queda consistente.
+- Se **detiene solo** cuando la pestaña se oculta o cuando el hero sale de la
+  pantalla, para no gastar batería en el móvil.
+- Con `prefers-reduced-motion` activado dibuja un solo fotograma y no anima
+  nada.
 
-If the shop ever wants the sign traced exactly rather than interpreted with a
-typeface, send the photo to a sign shop or a vector illustrator - a hand-trace
-of those hand-cut letters will beat any font substitution.
+Las velas decorativas del resto del sitio salen del mismo archivo: cualquier
+elemento con `data-candles="24"` se rellena solo, y `data-bias="-1"` o `"1"` le
+da pendiente bajista o alcista.
 
-### The imagery — read this before launch
-**The reference site is carried almost entirely by real photographs.** This one
-cannot be: stock photo hosts are unreachable from the build environment, and the
-shop has not supplied photos yet. In their place are four **line drawings** in the
-shop-manual style — light strokes on the dark ground, blue used only to point at
-the part being serviced (`python3 tools/generate-art.py` regenerates them).
+**Ninguno de esos datos es real** y el sitio lo dice: hay una nota bajo el
+gráfico del hero y otra en el aviso de riesgo del pie.
 
-They hold the layout together and look deliberate, but they are a stand-in. The
-design will not match the reference until real photos go in. Two swaps, no CSS
-changes:
-
-1. **Hero** — replace the `<img>` inside `.hero__art` in `index.html`.
-2. **The three service cards** — swap the `src` on the `<img>` tags inside
-   `.svc-grid`, then change `.svc__media img { object-fit: contain }` to `cover`
-   and drop the `padding` on that rule so photos fill the frame edge to edge.
-
-Shots to take, in priority order: the shop front with the sign, a car up on the
-lift, a technician working, the waiting area, and the team. Phone photos are fine
-if they are well lit — they will still beat any illustration.
-
-### Fonts are self-hosted
-`assets/fonts/` holds the woff2 files and `assets/css/fonts.css` declares them.
-The page makes **zero third-party requests** — nothing to Google, no tracking.
-
-## Before this goes live — please confirm with the shop
-
-These came from public directory listings and should be verified by the owner:
-
-1. **Hours.** Listings disagree: some show Mon–Fri 8:15 AM–5:30 PM, others
-   8:30 AM–6:30 PM. The site currently uses **Mon–Fri 8:30 AM–5:30 PM,
-   Sat 8:30 AM–3:00 PM, Sun closed**.
-2. **WhatsApp number.** Currently set to the shop's main line. If WhatsApp is on a
-   different number, change `SITE.whatsapp`.
-3. **Email address.** `SITE.email` is a placeholder — replace with the real one.
-4. **The six promotions.** Amounts, conditions and expiration are proposals. The
-   owner should approve every number before publishing.
-5. **Reviews.** There are no invented quotes on the site any more. The section
-   shows the public 4.8 rating, the themes customers mention most, and a button
-   through to the Google listing. To put real reviews on the page, open
-   `assets/js/reviews.js` and paste them in - copy each one word for word, in the
-   language the customer wrote it, and set `lang: "es"` or `lang: "en"` so a
-   Spanish review stays Spanish on the English site. Instructions are in the file.
-   Cards appear automatically as soon as there is at least one.
-5b. **Amenities.** The "While you're here" chips (waiting area, Wi-Fi, parking,
-   text updates) are plausible defaults, not verified facts. Confirm each one or
-   delete the chip — they live in the About section of `index.html` and under
-   `amen.*` in the dictionary.
-6. **Warranty and payment answers** in the FAQ are written conservatively — confirm
-   the exact terms.
-7. **Domain.** `canonical`, `og:` tags, `sitemap.xml` and the JSON-LD use
-   `https://pachosqualityautorepair.com/`. Update to the real domain.
-8. **Map + geo coordinates** in the JSON-LD are approximate for the street address.
-
-`aggregateRating` was deliberately **left out** of the structured data — Google
-discourages self-serving review markup. The 4.8★ figure appears as normal page text.
+### Tipografías propias
+Están en `assets/fonts/` y se declaran en `assets/css/fonts.css`. La página
+hace **cero peticiones a terceros**: nada a Google, ningún rastreador, ninguna
+cookie. El único almacenamiento del navegador que se usa es… ninguno.
 
 ---
 
-## Deploying to Vercel
+## Antes de publicar
 
-The repo is a plain static site — no build step — so Vercel needs no
-configuration beyond the `vercel.json` already committed (clean URLs and
-cache headers for the fonts).
+Todo esto es de relleno y hay que confirmarlo o reemplazarlo:
 
-**From the browser, about two minutes:**
+1. **Teléfono, WhatsApp y correo.** Los de `SITE` en `assets/js/app.js` son
+   marcadores (`+1 (305) 000-0000`). Sin esto, ningún botón funciona.
+2. **El precio del Nivel 2.** No se indicó. En toda la web aparece como
+   «Consultar / precio por confirmar». En cuanto haya cifra, se cambia en
+   `index.html` (`#programas`), en `educate.html` (`#nivel-2`) y en la fila
+   «Precio» de la tabla comparativa.
+3. **La foto de Gerald.** Ahora hay un marco que dice «FOTO PENDIENTE». Se
+   reemplaza el `src` de los dos `<img>` que apuntan a
+   `assets/img/mentor-placeholder.svg` (uno en `index.html`, otro en
+   `contacto.html`). Un retrato vertical, buena luz, fondo oscuro si es posible.
+4. **La historia de Gerald.** El texto de `contacto.html` (`#historia`) y el del
+   bloque «Quién enseña» de `index.html` son de ejemplo. Hay que sustituirlos por
+   su biografía real. También la frase entrecomillada.
+5. **Los títulos de los 9 módulos** son una propuesta. Ajustar al temario real.
+6. **Los temas de los Niveles 1 y 2** son una propuesta. Confirmar.
+7. **Métodos de pago.** Una de las preguntas de `educate.html` lo deja abierto.
+8. **El dominio.** `canonical`, las etiquetas `og:`, `sitemap.xml` y `robots.txt`
+   usan `https://geraldmarket.com/`. Cambiar al dominio real.
+9. **Imagen para redes (`og:image`).** No hay. Conviene generar una de
+   1200 × 630 px con el logo sobre el gráfico y añadirla a las tres páginas.
+10. **Instagram / redes.** `SITE.ig` apunta a la raíz de Instagram; poner el
+    perfil real y, si se quiere, añadir los enlaces al pie.
 
-1. Go to <https://vercel.com/new> and sign in with GitHub.
-2. Import `poweroso2000/pachos-auto-repair`.
-3. Framework preset: **Other**. Leave build command and output directory empty
-   — it is already static.
-4. Set the production branch to `claude/pachos-auto-repair-site-3bdls2` (or
-   merge that branch into `main` first and deploy `main`).
-5. Deploy. You get a `*.vercel.app` URL immediately; every later push to that
-   branch redeploys automatically.
+### Sobre el aviso de riesgo
+El pie de las tres páginas lleva un aviso de riesgo y deja claro que Gerald
+Market da **formación**, no asesoría financiera, y que no garantiza resultados.
+No es adorno legal: en formación sobre mercados es justo lo que separa a un
+sitio serio de uno que parece una estafa, y ninguna afirmación de la web promete
+rentabilidad. **Recomendamos no quitarlo**, y que un abogado lo revise antes de
+cobrar el primer pago.
 
-**From the terminal, if you prefer:**
+---
 
-```sh
-npm i -g vercel
-vercel login
-vercel --prod
-```
+## Publicar
 
-Once the real domain is ready, add it under Settings → Domains, then update
-the `canonical` tags, `og:url`, `sitemap.xml` and the JSON-LD `url` to match.
+Es un sitio estático: sirve cualquier hosting.
 
-## Deploying
+- **Vercel** — importar el repositorio, preset «Other», sin comando de
+  compilación ni carpeta de salida. `vercel.json` ya trae las URL limpias y el
+  caché de las tipografías.
+- **Netlify / Cloudflare Pages** — arrastrar la carpeta, sin comando de build.
+- **GitHub Pages** — Settings → Pages → desplegar desde la raíz de la rama.
 
-Any static host works. Fastest options:
+## Accesibilidad y rendimiento
 
-- **GitHub Pages** — Settings → Pages → deploy from the branch root.
-- **Netlify / Vercel / Cloudflare Pages** — drag the folder in, no build command.
-
-The only external request is the Google Maps embed. Fonts, styles, scripts and
-artwork are all local.
-
-## Accessibility & performance notes
-
-- Mobile-first; a sticky bottom dock (Call / Book / Directions) and a following
-  WhatsApp button are always in reach on phones.
-- Skip link, visible focus rings, `aria-pressed` on the language switch, labelled
-  form fields, `role="status"` live regions for validation.
-- `prefers-reduced-motion` disables every animation, marquee and smooth scroll.
-- Fallbacks for browsers without `backdrop-filter` or `:has()`.
-- No JS framework, no tracking, no cookies, no third-party requests. Only
-  `localStorage`, and only for the language choice.
+- Diseñado primero para el móvil. Barra fija abajo con «Ver programas» y
+  «WhatsApp» siempre al alcance del pulgar.
+- Enlace para saltar al contenido, foco visible, `aria-expanded` en el menú,
+  campos etiquetados y `role="alert"` en los errores del formulario.
+- `prefers-reduced-motion` desactiva el gráfico animado, la cinta y todas las
+  transiciones.
+- Sin framework, sin rastreo, sin cookies, sin peticiones externas.

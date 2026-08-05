@@ -1,7 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="116" fill="#0B63F6"/>
-  <g transform="translate(18 138)">
-    <path d="M14,150 C14,132 22,118 40,112 L92,98 L108,58 C112,44 124,34 142,34 L358,34 C376,34 388,44 394,58 L418,104 C442,112 458,126 460,148 L462,172 C462,182 455,188 444,188 L404,188 A50,50 0 0 0 304,188 L172,188 A50,50 0 0 0 72,188 L30,188 C20,188 14,181 14,172 Z" fill="#FFFFFF"/>
-    <g fill="#0B63F6"><circle cx="122" cy="188" r="27"/><circle cx="354" cy="188" r="27"/></g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="Gerald Market">
+  <title>Gerald Market</title>
+  <rect width="48" height="48" rx="10" fill="#04070A"/>
+  <g stroke-linecap="butt">
+    <line x1="12" y1="15" x2="12" y2="32" stroke="#FF3D57" stroke-width="1.8"/>
+    <rect x="8.5"  y="18" width="7" height="11" fill="#FF3D57" rx="1"/>
+    <line x1="24" y1="14" x2="24" y2="35" stroke="#00D68F" stroke-width="1.8"/>
+    <rect x="20.5" y="17" width="7" height="15" fill="#00D68F" rx="1"/>
+    <line x1="36" y1="9"  x2="36" y2="29" stroke="#00D68F" stroke-width="1.8"/>
+    <rect x="32.5" y="12" width="7" height="14" fill="#00D68F" rx="1"/>
   </g>
+  <path d="M8 34 L40 12" fill="none" stroke="#FFD400" stroke-width="2.8" stroke-linecap="round"/>
 </svg>

@@ -1,7 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 476 236" role="img"
-     aria-label="Pacho's Quality Auto Repair">
-  <title>Pacho's Quality Auto Repair</title>
-  <path d="M14,150 C14,132 22,118 40,112 L92,98 L108,58 C112,44 124,34 142,34 L358,34 C376,34 388,44 394,58 L418,104 C442,112 458,126 460,148 L462,172 C462,182 455,188 444,188 L404,188 A50,50 0 0 0 304,188 L172,188 A50,50 0 0 0 72,188 L30,188 C20,188 14,181 14,172 Z" fill="#E7EBF2"/>
-  <path d="M14,150 C14,132 22,118 40,112 L92,98 L108,58 C112,44 124,34 142,34 L358,34 C376,34 388,44 394,58 L418,104 C442,112 458,126 460,148 L462,172 C462,182 455,188 444,188 L404,188 A50,50 0 0 0 304,188 L172,188 A50,50 0 0 0 72,188 L30,188 C20,188 14,181 14,172 Z" fill="none" stroke="#0A1020" stroke-width="9" stroke-linejoin="round"/>
-  <circle cx="122" cy="188" r="40" fill="#0A1020"/><circle cx="122" cy="188" r="17" fill="#E7EBF2"/><circle cx="354" cy="188" r="40" fill="#0A1020"/><circle cx="354" cy="188" r="17" fill="#E7EBF2"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" role="img" aria-label="Gerald Market">
+  <title>Gerald Market</title>
+  <!-- Cuatro velas: dos rojas, dos verdes. Encima, la línea amarilla — el
+       trazo que el trader dibuja sobre el gráfico. -->
+  <g stroke-linecap="butt">
+    <!-- vela 1, baja -->
+    <line x1="6"  y1="11" x2="6"  y2="27" stroke="#FF3D57" stroke-width="1.4"/>
+    <rect x="3"  y="14" width="6" height="10" fill="#FF3D57" rx="1"/>
+    <!-- vela 2, baja -->
+    <line x1="14" y1="15" x2="14" y2="34" stroke="#FF3D57" stroke-width="1.4"/>
+    <rect x="11" y="19" width="6" height="11" fill="#FF3D57" rx="1"/>
+    <!-- vela 3, sube -->
+    <line x1="22" y1="10" x2="22" y2="31" stroke="#00D68F" stroke-width="1.4"/>
+    <rect x="19" y="13" width="6" height="14" fill="#00D68F" rx="1"/>
+    <!-- vela 4, sube -->
+    <line x1="30" y1="3"  x2="30" y2="24" stroke="#00D68F" stroke-width="1.4"/>
+    <rect x="27" y="6"  width="6" height="14" fill="#00D68F" rx="1"/>
+  </g>
+  <path d="M2 31.5 L37 7.5" fill="none" stroke="#FFD400" stroke-width="2.4" stroke-linecap="round"/>
 </svg>
