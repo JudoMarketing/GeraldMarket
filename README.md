@@ -9,6 +9,8 @@ servidor: se abre `index.html` o se sube la carpeta a cualquier hosting.
 > relleno. La lista completa de lo que hay que reemplazar está al final, en
 > **[Antes de publicar](#antes-de-publicar)**.
 
+**En línea:** <https://poweroso2000.github.io/GeraldMarket/>
+
 ---
 
 ## Las tres páginas
@@ -240,31 +242,22 @@ relativas**, así que el sitio funciona igual en la raíz de un dominio que en u
 subcarpeta tipo `usuario.github.io/GeraldMarket/`. Está comprobado sirviéndolo
 desde una subruta.
 
-**Dos clics:**
-
-1. Ve a **Settings → Pages** del repositorio.
-2. En *Build and deployment* → *Source*, elige **Deploy from a branch**.
-   Branch: **`gerald-market-site`**, carpeta: **`/ (root)`**. Guarda.
-
-En un par de minutos el sitio queda en:
+**Ya está activo.** El sitio se sirve desde:
 
 ```
 https://poweroso2000.github.io/GeraldMarket/
 ```
 
-A partir de ahí, cada vez que se suba un cambio a esa rama, la web se
-republica sola.
+Configuración actual: *Settings → Pages* → **Deploy from a branch**, rama
+`gerald-market-site`, carpeta `/ (root)`. Cada vez que se sube un cambio a esa
+rama, GitHub reconstruye y republica solo — no hay que tocar nada más.
 
-> **Ojo — el repositorio es privado.** GitHub Pages en repositorios privados
-> solo está disponible en los planes de pago (Pro, Team, Enterprise). Con una
-> cuenta gratuita hay que **hacer el repositorio público** para que Pages
-> funcione: *Settings → General → abajo del todo → Change repository
-> visibility → Public*.
->
-> Hacerlo público no expone nada delicado: en el código no hay claves, ni
-> contraseñas, ni datos reales — el teléfono y el correo siguen siendo
-> marcadores con ceros. Aun así es una decisión del cliente, porque el
-> borrador queda visible para cualquiera que dé con la dirección.
+> **El repositorio es público**, que es lo que exige Pages en las cuentas
+> gratuitas. En el código no hay claves ni datos reales (el teléfono y el
+> correo siguen siendo marcadores con ceros), pero conviene tenerlo presente:
+> el borrador está a la vista de cualquiera que dé con la dirección. Si más
+> adelante se quiere volver privado, habrá que pasar el sitio a otro hosting
+> o subir de plan.
 
 ### Otras opciones
 
