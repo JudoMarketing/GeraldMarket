@@ -51,7 +51,7 @@ pedir nada.
 |---|---|---|
 | `index.html` | **Inicio** | Portada con el gráfico de velas vivo, **la clase 01 incrustada sin pedir nada**, la ruta de las cinco clases gratis, «así enseño» con la pizarra, la sección de demostración (clips y testimonios) y el mapa de las siete partes del programa. |
 | `aprende.html` | **Aprende gratis** | El centro de aprendizaje: cinco clases con barra de avance. Las tres primeras abiertas; las dos últimas detrás de nombre y contacto. |
-| `educate.html` | **Educate!** | El programa completo: las siete partes del recorrido y, después, cómo se accede a él con sus precios. |
+| `educate.html` | **Educate!** | El programa completo: las siete partes del recorrido y, después, los tres cursos de pago único que lo cubren. |
 | `contacto.html` | **Contacto** | Foto y historia de Gerald, botones de llamar y WhatsApp, y el formulario. |
 
 ## Estructura de archivos
@@ -100,14 +100,16 @@ publique por error un número inventado.
 ### Precios y contenidos de los programas
 Están escritos directamente en el HTML, sin diccionarios de por medio:
 
-- Las cuatro fichas de producto están en `educate.html` (`#tienda`) y
+- Las tres fichas de producto están en `educate.html` (`#tienda`) y
   repetidas, más cortas, en `index.html` (`#programas`).
-- Lo que incluye el **1 a 1** está en `educate.html`, sección `#uno-a-uno`.
 - Los **9 módulos** están en `educate.html`, dentro del `<details>` de
   `#temario`.
 - El precio se muestra siempre dentro de `.pcard__px`.
-- Precios actuales: 1 a 1 **$50/mes**, Aprende desde cero **$200**, Nivel 1
-  **$100**, Nivel 2 **$150**.
+- Precios actuales, todos de **pago único**: Aprende desde cero **$200**,
+  Nivel 1 **$100**, Nivel 2 **$150**.
+- **No hay suscripciones.** El acompañamiento uno a uno mensual se retiró: si
+  alguna vez vuelve, se recupera del historial de git (commit anterior a este)
+  en vez de escribirlo otra vez.
 
 ### Meter los videos
 
