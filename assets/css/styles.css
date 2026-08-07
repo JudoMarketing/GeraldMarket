@@ -803,6 +803,158 @@ p { text-wrap: pretty; }
 .phead h1 { margin: .9rem 0 1rem; }
 .phead p { max-width: 54ch; }
 
+/* ========================================================== LA CLASE GRATIS
+   El corazón del sitio: primero se enseña, después se vende. Todo lo de abajo
+   sirve a esa secuencia. */
+
+/* marco de video. Mientras no haya grabaciones, muestra un hueco honesto que
+   dice que falta el video, con la misma proporción que tendrá el real. */
+.vframe {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--line);
+  border-top-color: var(--line-hi);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background:
+    linear-gradient(to right, rgba(255,255,255,.03) 1px, transparent 1px) 0 0 / 44px 44px,
+    linear-gradient(to bottom, rgba(255,255,255,.03) 1px, transparent 1px) 0 0 / 44px 44px,
+    radial-gradient(120% 130% at 50% 0%, #18212C 0%, #080D13 72%);
+  box-shadow: var(--bevel), var(--sh-2);
+  display: grid; place-items: center;
+}
+.vframe iframe, .vframe video, .vframe img {
+  position: absolute; inset: 0; width: 100%; height: 100%; border: 0; object-fit: cover;
+}
+.vframe__ph { display: grid; justify-items: center; gap: .85rem; text-align: center; padding: 1rem; }
+.vframe__play {
+  width: clamp(54px, 12vw, 74px); aspect-ratio: 1; border-radius: 50%;
+  display: grid; place-items: center;
+  background: linear-gradient(180deg, #F5D896, #C9A24C);
+  color: #16110A;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.5), 0 3px 8px rgba(0,0,0,.6), 0 18px 36px -14px rgba(233,196,106,.45);
+  transition: transform .16s var(--ease);
+}
+a.lesson:hover .vframe__play, .vframe:hover .vframe__play { transform: scale(1.06); }
+.vframe__t { font-weight: 700; font-size: .98rem; }
+
+/* ficha de clase */
+.lessons { display: grid; gap: 14px; counter-reset: cls; }
+.lesson {
+  display: grid; gap: 1rem;
+  padding: clamp(1rem, 3vw, 1.3rem);
+  background: var(--surf);
+  border: 1px solid var(--line);
+  border-top-color: var(--line-hi);
+  border-radius: var(--r-lg);
+  box-shadow: var(--bevel), var(--sh-1);
+  text-decoration: none;
+  transition: transform .14s var(--ease), box-shadow .2s, border-color .2s;
+}
+a.lesson:hover { transform: translateY(-2px); box-shadow: var(--bevel), var(--sh-2); border-color: var(--line-hi); }
+.lesson__n {
+  font-family: var(--script); font-style: italic; font-weight: 600;
+  font-size: 1.9rem; line-height: 1; color: var(--gold);
+}
+.lesson__hd { display: flex; align-items: baseline; gap: .8rem; }
+.lesson__t { font-weight: 700; font-size: 1.02rem; line-height: 1.3; }
+.lesson__d { color: var(--fg-2); font-size: .92rem; margin-top: .3rem; }
+.lesson__meta { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .85rem; }
+.lesson__viz { position: relative; }
+
+/* estado bloqueado: se ve que existe, no se ve el contenido */
+.lesson[data-state="locked"] { opacity: .78; }
+.lesson[data-state="locked"] .vframe__play {
+  background: linear-gradient(180deg, #2A3441, #151C25);
+  color: var(--fg-3);
+  box-shadow: var(--bevel), var(--sh-1);
+}
+.lesson[data-state="done"] .lesson__n { color: var(--up); }
+
+/* barra de avance del curso gratis */
+.prog { display: grid; gap: .6rem; }
+.prog__bar {
+  height: 8px; border-radius: 99px;
+  background: var(--well); box-shadow: var(--sunken);
+  overflow: hidden;
+}
+.prog__fill {
+  height: 100%; width: 0;
+  background: linear-gradient(90deg, #C9A24C, #F5D896);
+  box-shadow: 0 0 14px rgba(233,196,106,.5);
+  transition: width .5s var(--ease);
+}
+.prog__t { display: flex; justify-content: space-between; gap: 1rem; }
+
+/* el muro: name + email a cambio de las clases que faltan */
+.gate {
+  position: relative;
+  padding: clamp(1.4rem, 4.5vw, 2.2rem);
+  background: radial-gradient(120% 150% at 50% 0%, #241F14 0%, #0A1017 70%);
+  border: 1px solid var(--gold-line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--bevel), var(--sh-3);
+}
+.gate h2, .gate h3 { margin-bottom: .7rem; }
+.gate .form { margin-top: 1.4rem; }
+.gate__grid { display: grid; gap: 1rem; }
+
+/* la ruta del programa completo, como una escalera con pasamanos */
+.path { display: grid; gap: 0; position: relative; }
+.path__i {
+  display: grid; grid-template-columns: auto 1fr; gap: 1.1rem;
+  padding: 1.15rem 0;
+  border-top: 1px solid var(--line-soft);
+  position: relative;
+}
+.path__i:last-child { border-bottom: 1px solid var(--line-soft); }
+.path__n {
+  font-family: var(--script); font-style: italic; font-weight: 600;
+  font-size: 1.6rem; line-height: 1; color: var(--gold);
+  width: 1.7ch; text-align: right;
+}
+.path__t { font-weight: 700; font-size: 1.02rem; line-height: 1.3; }
+.path__d { color: var(--fg-2); font-size: .93rem; margin-top: .25rem; }
+
+/* rejilla de pruebas: lo que se enseña, no lo que se promete */
+.proof { display: grid; gap: 14px; }
+.proof__i {
+  padding: clamp(1.05rem, 3vw, 1.4rem);
+  background: var(--surf);
+  border: 1px solid var(--line);
+  border-top-color: var(--line-hi);
+  border-radius: var(--r-lg);
+  box-shadow: var(--bevel), var(--sh-1);
+}
+.proof__t { font-weight: 700; font-size: .98rem; margin: .7rem 0 .3rem; }
+.proof__d { color: var(--fg-2); font-size: .9rem; }
+
+/* testimonios: sobre cómo enseña, nunca sobre cuánto ganó nadie */
+.says { display: grid; gap: 14px; }
+.say {
+  padding: clamp(1.1rem, 3vw, 1.5rem);
+  background: var(--surf);
+  border: 1px solid var(--line);
+  border-top-color: var(--line-hi);
+  border-left: 2px solid var(--gold);
+  border-radius: var(--r-lg);
+  box-shadow: var(--bevel), var(--sh-1);
+}
+.say__q { font-size: .97rem; line-height: 1.55; }
+.say__w { display: flex; align-items: center; gap: .6rem; margin-top: 1rem; }
+
+/* aviso legal destacado, no escondido en el pie */
+.legal {
+  padding: 1rem 1.15rem;
+  border: 1px solid var(--down-line);
+  border-left: 2px solid var(--down);
+  border-radius: var(--r);
+  background: linear-gradient(180deg, #1D1216, #0B1119);
+  box-shadow: var(--bevel), var(--sh-1);
+}
+.legal p { font-size: .84rem; color: var(--fg-2); line-height: 1.55; }
+.legal strong { color: var(--fg); }
+
 /* --------------------------------------------------------------- revelado */
 .rv { opacity: 0; transform: translateY(14px); transition: opacity .5s var(--ease), transform .5s var(--ease); }
 .rv[data-in="true"] { opacity: 1; transform: none; }
@@ -823,6 +975,11 @@ p { text-wrap: pretty; }
 @media (min-width: 720px) {
   :root { --gutter: 32px; --hdr: 72px; }
   .grid--3 { grid-template-columns: repeat(3, 1fr); }
+  /* la clase: video a un lado, texto al otro */
+  .lesson { grid-template-columns: 260px 1fr; align-items: center; }
+  .gate__grid { grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(24px, 5vw, 48px); }
+  .proof { grid-template-columns: repeat(3, 1fr); }
+  .says { grid-template-columns: repeat(2, 1fr); }
   .who { grid-template-columns: 380px 1fr; align-items: start; }
   .dock { display: none; }
   .scroll-hint { display: block; }
@@ -845,6 +1002,8 @@ p { text-wrap: pretty; }
   .duo .sec-head { margin-bottom: 0; }
   .grid--4 { grid-template-columns: repeat(4, 1fr); }
   .grid--2, .grid--3, .grid--4, .split { gap: 22px; }
+  .lesson { grid-template-columns: 320px 1fr; gap: 1.6rem; }
+  .lessons, .proof, .says { gap: 20px; }
 }
 
 @media (max-width: 379px) {
