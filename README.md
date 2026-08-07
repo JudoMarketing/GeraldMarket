@@ -57,10 +57,10 @@ pedir nada.
 ## Estructura de archivos
 
 ```
-index.html · educate.html · contacto.html
+index.html · aprende.html · educate.html · contacto.html
 assets/css/styles.css        Sistema de diseño y estilos de todas las páginas
-assets/css/fonts.css         @font-face de las cuatro tipografías
-assets/fonts/*.woff2         Playfair Display Italic, Archivo Black, Archivo, JetBrains Mono
+assets/css/fonts.css         @font-face de las tres tipografías
+assets/fonts/*.woff2         Playfair Display Italic, Archivo (variable), JetBrains Mono
 assets/js/market.js          Gráfico de velas animado + cinta de cotizaciones
 assets/js/app.js             Datos de contacto (SITE), cabecera, menú, revelados
 assets/js/aprende.js         Avance del curso gratis, desbloqueo y captura de contacto
@@ -189,7 +189,7 @@ de mercado.** De ahí sale todo lo demás.
 | **Verde** | `#00D68F`, sube, incluido, largo |
 | **Rojo** | `#FF3D57`, baja, riesgo, corto |
 | **Marca** | Playfair Display Italic, un serif de alto contraste, en cursiva |
-| **Titulares** | Archivo Black, muy apretado |
+| **Titulares** | Archivo en 750, apretado. Es variable, así que el grosor se afina al decimal en vez de depender de un peso único |
 | **Texto** | Archivo (variable) |
 | **Números** | JetBrains Mono, para precios, tickers y etiquetas de eje |
 | **Esquinas** | de 8 a 14 px |
@@ -204,22 +204,18 @@ está hundido**. Los botones tienen degradado y sombra proyectada; los campos
 del formulario tienen sombra interior (`--sunken`) y fondo casi negro. Se nota
 al instante qué es un control y qué es un hueco donde escribir.
 
-### Los titulares están tallados
-`.d1` y `.d2` no son texto plano: la cara va en crema y por debajo baja una
-escalera de grises que se apaga hasta el negro, así que las letras salen de la
-pantalla. La profundidad se mide en `em` (`--ext`), no en píxeles, de modo que
-crece y encoge sola con el cuerpo de letra en vez de romperse en el móvil.
+### El relieve del texto: solo una vez
+El tallado (la cara en crema con una escalera de grises debajo) se reserva
+**únicamente para el titular de la portada**. Repetirlo en cada `h2` convertía
+la página en un cartel: mucho ruido y el mensaje perdido. Los demás títulos van
+planos, que se leen mejor.
 
-Dos variantes en el titular de la portada:
+La profundidad se mide en `em` (`--ext`), no en píxeles, así que crece y encoge
+sola con el cuerpo de letra.
 
-- **`.gold-cut`**: el mismo tallado, fundido en oro. Se usa en «lectura».
-- **`.hollow`**: sin relleno, solo el filo, hecho con `-webkit-text-stroke`.
-  Detrás se ve el gráfico moverse **a través de las letras**, así que la palabra
-  «suerte» queda literalmente vacía. No es un adorno: dice lo mismo que la
-  frase.
-
-Como las letras ya tienen sombra propia, se pudo **aclarar el velo** que tapaba
-el gráfico del hero. Ahora se ven más velas y el titular sigue leyéndose.
+Dos variantes conviven en el hero: **`.gold-cut`** (el mismo tallado fundido en
+oro) y **`.hollow`** (sin relleno, solo el filo con `-webkit-text-stroke`, de
+modo que el gráfico se ve moverse a través de las letras).
 
 **El verde y el rojo nunca son decoración.** Si algo está en verde es porque
 sube o está incluido; si está en rojo es porque baja o advierte de un riesgo.

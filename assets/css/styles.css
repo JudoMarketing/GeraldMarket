@@ -24,9 +24,9 @@
   --line-hi:    rgba(255, 255, 255, .14);
   --line-soft:  rgba(255, 255, 255, .045);
 
-  /* las cajas: luz arriba, sombra abajo */
-  --surf:    linear-gradient(180deg, #161E28 0%, #0E151D 52%, #0B1119 100%);
-  --surf-hi: linear-gradient(180deg, #1D2733 0%, #131C25 52%, #0F171F 100%);
+  /* las cajas: luz arriba, sombra abajo, pero con la mano suelta */
+  --surf:    linear-gradient(180deg, #121821 0%, #0D131A 60%, #0B1017 100%);
+  --surf-hi: linear-gradient(180deg, #18202A 0%, #101821 60%, #0E151C 100%);
   --well:    #05080C;
 
   /* texto */
@@ -51,15 +51,15 @@
   --gold-line:  rgba(233, 196, 106, .34);
 
   /* relieve */
-  --bevel:  inset 0 1px 0 rgba(255, 255, 255, .085);
-  --sunken: inset 0 2px 5px rgba(0, 0, 0, .6), inset 0 1px 0 rgba(0, 0, 0, .8);
-  --sh-1: 0 1px 2px rgba(0, 0, 0, .5),  0 6px 16px -6px rgba(0, 0, 0, .7);
-  --sh-2: 0 2px 5px rgba(0, 0, 0, .45), 0 20px 42px -16px rgba(0, 0, 0, .95);
-  --sh-3: 0 3px 9px rgba(0, 0, 0, .5),  0 40px 80px -24px rgba(0, 0, 0, 1);
+  --bevel:  inset 0 1px 0 rgba(255, 255, 255, .055);
+  --sunken: inset 0 2px 4px rgba(0, 0, 0, .5);
+  --sh-1: 0 1px 2px rgba(0, 0, 0, .35), 0 6px 14px -8px rgba(0, 0, 0, .5);
+  --sh-2: 0 2px 4px rgba(0, 0, 0, .3),  0 16px 32px -18px rgba(0, 0, 0, .7);
+  --sh-3: 0 3px 8px rgba(0, 0, 0, .35), 0 30px 60px -28px rgba(0, 0, 0, .8);
 
   /* tipografía */
   --script:  'Playfair Display', 'Iowan Old Style', Georgia, serif;
-  --display: 'Archivo Black', 'Archivo', system-ui, sans-serif;
+  --display: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --sans:    'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 
@@ -88,7 +88,7 @@ body {
   color: var(--fg);
   font-family: var(--sans);
   font-size: 1rem;
-  line-height: 1.62;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
@@ -117,89 +117,71 @@ a { color: inherit; }
 }
 
 /* -------------------------------------------------------------- tipografía */
+/* Archivo es variable, así que el grosor se elige con precisión en vez de
+   depender de un peso único. 750 sustituye al negro de antes: sigue mandando
+   sobre el fondo negro, pero deja respirar a las letras. */
 h1, h2, h3, h4 {
   font-family: var(--display);
-  font-weight: 400;
+  font-weight: 750;
   line-height: .98;
-  letter-spacing: -.02em;
+  letter-spacing: -.018em;
   text-wrap: balance;
 }
 
-.d1 { font-size: clamp(2.7rem, 12.5vw, 5.7rem); line-height: .92; letter-spacing: -.035em; }
-.d2 { font-size: clamp(2rem, 7.4vw, 3.3rem);    line-height: .96; letter-spacing: -.03em; }
+.d1 { font-size: clamp(2.35rem, 9.5vw, 4.4rem); line-height: .98; letter-spacing: -.024em; }
+.d2 { font-size: clamp(1.6rem, 5vw, 2.35rem);   line-height: 1.06; letter-spacing: -.02em; font-weight: 700; }
 
-/* ------------------------------------------------------- titulares en relieve
-   Las letras están extruidas: la cara va en crema y por debajo baja una escalera
-   de grises que se va apagando, como si el texto estuviera tallado sobre la
-   pantalla. La profundidad se mide en `em`, así que crece y encoge sola con el
-   cuerpo de letra en vez de romperse en el móvil. */
-.d1, .d2 {
-  --ext: .013em;
-  color: var(--cream);
-}
-.d1 {
+/* --------------------------------------------------------- titular en relieve
+   El tallado se reserva para el titular de la portada. Repetirlo en cada `h2`
+   convertía la página en un cartel: mucho ruido y el mensaje perdido. Los demás
+   títulos van planos, que se leen mejor. */
+.d1, .d2 { color: var(--cream); }
+.hero h1 {
+  --ext: .008em;
   text-shadow:
-    0 calc(var(--ext) * 1) 0 #B4BDC9,
-    0 calc(var(--ext) * 2) 0 #949DA9,
-    0 calc(var(--ext) * 3) 0 #767F8B,
-    0 calc(var(--ext) * 4) 0 #5A626E,
-    0 calc(var(--ext) * 5) 0 #424954,
-    0 calc(var(--ext) * 6) 0 #2D333C,
-    0 calc(var(--ext) * 7) 0 #1C2128,
-    0 calc(var(--ext) * 8)  calc(var(--ext) * 5)  rgba(0, 0, 0, .8),
-    0 calc(var(--ext) * 15) calc(var(--ext) * 15) rgba(0, 0, 0, .9);
-}
-.d2 {
-  --ext: .011em;
-  text-shadow:
-    0 calc(var(--ext) * 1) 0 #A9B2BE,
-    0 calc(var(--ext) * 2) 0 #838C98,
-    0 calc(var(--ext) * 3) 0 #5D6672,
-    0 calc(var(--ext) * 4) 0 #3C434D,
-    0 calc(var(--ext) * 5) 0 #232830,
-    0 calc(var(--ext) * 6)  calc(var(--ext) * 4)  rgba(0, 0, 0, .75),
-    0 calc(var(--ext) * 12) calc(var(--ext) * 12) rgba(0, 0, 0, .85);
+    0 calc(var(--ext) * 1) 0 #9AA3AF,
+    0 calc(var(--ext) * 2) 0 #6E7783,
+    0 calc(var(--ext) * 3) 0 #464D57,
+    0 calc(var(--ext) * 4) 0 #262B33,
+    0 calc(var(--ext) * 6) calc(var(--ext) * 5) rgba(0, 0, 0, .6);
 }
 
-/* La palabra dorada: mismo tallado, pero fundido en oro. */
-.gold-cut {
-  color: #FBEBC0;
+/* La palabra dorada. */
+.gold-cut { color: var(--gold); }
+.hero h1 .gold-cut {
+  color: #F4DCA2;
   text-shadow:
-    0 calc(var(--ext) * 1) 0 #E9C46A,
-    0 calc(var(--ext) * 2) 0 #D0A951,
-    0 calc(var(--ext) * 3) 0 #B28E3F,
-    0 calc(var(--ext) * 4) 0 #8E7130,
-    0 calc(var(--ext) * 5) 0 #6B5424,
-    0 calc(var(--ext) * 6) 0 #4A3A18,
-    0 calc(var(--ext) * 7) 0 #2E240F,
-    0 calc(var(--ext) * 8)  calc(var(--ext) * 5)  rgba(0, 0, 0, .8),
-    0 calc(var(--ext) * 15) calc(var(--ext) * 15) rgba(0, 0, 0, .9);
+    0 calc(var(--ext) * 1) 0 #D9B25C,
+    0 calc(var(--ext) * 2) 0 #AE8C42,
+    0 calc(var(--ext) * 3) 0 #7C632E,
+    0 calc(var(--ext) * 4) 0 #4E3E1D,
+    0 calc(var(--ext) * 6) calc(var(--ext) * 5) rgba(0, 0, 0, .6);
 }
 
-/* La palabra hueca: sin relleno, solo el filo. Detrás se ve el gráfico moviéndose
-   a través de las letras: la palabra «suerte» queda literalmente vacía. */
+/* La palabra hueca: sin relleno, solo el filo. Detrás se ve el gráfico moverse
+   a través de las letras. */
 .hollow {
-  color: rgba(255, 61, 87, .10);
-  -webkit-text-stroke: .026em var(--down);
-  text-stroke: .026em var(--down);
+  color: transparent;
+  -webkit-text-stroke: .022em var(--down);
+  text-stroke: .022em var(--down);
   text-shadow: none;
   paint-order: stroke fill;
-  filter: drop-shadow(0 .04em .06em rgba(0, 0, 0, .9));
 }
-.d3 { font-size: clamp(1.3rem, 4.2vw, 1.72rem); line-height: 1.07; letter-spacing: -.02em; }
-.d4 { font-family: var(--sans); font-weight: 700; font-size: 1.05rem; line-height: 1.35; letter-spacing: -.01em; }
+
+.d3 { font-size: clamp(1.18rem, 3.2vw, 1.45rem); line-height: 1.18; letter-spacing: -.012em; font-weight: 700; }
+.d4 { font-family: var(--sans); font-weight: 650; font-size: 1.02rem; line-height: 1.35; letter-spacing: -.01em; }
 
 p { text-wrap: pretty; }
 
-.lead  { font-size: clamp(1.03rem, 2.6vw, 1.2rem); color: var(--fg-2); line-height: 1.6; }
+.lead  { font-size: clamp(1.02rem, 2.4vw, 1.15rem); color: var(--fg-2); line-height: 1.68; }
 .muted { color: var(--fg-2); }
 .dim   { color: var(--fg-3); }
-.small { font-size: .875rem; line-height: 1.55; }
+.small { font-size: .875rem; line-height: 1.62; }
 
 .tag {
   font-family: var(--mono);
   font-size: .7rem; font-weight: 500;
-  letter-spacing: .18em; text-transform: uppercase;
+  letter-spacing: .14em; text-transform: uppercase;
   color: var(--fg-3);
 }
 .tag--sig  { color: var(--sig); }
@@ -215,7 +197,7 @@ p { text-wrap: pretty; }
   margin-inline: auto; padding-inline: var(--gutter);
 }
 
-.sec { padding-block: clamp(60px, 10vw, 112px); position: relative; }
+.sec { padding-block: clamp(66px, 11vw, 132px); position: relative; }
 .sec--tight { padding-block: clamp(44px, 7vw, 76px); }
 .sec--panel { background: var(--ink); border-block: 1px solid var(--line-soft); }
 
@@ -225,15 +207,15 @@ p { text-wrap: pretty; }
   content: "";
   position: absolute; inset: 0; z-index: -1;
   background-image:
-    linear-gradient(to right, rgba(255,255,255,.028) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,.028) 1px, transparent 1px);
-  background-size: 72px 72px;
-  mask-image: radial-gradient(120% 88% at 50% 0%, #000 22%, transparent 76%);
-  -webkit-mask-image: radial-gradient(120% 88% at 50% 0%, #000 22%, transparent 76%);
+    linear-gradient(to right, rgba(255,255,255,.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.02) 1px, transparent 1px);
+  background-size: 88px 88px;
+  mask-image: radial-gradient(110% 70% at 50% 0%, #000 12%, transparent 66%);
+  -webkit-mask-image: radial-gradient(110% 70% at 50% 0%, #000 12%, transparent 66%);
   pointer-events: none;
 }
 
-.sec-head { margin-bottom: clamp(26px, 4.5vw, 48px); max-width: 60ch; }
+.sec-head { margin-bottom: clamp(28px, 4.5vw, 52px); max-width: 54ch; }
 .sec-head__k { display: flex; align-items: center; gap: .7rem; margin-bottom: 1rem; }
 .sec-head__k::after {
   content: ""; flex: 1; height: 1px;
@@ -338,10 +320,9 @@ p { text-wrap: pretty; }
   padding: .34rem .68rem;
   border: 1px solid var(--line-hi);
   border-radius: 999px;
-  background: linear-gradient(180deg, #182029, #0D141B);
-  box-shadow: var(--bevel), 0 2px 6px rgba(0,0,0,.5);
+  background: rgba(255, 255, 255, .03);
   font-family: var(--mono); font-size: .68rem; font-weight: 500;
-  letter-spacing: .07em; text-transform: uppercase;
+  letter-spacing: .06em; text-transform: uppercase;
   color: var(--fg-2); white-space: nowrap;
 }
 .chip--up   { color: var(--up);   border-color: var(--up-line); }
