@@ -1,0 +1,51 @@
+{
+  "$comment": "Ficha de este sitio para el panel de Judo Marketing. Los nombres de los campos son una propuesta: ajústalos al esquema real de la plataforma.",
+  "slug": "gerald-market",
+  "nombre": "Gerald Market",
+  "cliente": "Gerald",
+  "sector": "Formación financiera",
+  "idioma": "es",
+  "estado": "borrador",
+  "resumen": "Academia de bolsa en español. Regala cinco clases antes de vender: la primera se ve sin registro.",
+  "descripcion": "Portal de formación en trading construido alrededor de una idea: primero enseñar, después vender. La portada abre con una clase completa que se ve sin registrarse; el centro de aprendizaje ofrece cinco clases en ruta, con las tres primeras abiertas y las dos últimas a cambio del contacto; y el programa de pago aparece solo al final, ya con la confianza ganada.",
+  "url": "https://judomarketing.github.io/GeraldMarket/",
+  "dominio_previsto": "geraldmarket.com",
+  "repositorio": "https://github.com/JudoMarketing/GeraldMarket",
+  "rama": "gerald-market-site",
+  "imagenes": {
+    "miniatura": "https://judomarketing.github.io/GeraldMarket/assets/img/preview.png",
+    "og": "https://judomarketing.github.io/GeraldMarket/assets/img/og.png",
+    "logo": "https://judomarketing.github.io/GeraldMarket/assets/img/logo.svg",
+    "logo_fondo_claro": "https://judomarketing.github.io/GeraldMarket/assets/img/logo-light.svg",
+    "icono": "https://judomarketing.github.io/GeraldMarket/assets/img/favicon.svg"
+  },
+  "marca": {
+    "fondo": "#04070A",
+    "acento": "#E9C46A",
+    "sube": "#00D68F",
+    "baja": "#FF3D57",
+    "tipografias": ["Playfair Display Italic", "Archivo", "JetBrains Mono"]
+  },
+  "paginas": [
+    { "titulo": "Inicio",         "ruta": "/" },
+    { "titulo": "Aprende gratis", "ruta": "/aprende.html" },
+    { "titulo": "Educate!",       "ruta": "/educate.html" },
+    { "titulo": "Contacto",       "ruta": "/contacto.html" }
+  ],
+  "tecnologia": {
+    "tipo": "estatico",
+    "compilacion": null,
+    "dependencias": [],
+    "hosting": "GitHub Pages",
+    "peticiones_externas": 0,
+    "cookies": false,
+    "analitica": null
+  },
+  "pendiente": [
+    "Seis videos de clase, sin ellos el sitio no cumple su función",
+    "Teléfono, WhatsApp y correo reales en assets/js/app.js",
+    "Foto y biografía de Gerald",
+    "Testimonios reales sobre la enseñanza",
+    "Dominio propio"
+  ]
+}

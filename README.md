@@ -70,6 +70,9 @@ assets/img/logo-light.svg    Marca completa sobre fondo claro (papel, prensa)
 assets/img/logo-mark.svg     El monograma G (cabecera y pie)
 assets/img/favicon.svg       Icono de pestaña y de pantalla de inicio
 assets/img/mentor-placeholder.svg   Marco de «foto pendiente», a reemplazar
+assets/img/og.png            1200x630, la imagen que sale al compartir el enlace
+assets/img/preview.png       1600x1000, miniatura para fichas y portafolios
+showcase.json                Ficha del sitio para el panel de Judo Marketing
 tools/generate-logo.py       Regenera los cuatro archivos de marca
 robots.txt · sitemap.xml · site.webmanifest · vercel.json
 ```
@@ -110,6 +113,16 @@ Están escritos directamente en el HTML, sin diccionarios de por medio:
 - **No hay suscripciones.** El acompañamiento uno a uno mensual se retiró: si
   alguna vez vuelve, se recupera del historial de git (commit anterior a este)
   en vez de escribirlo otra vez.
+
+### Regenerar las imágenes de vista previa
+
+`assets/img/og.png` y `assets/img/preview.png` son capturas de la portada real,
+así que **envejecen con el diseño**. Cada vez que cambie la portada de forma
+notable conviene rehacerlas, o el enlace compartido enseñará una versión vieja.
+
+Se generan sirviendo el sitio en local y fotografiando la portada a 1200x630 y a
+1600x1000 respectivamente. Ambas están enlazadas desde las cuatro páginas con
+`og:image`, y sus direcciones aparecen también en `showcase.json`.
 
 ### Meter los videos
 
