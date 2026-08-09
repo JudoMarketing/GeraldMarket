@@ -6,8 +6,8 @@
   "sector": "Formación financiera",
   "idioma": "es",
   "estado": "borrador",
-  "resumen": "Academia de bolsa en español. Regala cinco clases antes de vender: la primera se ve sin registro.",
-  "descripcion": "Portal de formación en trading construido alrededor de una idea: primero enseñar, después vender. La portada abre con una clase completa que se ve sin registrarse; el centro de aprendizaje ofrece cinco clases en ruta, con las tres primeras abiertas y las dos últimas a cambio del contacto; y el programa de pago aparece solo al final, ya con la confianza ganada.",
+  "resumen": "Embudo de venta para un profesor de bolsa. Video, mini clase y testimonios que llevan a la inscripción.",
+  "descripcion": "Embudo de captación para Gerald, profesor de mercados. La portada abre con un video suyo que arranca solo, sigue con una clase corta que compara acciones y opciones, muestra testimonios de estudiantes y sus redes sociales, y empuja a una sola acción: inscribirse. La segunda página ofrece las dos formas de pago y explica que al pagar se recibe el acceso a la plataforma de estudiantes, que vive aparte.",
   "url": "https://judomarketing.github.io/GeraldMarket/",
   "dominio_previsto": "geraldmarket.com",
   "repositorio": "https://github.com/JudoMarketing/GeraldMarket",
@@ -27,10 +27,8 @@
     "tipografias": ["Playfair Display Italic", "Archivo", "JetBrains Mono"]
   },
   "paginas": [
-    { "titulo": "Inicio",         "ruta": "/" },
-    { "titulo": "Aprende gratis", "ruta": "/aprende.html" },
-    { "titulo": "Educate!",       "ruta": "/educate.html" },
-    { "titulo": "Contacto",       "ruta": "/contacto.html" }
+    { "titulo": "Inicio",     "ruta": "/" },
+    { "titulo": "Inscríbete", "ruta": "/inscribete.html" }
   ],
   "tecnologia": {
     "tipo": "estatico",
@@ -42,10 +40,12 @@
     "analitica": null
   },
   "pendiente": [
-    "Seis videos de clase, sin ellos el sitio no cumple su función",
-    "Teléfono, WhatsApp y correo reales en assets/js/app.js",
-    "Foto y biografía de Gerald",
-    "Testimonios reales sobre la enseñanza",
+    "El video de Gerald hablando, que ahora es de relleno",
+    "Los dos precios: pago unico y pago por semana",
+    "Direccion de la plataforma de estudiantes",
+    "Perfiles de Facebook, Instagram y YouTube",
+    "Telefono, WhatsApp y correo reales en assets/js/app.js",
+    "Testimonios reales de estudiantes",
     "Dominio propio"
   ]
 }

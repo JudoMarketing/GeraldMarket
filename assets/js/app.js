@@ -17,8 +17,16 @@
     tel:        "+13050000000",
     whatsapp:   "13050000000",            // solo dígitos, código de país primero
     email:      "hola@geraldmarket.com",
-    ig:         "https://instagram.com/",
-    waSaludo:   "Hola Gerald, vengo de la web de Gerald Market y quiero información sobre las clases."
+
+    // redes: se enlazan solas en toda la web desde aquí
+    facebook:   "https://facebook.com/",
+    instagram:  "https://instagram.com/",
+    youtube:    "https://youtube.com/",
+
+    // la plataforma de estudiantes, a donde se manda a quien ya pagó
+    plataforma: "",
+
+    waSaludo:   "Hola Gerald, vengo de la web y quiero información para inscribirme."
   };
 
   window.GM_SITE = SITE;
@@ -38,6 +46,55 @@
     document.querySelectorAll("[data-mail]").forEach(function (a) { a.href = "mailto:" + SITE.email; });
     document.querySelectorAll("[data-mail-text]").forEach(function (n) { n.textContent = SITE.email; });
     document.querySelectorAll("[data-year]").forEach(function (n) { n.textContent = new Date().getFullYear(); });
+
+    // redes sociales
+    [["data-fb", SITE.facebook], ["data-ig", SITE.instagram], ["data-yt", SITE.youtube]]
+      .forEach(function (par) {
+        document.querySelectorAll("[" + par[0] + "]").forEach(function (a) {
+          if (par[1]) { a.href = par[1]; }
+          else { a.setAttribute("aria-disabled", "true"); a.title = "Falta la dirección del perfil"; }
+        });
+      });
+
+    // el acceso a la plataforma de estudiantes, si ya existe
+    document.querySelectorAll("[data-plataforma]").forEach(function (a) {
+      if (SITE.plataforma) { a.href = SITE.plataforma; a.target = "_blank"; a.rel = "noopener"; }
+      else { a.hidden = true; }
+    });
+  }
+
+  /* ------------------------------------------------- el video de la portada */
+  /* Arranca solo, pero los navegadores solo permiten eso en silencio. El botón
+     devuelve el sonido cuando la persona lo pide, que es la única forma
+     legítima de hacerlo. */
+  function video() {
+    var v = document.querySelector("[data-video]");
+    var btn = document.querySelector("[data-sound]");
+    if (!v) return;
+
+    // si el navegador se niega a arrancar, se muestran los controles nativos
+    var intento = v.play();
+    if (intento && intento.catch) {
+      intento.catch(function () { v.controls = true; });
+    }
+
+    if (!btn) return;
+    var icono = btn.querySelector("[data-sound-icon]");
+    btn.addEventListener("click", function () {
+      v.muted = !v.muted;
+      if (!v.muted) v.play();
+      btn.setAttribute("data-on", String(!v.muted));
+      btn.setAttribute("aria-pressed", String(!v.muted));
+      if (icono) icono.setAttribute("href", v.muted ? "#i-mute" : "#i-vol");
+    });
+
+    // al salir de pantalla se pausa: ni datos ni batería de más
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (es) {
+        if (es[0].isIntersecting) { v.play().catch(function () {}); }
+        else { v.pause(); }
+      }, { threshold: .15 }).observe(v);
+    }
   }
 
   /* --------------------------------------------------------------- cabecera */
@@ -134,6 +191,7 @@
   function boot() {
     fillLinks();
     planLinks();
+    video();
     header();
     drawer();
     dock();

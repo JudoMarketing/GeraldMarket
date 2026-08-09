@@ -26,45 +26,39 @@ servidor: se abre `index.html` o se sube la carpeta a cualquier hosting.
 
 ---
 
-## La idea: primero se enseña, después se vende
+## La idea: un embudo, no un catálogo
 
-El sitio no está construido para vender un curso. Está construido para
-reproducir lo que Gerald hace cuando alguien entra a su oficina: saca la
-pizarra, explica algo, la persona entiende algo que parecía complicado y piensa
-«quiero aprender más».
+Este sitio es **publicidad**, no la plataforma. Su único trabajo es que alguien
+que no conoce a Gerald acabe inscribiéndose. La formación de verdad vive en
+**otra plataforma**, a la que se entra después de pagar.
 
-Toda la arquitectura sirve a esa secuencia:
+La secuencia de la portada es deliberada:
 
 ```
-curiosidad → aprendo algo → entiendo algo → confío en quien enseña
-          → quiero más → veo el método completo → compro
+video de Gerald → mini clase (acciones y opciones) → testimonios
+   → qué hay dentro → redes sociales → inscribirse
 ```
 
-Por eso la portada **no** empieza con precios, y por eso la primera clase se ve
-sin registrarse. Es el mismo modelo de Investors Underground, Bear Bull Traders,
-Warrior Trading, Option Alpha y tastylive: regalar formación de verdad antes de
-pedir nada.
+Primero se demuestra cómo enseña, y solo al final se pide algo.
 
-## Las cuatro páginas
+## Las dos páginas
 
 | Archivo | Página | Qué lleva |
 |---|---|---|
-| `index.html` | **Inicio** | Portada con el gráfico de velas vivo, **la clase 01 incrustada sin pedir nada**, la ruta de las cinco clases gratis, «así enseño» con la pizarra, la sección de demostración (clips y testimonios) y el mapa de las siete partes del programa. |
-| `aprende.html` | **Aprende gratis** | El centro de aprendizaje: cinco clases con barra de avance. Las tres primeras abiertas; las dos últimas detrás de nombre y contacto. |
-| `educate.html` | **Educate!** | El programa completo: las siete partes del recorrido y, después, los tres cursos de pago único que lo cubren. |
-| `contacto.html` | **Contacto** | Foto y historia de Gerald, botones de llamar y WhatsApp, y el formulario. |
+| `index.html` | **Inicio** | El embudo: video que arranca solo, la clase corta comparando acciones y opciones, testimonios de estudiantes, qué hay dentro de la plataforma, redes sociales y la llamada a inscribirse. |
+| `inscribete.html` | **Inscríbete** | Las dos formas de pago (único y por semana de clase), cómo es el proceso, qué hay dentro y las preguntas de antes de pagar. |
 
 ## Estructura de archivos
 
 ```
-index.html · aprende.html · educate.html · contacto.html
+index.html · inscribete.html
 assets/css/styles.css        Sistema de diseño y estilos de todas las páginas
 assets/css/fonts.css         @font-face de las tres tipografías
 assets/fonts/*.woff2         Playfair Display Italic, Archivo (variable), JetBrains Mono
 assets/js/market.js          Gráfico de velas animado + cinta de cotizaciones
 assets/js/app.js             Datos de contacto (SITE), cabecera, menú, revelados
-assets/js/aprende.js         Avance del curso gratis, desbloqueo y captura de contacto
-assets/js/contacto.js        Validación del formulario y armado del mensaje
+assets/video/gerald-ejemplo.webm  Video de relleno, a sustituir por la grabación real
+assets/video/poster.jpg      Fotograma que se ve mientras el video carga
 assets/img/logo.svg          Marca completa sobre fondo oscuro
 assets/img/logo-light.svg    Marca completa sobre fondo claro (papel, prensa)
 assets/img/logo-mark.svg     El monograma G (cabecera y pie)
@@ -93,6 +87,10 @@ var SITE = {
   tel:        "+13050000000",        // como se marca
   whatsapp:   "13050000000",         // solo dígitos, código de país primero
   email:      "hola@geraldmarket.com",
+  facebook:   "https://facebook.com/",   // perfiles reales, pendientes
+  instagram:  "https://instagram.com/",
+  youtube:    "https://youtube.com/",
+  plataforma: "",                        // la plataforma de estudiantes
   waSaludo:   "Hola Gerald, vengo de la web…"
 };
 ```
@@ -103,16 +101,36 @@ publique por error un número inventado.
 ### Precios y contenidos de los programas
 Están escritos directamente en el HTML, sin diccionarios de por medio:
 
-- Las tres fichas de producto están en `educate.html` (`#tienda`) y
-  repetidas, más cortas, en `index.html` (`#programas`).
-- Los **9 módulos** están en `educate.html`, dentro del `<details>` de
-  `#temario`.
-- El precio se muestra siempre dentro de `.pcard__px`.
-- Precios actuales, todos de **pago único**: Aprende desde cero **$200**,
-  Nivel 1 **$100**, Nivel 2 **$150**.
-- **No hay suscripciones.** El acompañamiento uno a uno mensual se retiró: si
-  alguna vez vuelve, se recupera del historial de git (commit anterior a este)
-  en vez de escribirlo otra vez.
+- Las dos formas de pago están en `inscribete.html` (`#pagos`).
+- **Los dos precios están sin poner**, marcados como «Consultar». Se escriben
+  dentro de `.pay__amt`.
+- Los botones no cobran nada: abren WhatsApp con el mensaje ya escrito. Cuando
+  haya pasarela de pago, se cambian por el enlace de cobro.
+- La dirección de la plataforma de estudiantes va en `SITE.plataforma`, dentro
+  de `assets/js/app.js`. Mientras esté vacía, los enlaces que apunten ahí se
+  ocultan solos.
+
+### El video de la portada
+
+Es lo primero que ve cualquiera, así que es la pieza más importante que falta.
+
+Ahora hay uno de relleno en `assets/video/gerald-ejemplo.webm` que dice en
+pantalla que hay que sustituirlo. Para poner el real basta con reemplazar ese
+archivo y el fotograma `poster.jpg`, sin tocar el HTML.
+
+**Formato:** el de relleno es WebM porque es lo único que se pudo generar aquí.
+Para publicar conviene **MP4 con códec H.264**, que lo reproduce absolutamente
+todo, iPhone incluido. Si el video acaba en YouTube, se sustituye el `<video>`
+por el `<iframe>` del reproductor.
+
+**Por qué arranca en silencio:** ningún navegador deja que un video arranque con
+sonido sin que la persona lo pida. Por eso empieza mudo, en bucle, y hay un
+botón visible para activar el sonido. Es la única forma de que la reproducción
+automática funcione de verdad; si se quita el `muted`, el video no arranca solo
+en ningún teléfono.
+
+También se pausa solo cuando sale de la pantalla, para no gastar datos ni
+batería.
 
 ### Regenerar las imágenes de vista previa
 
@@ -120,59 +138,7 @@ Están escritos directamente en el HTML, sin diccionarios de por medio:
 así que **envejecen con el diseño**. Cada vez que cambie la portada de forma
 notable conviene rehacerlas, o el enlace compartido enseñará una versión vieja.
 
-Se generan sirviendo el sitio en local y fotografiando la portada a 1200x630 y a
-1600x1000 respectivamente. Ambas están enlazadas desde las cuatro páginas con
-`og:image`, y sus direcciones aparecen también en `showcase.json`.
-
-### Meter los videos
-
-Hay **seis huecos de video** marcados como «pendiente». Todos usan el mismo
-componente `.vframe`, con la proporción 16:9 que tendrá el video real:
-
-| Dónde | Qué va |
-|---|---|
-| `index.html` `#clase-01` | La clase 01 completa, la que se ve sin registrarse |
-| `index.html` `#asi-enseno` | Gerald frente a la pizarra, un minuto |
-| `index.html` `#pruebas` (×3) | Trozo de clase real, la pizarra, análisis de un gráfico |
-| `aprende.html` (×5) | Las cinco clases del centro de aprendizaje |
-
-Para poner uno real, se sustituye el `<div class="vframe__ph">…</div>` por el
-reproductor. El marco, las esquinas, la sombra y la proporción ya están puestos:
-
-```html
-<div class="vframe">
-  <iframe src="https://www.youtube-nocookie.com/embed/ID_DEL_VIDEO"
-          title="Clase 01. ¿Qué es una acción?"
-          allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture"
-          allowfullscreen loading="lazy"></iframe>
-</div>
-```
-
-**Ojo con la privacidad de la web:** ahora mismo el sitio no hace ninguna
-petición a terceros. En cuanto se incruste un video de YouTube o Vimeo, eso
-cambia. `youtube-nocookie.com` reduce el rastreo pero no lo elimina.
-
-### El muro de las clases 4 y 5
-
-Está en `assets/js/aprende.js`. Al enviar el formulario:
-
-1. guarda en el navegador que esa persona ya desbloqueó (`localStorage`);
-2. quita el candado de las clases 4 y 5;
-3. abre WhatsApp con el nombre y el contacto ya escritos, para que el mensaje
-   llegue de verdad.
-
-**Esto no protege el contenido y es importante entenderlo.** El desbloqueo vive
-en el navegador de quien visita: cualquiera con algo de maña se lo salta.
-Mientras no haya un servidor detrás:
-
-- sube los videos como **no listados** o privados, nunca públicos;
-- no pongas ahí nada que de verdad no puedas regalar.
-
-Para captura de contactos real (que la lista llegue sola a un correo o a un
-CRM), se conecta un servicio desde el `submit` de `aprende.js`: Formspree,
-ConvertKit, Mailchimp o Brevo. Los campos ya se llaman `nombre` y `contacto`.
-
-### Botones «quiero este plan»
+### Botones «quiero este plan»### Botones «quiero este plan»
 Cualquier enlace con `data-plan="…"` se convierte solo en un mensaje de
 WhatsApp con ese texto ya escrito. Para añadir uno nuevo basta con:
 
@@ -292,32 +258,24 @@ cookie. El único almacenamiento del navegador que se usa es… ninguno.
 
 Todo esto es de relleno y hay que confirmarlo o reemplazarlo:
 
-1. **Teléfono, WhatsApp y correo.** Los de `SITE` en `assets/js/app.js` son
-   marcadores (`+1 (305) 000-0000`). Sin esto, ningún botón funciona.
-2. **Los seis videos.** Son el corazón del sitio: sin ellos no hay «prueba del
-   pastel». Prioridad: primero la clase 01 (la que se ve sin registro) y el
-   video de la pizarra. Ver «Meter los videos» más arriba.
-3. **Los testimonios.** Los dos de la portada son marcadores de posición y lo
-   dicen en pantalla. Se sustituyen por mensajes reales, transcritos tal cual y
-   con permiso, y hablando de la enseñanza, no de dinero.
-4. **La foto de Gerald.** En `contacto.html` hay un marco que dice «FOTO
-   PENDIENTE». Se reemplaza el `src` del `<img>` que apunta a
-   `assets/img/mentor-placeholder.svg`. Un retrato vertical, buena luz, fondo
-   oscuro si es posible.
-5. **La historia de Gerald.** El texto de `contacto.html` (`#historia`) es de
-   ejemplo, y también las dos frases entrecomilladas (la de `#historia` y la de
-   «Así enseño» en la portada). Sustituir por sus palabras reales.
-6. **Los títulos de los 9 módulos** son una propuesta. Ajustar al temario real.
-7. **Las descripciones de cada programa** (una línea por ficha) son una
-   propuesta. Confirmar que dicen lo que el cliente quiere vender.
-8. **Métodos de pago.** No se mencionan en ninguna parte. Falta decidir cómo se
-   cobra y si conviene decirlo en la ficha o dejarlo para el WhatsApp.
-9. **El dominio.** `canonical`, las etiquetas `og:`, `sitemap.xml` y `robots.txt`
+1. **El video de Gerald.** Es la pieza central del embudo y ahora hay uno de
+   relleno que lo dice en pantalla. Sin él, la portada no cumple su función.
+   Ver «El video de la portada» más arriba.
+2. **Los dos precios.** Ni el pago único ni el de semana de clase están
+   puestos: aparecen como «Consultar» en `inscribete.html`.
+3. **La plataforma de estudiantes.** Falta su dirección en `SITE.plataforma`.
+   Es a donde se manda a quien ya pagó.
+4. **Teléfono, WhatsApp y correo.** Los de `SITE` son marcadores con ceros.
+   Sin esto, ningún botón funciona.
+5. **Las redes sociales.** `facebook`, `instagram` y `youtube` apuntan a la raíz
+   de cada red. Poner los perfiles reales.
+6. **Los testimonios.** Los tres de la portada son marcadores y lo dicen en
+   pantalla. Se sustituyen por mensajes reales, con permiso, y **hablando de lo
+   que aprendieron, no de cuánto dinero ganaron** (ver el aviso de abajo).
+7. **Métodos de pago.** Ahora los botones solo abren WhatsApp. Falta decidir
+   cómo se cobra.
+8. **El dominio.** `canonical`, las etiquetas `og:`, `sitemap.xml` y `robots.txt`
    usan `https://geraldmarket.com/`. Cambiar al dominio real.
-10. **Imagen para redes (`og:image`).** No hay. Conviene generar una de
-   1200 × 630 px con el logo sobre el gráfico y añadirla a las cuatro páginas.
-11. **Instagram / redes.** `SITE.ig` apunta a la raíz de Instagram; poner el
-    perfil real y, si se quiere, añadir los enlaces al pie.
 
 ### Sobre el aviso de riesgo y lo que NO se puede prometer
 
@@ -336,8 +294,11 @@ Por eso, en todo el sitio:
   dinero**.
 - No hay ni una cifra de ganancia, ni capturas de beneficios, ni carros, ni
   «gana X al día», ni «deja tu trabajo».
-- Los testimonios que se pongan deben hablar de **cómo se enseña**, no de cuánto
-  ganó alguien.
+- Los testimonios que se pongan deben hablar de **cómo se enseña y qué
+  aprendieron**, no de cuánto dinero ganó alguien. Un testimonio que diga «gané
+  X» es una promesa de ingresos con otro nombre, y es justo lo que persigue la
+  FTC. Debajo de los testimonios hay un aviso que dice que son experiencias
+  individuales y no un resultado típico: **no lo quites**.
 
 **No quites nada de esto y no metas promesas de rentabilidad**, ni siquiera
 suaves. Que un abogado lo revise antes de cobrar el primer pago.
