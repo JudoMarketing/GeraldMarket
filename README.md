@@ -138,23 +138,13 @@ batería.
 así que **envejecen con el diseño**. Cada vez que cambie la portada de forma
 notable conviene rehacerlas, o el enlace compartido enseñará una versión vieja.
 
-### Botones «quiero este plan»### Botones «quiero este plan»
+### Botones «quiero este plan»
 Cualquier enlace con `data-plan="…"` se convierte solo en un mensaje de
 WhatsApp con ese texto ya escrito. Para añadir uno nuevo basta con:
 
 ```html
-<a class="btn btn--gold" data-plan="Nivel 1 ($100)" href="#">Quiero el Nivel 1</a>
+<a class="btn btn--gold" data-plan="Pago único" href="#">Quiero el acceso completo</a>
 ```
-
-### El formulario de contacto
-No manda nada por su cuenta: valida, arma un mensaje ordenado y lo abre en
-WhatsApp o en el correo para que lo envíe la persona. Así no hay servidor de por
-medio ni datos guardados en ningún lado.
-
-Si más adelante se quiere recibir en una bandeja o en un CRM, se conecta un
-servicio tipo Formspree, Netlify Forms o Google Apps Script desde
-`assets/js/contacto.js`. Los `name` de los campos ya son sensatos: `nombre`,
-`telefono`, `email`, `interes`, `nivel`, `mensaje`, `acepto`.
 
 ---
 
@@ -308,52 +298,50 @@ suaves. Que un abogado lo revise antes de cobrar el primer pago.
 ## Publicar
 
 Es un sitio estático puro: no hay compilación, no hay servidor, no hay variables
-de entorno. Cualquier hosting sirve.
+de entorno. Todas las rutas son relativas, así que funciona igual en la raíz de
+un dominio que dentro de una subcarpeta.
 
-### GitHub Pages: la vía directa desde este repositorio
-
-El repositorio ya está preparado: hay un `.nojekyll` y **todas las rutas son
-relativas**, así que el sitio funciona igual en la raíz de un dominio que en una
-subcarpeta tipo `usuario.github.io/GeraldMarket/`. Está comprobado sirviéndolo
-desde una subruta.
-
-**Ya está activo.** El sitio se sirve desde:
+### GitHub Pages (lo que está activo ahora)
 
 ```
 https://judomarketing.github.io/GeraldMarket/
 ```
 
-Configuración actual: *Settings → Pages* → **Deploy from a branch**, rama
-`gerald-market-site`, carpeta `/ (root)`. Cada vez que se sube un cambio a esa
-rama, GitHub reconstruye y republica solo. No hay que tocar nada más.
+Configurado en *Settings → Pages* con la rama `gerald-market-site` y la carpeta
+`/ (root)`. Cada subida a esa rama republica sola.
 
-> **Si se vuelve a cambiar el nombre de la cuenta, la dirección cambia con él.**
-> La cuenta pasó de `Poweroso2000` a `JudoMarketing`, así que la web pasó de
-> `poweroso2000.github.io/GeraldMarket/` a `judomarketing.github.io/GeraldMarket/`.
-> GitHub **no** redirige las direcciones de Pages cuando cambia el nombre de
-> usuario (sí lo hace al renombrar un repositorio, pero no al renombrar la
-> cuenta), de modo que cualquier enlace repartido con el nombre anterior queda
-> muerto. Con un dominio propio esto deja de ser un problema.
+> Si vuelve a cambiar el nombre de la cuenta de GitHub, **la dirección cambia
+> con él y no se redirige**. Hay que volver a entrar en *Settings → Pages* y
+> guardar de nuevo. Con un dominio propio esto deja de ser un problema.
 
-> **El repositorio es público**, que es lo que exige Pages en las cuentas
-> gratuitas. En el código no hay claves ni datos reales (el teléfono y el
-> correo siguen siendo marcadores con ceros), pero conviene tenerlo presente:
-> el borrador está a la vista de cualquiera que dé con la dirección. Si más
-> adelante se quiere volver privado, habrá que pasar el sitio a otro hosting
-> o subir de plan.
+### Vercel
 
-### Otras opciones
+El repositorio ya trae `vercel.json` listo, con el caché de tipografías, video e
+imágenes y un par de cabeceras de seguridad. **No hace falta configurar nada
+más.**
 
-- **Netlify / Vercel / Cloudflare Pages**: se arrastra la carpeta o se importa
-  el repositorio. Sin comando de compilación y sin carpeta de salida.
-  `vercel.json` ya trae las URL limpias y el caché de las tipografías.
-- **Cualquier hosting clásico por FTP**: se suben los archivos tal cual.
+1. Entra a <https://vercel.com/new> e inicia sesión **con GitHub**.
+2. Busca `GeraldMarket` en la lista y pulsa **Import**.
+3. En *Framework Preset* elige **Other**. Deja vacíos *Build Command* y *Output
+   Directory*: el sitio no se compila.
+4. Abre *Git Branch* y elige **`gerald-market-site`**, que es donde vive el
+   código. Este es el paso que más se olvida: por defecto Vercel toma la rama
+   principal del repositorio.
+5. Pulsa **Deploy**.
+
+En menos de un minuto te da una dirección `*.vercel.app`. A partir de ahí, cada
+subida a esa rama despliega sola.
+
+**Ventaja frente a Pages:** Vercel funciona también con repositorios privados,
+así que si algún día se quiere volver a poner el código en privado, el sitio
+sigue publicándose.
 
 ### Cuando haya dominio propio
 
-Añadir el dominio en *Settings → Pages → Custom domain* y actualizar a la vez
-las etiquetas `canonical`, `og:url`, el `sitemap.xml` y el `robots.txt`, que
-ahora apuntan a `https://geraldmarket.com/`.
+En Vercel: *Settings → Domains → Add*. En Pages: *Settings → Pages → Custom
+domain*. En los dos casos hay que actualizar a la vez las etiquetas `canonical`,
+`og:url`, `og:image`, el `sitemap.xml` y el `robots.txt`, que ahora apuntan a
+`https://geraldmarket.com/`.
 
 ## Accesibilidad y rendimiento
 

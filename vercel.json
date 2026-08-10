@@ -1,7 +1,16 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "cleanUrls": true,
+
+  "$comment": [
+    "cleanUrls va en false a propósito. Los enlaces internos del sitio apuntan a",
+    "'inscribete.html', y con cleanUrls activado Vercel redirige cada uno de esos",
+    "enlaces a '/inscribete', añadiendo un salto en cada navegación. Además el",
+    "mismo código se sirve también desde GitHub Pages, que no tiene cleanUrls:",
+    "dejándolo apagado, las dos direcciones se comportan igual."
+  ],
+  "cleanUrls": false,
   "trailingSlash": false,
+
   "headers": [
     {
       "source": "/assets/fonts/(.*)",
@@ -10,9 +19,22 @@
       ]
     },
     {
+      "source": "/assets/video/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=2592000" }
+      ]
+    },
+    {
       "source": "/assets/(css|js|img)/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=604800" }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
       ]
     }
   ]
