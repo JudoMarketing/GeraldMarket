@@ -762,6 +762,10 @@ p { text-wrap: pretty; }
   align-items: center; justify-content: space-between;
 }
 
+.ft__credit { text-decoration: none; transition: color .18s var(--ease); }
+.ft__credit:hover,
+.ft__credit:focus-visible { color: var(--fg-2); }
+
 /* ------------------------------------------------------- barra fija móvil */
 .dock {
   position: fixed; inset: auto 0 0 0; z-index: 90;
